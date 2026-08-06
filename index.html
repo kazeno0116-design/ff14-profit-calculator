@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FF14 製作利益・目標計算機</title>
+<style>
+:root{--bg:#050505;--panel:#fff;--ink:#111;--cyan:#00e5ff;--muted:#687078;--bad:#c52b2b;--ok:#008a62;--soft:#eefbfc;--line:#d8dde0}*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#050505;color:var(--ink);font-family:Poppins,"Noto Sans JP",Arial,sans-serif}body{padding:32px 16px;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:50px 50px}.app{max-width:820px;margin:auto;padding:34px;background:var(--panel);border-radius:12px;box-shadow:0 10px 40px #ffffff18}h1{margin:0 0 22px;padding-bottom:14px;border-bottom:3px solid;font-size:clamp(1.5rem,5vw,2.15rem);text-align:center;letter-spacing:.06em}.version{text-align:center;color:var(--muted);margin:-12px 0 24px;font-size:.85rem}.section{margin-top:22px}.section-title{margin:0 0 12px;padding-bottom:8px;border-bottom:2px solid #111;font-size:1.02rem}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:flex;flex-direction:column;gap:7px}label{font-weight:700;font-size:.9rem}input{width:100%;padding:12px;background:#050505;color:#fff;border:2px solid #333;border-radius:6px;font:700 1rem inherit}input:focus{border-color:var(--cyan);outline:0}.suffix{position:relative}.suffix input{padding-right:54px}.suffix span{position:absolute;right:13px;bottom:13px;color:#bbb;font-weight:700;font-size:.82rem}.run,.copy,.subbtn,.remove{position:relative;isolation:isolate;overflow:hidden;border:0;border-radius:6px;background:#111;color:#fff;font-weight:900;letter-spacing:.06em;cursor:pointer;transition:transform .16s ease,box-shadow .25s ease,background .25s ease,color .25s ease}.run{width:100%;margin:22px 0 16px;padding:17px;font-size:1.05rem}.subbtn,.copy{padding:10px 13px;font-size:.82rem}.remove{padding:9px 12px;background:#7c1f1f}.run:hover,.copy:hover,.subbtn:hover,.remove:hover{background:#17191a;box-shadow:0 0 6px #00e5ff77,0 0 14px #00e5ff33}.run:active,.copy:active,.subbtn:active,.remove:active{background:#fff;color:#111;transform:scale(.98)}.run.loading{background:#10191b;color:#bffaff;animation:loading-glow .85s ease-in-out infinite alternate}.run.success,.copy.ok{background:#fff;color:#111;outline:2px solid #111;outline-offset:-2px}.toolbar{display:flex;flex-wrap:wrap;gap:9px}.materials{border:2px solid #111;border-radius:8px;overflow:hidden}.material-head,.material-row{display:grid;grid-template-columns:1.5fr .75fr .95fr 46px;gap:8px;align-items:center;padding:10px}.material-head{background:#111;color:#fff;font-size:.76rem;font-weight:900}.material-row{border-top:1px solid var(--line)}.material-row input{padding:9px;font-size:.9rem}.compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}.compare-card{padding:16px;border:2px solid #111;border-radius:8px}.compare-card h3{margin:0 0 10px;font-size:.95rem}.compare-card .big{font-size:1.45rem;font-weight:900}.compare-card p{margin:6px 0 0;color:var(--muted);font-size:.8rem}.goal{margin-top:12px;padding:17px;border:2px solid #111;border-radius:8px;background:#111;color:#fff}.goal strong{color:var(--cyan);font-size:1.18rem}.goal-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.goal-card{padding:16px;border:2px solid #111;border-radius:8px;background:#f7f7f7}.goal-card h3{margin:0 0 10px;font-size:.95rem}.goal-card dl{display:grid;grid-template-columns:1fr auto;gap:7px 12px;margin:0}.goal-card dt{color:var(--muted);font-size:.82rem}.goal-card dd{margin:0;font-weight:900;text-align:right}.material-total{margin-top:12px;border:2px solid #111;border-radius:8px;overflow:hidden}.material-total h3{margin:0;padding:12px 14px;background:#111;color:#fff;font-size:.92rem}.material-total-row{display:grid;grid-template-columns:1.4fr .7fr .9fr;gap:10px;padding:11px 14px;border-top:1px solid var(--line);font-size:.88rem}.material-total-row strong{text-align:right}.result{min-height:90px;padding:16px;border:2px solid #111;border-radius:7px;background:#f7f7f7;white-space:pre-wrap;font:14px/1.65 "Share Tech Mono",Consolas,monospace}.note{font-size:.78rem;color:var(--muted);line-height:1.55;margin-top:18px}.hint{font-size:.76rem;color:var(--muted);line-height:1.5}@keyframes loading-glow{from{box-shadow:0 0 7px #00e5ff88,0 0 16px #00e5ff44}to{box-shadow:0 0 15px #00e5ff,0 0 38px #00e5ffaa}}@media(max-width:680px){body{padding:12px 8px}.app{padding:20px 14px}.grid,.compare,.goal-grid{grid-template-columns:1fr}.material-head{display:none}.material-row{grid-template-columns:1fr 1fr 1fr 42px}.material-row .m-name{grid-column:1/-1}.material-total-row{grid-template-columns:1fr auto}.material-total-row .cost{grid-column:1/-1;text-align:right}}@media(max-width:430px){.material-row{grid-template-columns:1fr 1fr 42px}.material-row .m-price{grid-column:1/3}}
+</style>
+</head>
+<body><main class="app">
+<h1>製作利益・目標計算機</h1>
+<div class="version">FFXIV Patch 7.55 / Google Sites embed compatible / 手入力専用</div>
+
+<section class="section">
+<h2 class="section-title">販売条件</h2>
+<div class="grid">
+<div class="field suffix"><label for="sellPrice">1個の販売価格</label><input id="sellPrice" type="number" min="0" value="0" inputmode="numeric"><span>ギル</span></div>
+<div class="field suffix"><label for="yieldCount">1回の完成個数</label><input id="yieldCount" type="number" min="1" value="1" inputmode="numeric"><span>個</span></div>
+<div class="field suffix"><label for="feeRate">販売手数料</label><input id="feeRate" type="number" min="0" max="100" step="0.1" value="5" inputmode="decimal"><span>%</span></div>
+<div class="field suffix"><label for="goalAmount">目標利益</label><input id="goalAmount" type="number" min="0" value="1000000" inputmode="numeric"><span>ギル</span></div>
+</div>
+</section>
+
+<section class="section">
+<h2 class="section-title">素材</h2>
+<div class="materials">
+<div class="material-head"><span>素材名</span><span>必要数/回</span><span>マケボ単価</span><span></span></div>
+<div id="materialRows"></div>
+</div>
+<div class="toolbar" style="margin-top:10px"><button id="addRow" class="subbtn" type="button">＋ 素材を追加</button><button id="reset" class="subbtn" type="button">入力を初期化</button></div>
+<p class="hint">素材を買う場合は入力した単価を原価に含めます。買わない場合は素材費0ギルとして比較します。</p>
+</section>
+
+<button id="run" class="run" type="button">CALCULATE PROFIT</button>
+<div id="output" hidden>
+<div class="compare">
+<div class="compare-card"><h3>素材を買う場合</h3><div id="profitBuy" class="big">0 ギル</div><p id="costBuy">素材原価 0ギル</p></div>
+<div class="compare-card"><h3>素材を買わない場合</h3><div id="profitFree" class="big">0 ギル</div><p>素材原価を0ギルとして計算</p></div>
+</div>
+<div class="goal"><strong>目標利益までに必要な製作量</strong><br>素材を買う場合と買わない場合を比較して表示します。</div>
+<div class="goal-grid">
+<div class="goal-card"><h3>素材を買う場合</h3><dl><dt>必要製作回数</dt><dd id="needBuy">0回</dd><dt>完成品数</dt><dd id="itemsBuy">0個</dd><dt>素材購入総額</dt><dd id="materialSpendBuy">0ギル</dd><dt>見込み売上</dt><dd id="salesBuy">0ギル</dd><dt>見込み利益</dt><dd id="finalProfitBuy">0ギル</dd></dl></div>
+<div class="goal-card"><h3>素材を買わない場合</h3><dl><dt>必要製作回数</dt><dd id="needFree">0回</dd><dt>完成品数</dt><dd id="itemsFree">0個</dd><dt>素材費</dt><dd>0ギル</dd><dt>見込み売上</dt><dd id="salesFree">0ギル</dd><dt>見込み利益</dt><dd id="finalProfitFree">0ギル</dd></dl></div>
+</div>
+<div class="material-total"><h3>目標達成に必要な素材</h3><div id="materialTotals"></div></div>
+<div id="result" class="result" style="margin-top:12px"></div>
+<div class="toolbar" style="margin-top:12px"><button id="copy" class="copy" type="button">COPY RESULT</button></div>
+</div>
+<p class="note">マケボ価格はゲーム内で確認して手入力してください。値下がり、売れ残り、税率差などは含まれません。結果は目安として利用してください。</p>
+</main>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id),rows=$('materialRows');let lastText='';
+const num=v=>Math.max(0,Number(v)||0),fmt=n=>Math.round(n).toLocaleString('ja-JP');
+function esc(v){return String(v).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function addRow(data={}){const d={name:'',need:1,price:0,...data},el=document.createElement('div');el.className='material-row';el.innerHTML=`<input class="m-name" type="text" placeholder="素材名" value="${esc(d.name)}"><input class="m-need" type="number" min="0" step="0.01" value="${d.need}" inputmode="decimal"><input class="m-price" type="number" min="0" step="0.01" value="${d.price}" inputmode="decimal"><button class="remove" type="button" aria-label="削除">×</button>`;rows.appendChild(el)}
+function reset(){rows.innerHTML='';addRow();addRow();addRow();$('sellPrice').value=0;$('yieldCount').value=1;$('feeRate').value=5;$('goalAmount').value=1000000;$('output').hidden=true;lastText=''}
+function calc(){const sell=num($('sellPrice').value),yieldN=Math.max(1,Math.floor(num($('yieldCount').value)||1)),feeRate=Math.min(100,num($('feeRate').value)),goal=num($('goalAmount').value);let materialCost=0;const detail=[];[...rows.querySelectorAll('.material-row')].forEach((r,i)=>{const name=r.querySelector('.m-name').value.trim()||`素材${i+1}`,need=num(r.querySelector('.m-need').value),price=num(r.querySelector('.m-price').value),sub=need*price;materialCost+=sub;if(need>0)detail.push({name,need,price,sub})});const gross=sell*yieldN,fee=gross*feeRate/100,net=gross-fee,profitBuy=net-materialCost,profitFree=net,needBuy=profitBuy>0?Math.ceil(goal/profitBuy):null,needFree=profitFree>0?Math.ceil(goal/profitFree):null;return{sell,yieldN,feeRate,goal,materialCost,gross,fee,profitBuy,profitFree,needBuy,needFree,detail}}
+function totals(c,crafts){return c.detail.map(x=>({name:x.name,count:x.need*crafts,cost:x.need*crafts*x.price}))}
+function render(c){$('output').hidden=false;$('profitBuy').textContent=`${fmt(c.profitBuy)} ギル / 回`;$('profitBuy').style.color=c.profitBuy>=0?'var(--ok)':'var(--bad)';$('profitFree').textContent=`${fmt(c.profitFree)} ギル / 回`;$('profitFree').style.color=c.profitFree>=0?'var(--ok)':'var(--bad)';$('costBuy').textContent=`素材原価 ${fmt(c.materialCost)}ギル / 回`;
+const buyCrafts=c.needBuy||0,freeCrafts=c.needFree||0,buyItems=buyCrafts*c.yieldN,freeItems=freeCrafts*c.yieldN,buySales=buyCrafts*c.gross,freeSales=freeCrafts*c.gross,buySpend=buyCrafts*c.materialCost,buyFinal=buyCrafts*c.profitBuy,freeFinal=freeCrafts*c.profitFree;
+$('needBuy').textContent=c.needBuy===null?'達成不可':`${fmt(buyCrafts)}回`;$('itemsBuy').textContent=c.needBuy===null?'—':`${fmt(buyItems)}個`;$('materialSpendBuy').textContent=c.needBuy===null?'—':`${fmt(buySpend)}ギル`;$('salesBuy').textContent=c.needBuy===null?'—':`${fmt(buySales)}ギル`;$('finalProfitBuy').textContent=c.needBuy===null?'—':`${fmt(buyFinal)}ギル`;
+$('needFree').textContent=c.needFree===null?'達成不可':`${fmt(freeCrafts)}回`;$('itemsFree').textContent=c.needFree===null?'—':`${fmt(freeItems)}個`;$('salesFree').textContent=c.needFree===null?'—':`${fmt(freeSales)}ギル`;$('finalProfitFree').textContent=c.needFree===null?'—':`${fmt(freeFinal)}ギル`;
+const maxCrafts=Math.max(buyCrafts,freeCrafts);const baseCrafts=buyCrafts||freeCrafts||0;const materialRows=totals(c,baseCrafts);$('materialTotals').innerHTML=baseCrafts?materialRows.map(x=>`<div class="material-total-row"><span>${esc(x.name)}</span><strong>${fmt(x.count)}個</strong><strong class="cost">${fmt(x.cost)}ギル</strong></div>`).join(''):'<div class="material-total-row"><span>目標に到達できる条件を入力してください。</span><strong>—</strong><strong class="cost">—</strong></div>';
+const lines=[`1回の完成数：${fmt(c.yieldN)}個`,`販売価格：${fmt(c.sell)}ギル / 個`,`販売手数料：${c.feeRate}%`,'',`素材を買う場合：利益 ${fmt(c.profitBuy)}ギル / 回`,`素材を買わない場合：利益 ${fmt(c.profitFree)}ギル / 回`,'',`目標利益：${fmt(c.goal)}ギル`,`必要製作回数（買う）：${c.needBuy===null?'達成不可':fmt(buyCrafts)+'回'}`,`完成品数（買う）：${c.needBuy===null?'—':fmt(buyItems)+'個'}`,`素材購入総額（買う）：${c.needBuy===null?'—':fmt(buySpend)+'ギル'}`,`必要製作回数（買わない）：${c.needFree===null?'達成不可':fmt(freeCrafts)+'回'}`,`完成品数（買わない）：${c.needFree===null?'—':fmt(freeItems)+'個'}`,'',`【必要素材：素材を買う場合の製作回数基準】`,...materialRows.map(x=>`${x.name}：${fmt(x.count)}個 / ${fmt(x.cost)}ギル`)];lastText=lines.join('\n');$('result').textContent=lastText}
+async function run(){const b=$('run');b.classList.add('loading');b.disabled=true;b.textContent='CALCULATING...';await new Promise(r=>setTimeout(r,100));render(calc());b.disabled=false;b.classList.remove('loading');b.classList.add('success');b.textContent='COMPLETED';setTimeout(()=>{b.classList.remove('success');b.textContent='CALCULATE PROFIT'},800)}
+async function copy(){if(!lastText)render(calc());try{await navigator.clipboard.writeText(lastText)}catch(_){const t=document.createElement('textarea');t.value=lastText;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove()}const b=$('copy');b.classList.add('ok');b.textContent='COMPLETED';setTimeout(()=>{b.classList.remove('ok');b.textContent='COPY RESULT'},1000)}
+function prepareInput(input){
+ if(!(input instanceof HTMLInputElement))return;
+ if(input.type==='number'){
+  const current=input.value;
+  const initial=input.defaultValue;
+  if(current===initial){
+   input.dataset.restoreValue=initial;
+   input.value='';
+  }else{
+   requestAnimationFrame(()=>{try{input.select()}catch(_){}});
+  }
+ }else if(input.type==='text'&&input.value){
+  requestAnimationFrame(()=>{try{input.select()}catch(_){}});
+ }
+}
+function restoreInput(input){
+ if(!(input instanceof HTMLInputElement))return;
+ if(input.type==='number'&&input.value===''){
+  const fallback=input.dataset.restoreValue??input.defaultValue??input.min??'0';
+  input.value=fallback;
+ }
+ delete input.dataset.restoreValue;
+}
+document.addEventListener('focusin',e=>prepareInput(e.target));
+document.addEventListener('blur',e=>restoreInput(e.target),true);
+rows.addEventListener('click',e=>{const b=e.target.closest('.remove');if(!b)return;b.closest('.material-row').remove();if(!rows.children.length)addRow()});$('addRow').addEventListener('click',()=>addRow());$('reset').addEventListener('click',reset);$('run').addEventListener('click',run);$('copy').addEventListener('click',copy);reset();
+})();
+</script></body></html>
