@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "source": "FINAL FANTASY XIV, The Lodestone",
+  "generatedAt": "2026-08-08T03:11:00+09:00",
+  "items": [
+    {
+      "title": "更新のお知らせ(8/7)",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/0a9d90f58862a886f4f5877cb0ce27c8e23b4ca3",
+      "publishedAt": "2026-08-07T16:19:00+09:00",
+      "source": "NEWS",
+      "badge": "UPDATE",
+      "summary": "ファイナルファンタジーXIVのバージョンアップが実施され、HotFixesや不具合修正などが公開されました。"
+    },
+    {
+      "title": "リアル＆ゲームのファッションショー！「ミラプリコレクション（インゲーム部門）」応募受付スタート",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/43fb490a561a5005293da62f2b4ca3d1b2f421ad",
+      "publishedAt": "2026-08-07T00:00:00+09:00",
+      "source": "TOPIC",
+      "badge": "TOPIC",
+      "summary": "ファンフェスティバル2026 in 東京のステージ企画「ミラプリコレクション（インゲーム部門）」の応募受付が始まりました。"
+    },
+    {
+      "title": "「紅蓮祭」8月12日（水）より開催！",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/fb68f3881a9157ba0036992ffe28c86c8b5a74c0",
+      "publishedAt": "2026-08-07T00:00:00+09:00",
+      "source": "TOPIC",
+      "badge": "EVENT",
+      "summary": "シーズナルイベント「紅蓮祭」が8月12日より開催されます。イベント内容や開催期間は公式ページで確認できます。"
+    }
+  ]
+}
