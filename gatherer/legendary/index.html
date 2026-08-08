@@ -1,0 +1,70 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>伝説・未知素材 | FINAL FANTASY XIV 個人用ツールポータル</title>
+<link rel="stylesheet" href="../../assets/css/portal.css"></head><body>
+<div class="layout"><aside class="sidebar"><div class="brand"><strong>FINAL FANTASY XIV</strong><span>個人用ツールポータル</span></div>
+<nav class="nav"><p class="nav-label">PORTAL</p><a class="" href="../../index.html"><span class="nav-icon">◇</span><span>ホーム</span></a><a class="" href="../../beginner/index.html"><span class="nav-icon">✦</span><span>初心者向け情報</span></a><p class="nav-label">CATEGORY</p><a class="" href="../../battle/index.html"><span class="nav-icon">✧</span><span>戦闘</span></a><a class="" href="../../crafter/index.html"><span class="nav-icon">◆</span><span>クラフター</span></a><a class="active" href="../../gatherer/index.html"><span class="nav-icon">◇</span><span>ギャザラー</span></a><a class="" href="../../other/index.html"><span class="nav-icon">＋</span><span>その他</span></a><p class="nav-label">TOOLS</p><a class="" href="../../tools/index.html"><span class="nav-icon">⚒</span><span>効率化ツール一覧</span></a></nav></aside>
+<main class="main"><div class="crumb">ホーム / ギャザラー / 伝説・未知素材</div>
+<section class="hero"><div class="eyebrow">LEGENDARY</div><h1>伝説・未知素材</h1><p>複数素材を選択し、ET順・移動先・アラームをまとめて扱うページにします.</p></section>
+
+
+
+<div class="content">
+<div class="toolbox" id="legendaryTool"><h2>伝説素材ルート生成</h2>
+<p>採りたい素材だけ選択するとET順に並べ、アラームマクロを生成します。必要個数の管理は行いません。</p>
+<div class="check-grid" id="nodeChecks"></div>
+<div class="tool-form" style="margin-top:14px"><div class="tool-field"><label>開始ET（時）</label><select id="startET"><option value="0">00:00</option><option value="2">02:00</option><option value="4">04:00</option><option value="6">06:00</option><option value="8">08:00</option><option value="10">10:00</option><option value="12">12:00</option><option value="14">14:00</option><option value="16">16:00</option><option value="18">18:00</option><option value="20">20:00</option><option value="22">22:00</option></select></div>
+<div class="tool-field"><label>何分前に通知</label><select id="alarmBefore"><option value="0">時刻ちょうど</option><option value="1">1分前</option><option value="2" selected>2分前</option><option value="5">5分前</option></select></div></div>
+<div class="tool-actions"><button class="tool-btn" id="makeRoute">ルート生成</button><button class="tool-btn secondary" id="selectAllNodes">全選択</button><button class="tool-btn secondary" id="clearNodes">全解除</button></div>
+<div class="tool-result" id="routeResult">素材を選択してください。</div></div>
+
+<section class="article-card"><h2>操作イメージ</h2>
+<div class="prototype">
+<div class="prototype-row"><strong>採集職</strong><div class="fake-input">採掘師 ☑　園芸師 ☑</div></div>
+<div class="prototype-row"><strong>素材</strong><div class="fake-input">検索・複数選択</div></div>
+
+<div class="prototype-row"><strong>開始</strong><div class="fake-input">現在ET / 指定ET</div></div>
+<div class="fake-button">最適ルートを生成（後日実装）</div></div>
+</section>
+<section class="article-card"><h2>生成結果の見せ方</h2>
+<div class="route-list">
+<div class="route-item"><strong>ET 02:00　素材A</strong><span>園芸師 / エリアA / 最寄り：○○ / 座標 X:-- Y:--</span></div>
+<div class="route-item"><strong>ET 04:00　素材B</strong><span>採掘師 / エリアB / 最寄り：○○ / 前地点からの移動を考慮</span></div>
+<div class="route-item"><strong>ET 06:00　素材C</strong><span>採掘師 / エリアC / 採集後は次の出現素材へ移動</span></div>
+</div>
+<div class="next-action"><div class="arrow">→</div><div><strong>ルート下部に「アラームマクロ生成」</strong><span>選択した素材だけを対象にゲーム内アラーム用マクロを生成し、そのままコピーできるようにします。</span></div></div>
+</section>
+<section class="article-card"><h2>ルート計算で見るもの</h2>
+<table class="efficiency-table"><tr><th>要素</th><th>使い方</th></tr>
+<tr><td>ET出現時間</td><td>基本の並び順。</td></tr>
+<tr><td>同時間帯の候補</td><td>移動距離が短い順を優先。</td></tr>
+<tr><td>最寄りエーテライト</td><td>テレポ後の移動時間を短縮。</td></tr>
+
+<tr><td>採集職切替</td><td>頻繁な着替えが発生する場合は順序評価へ加味。</td></tr></table>
+</section></div>
+<div class="footer">このサイトは「何を知るか」より「どう最短で目的を達成するか」を優先して構成しています。</div>
+</main></div><script src="../../assets/js/portal.js"></script><script src="../../assets/js/portal-tools.js"></script><script>
+const nodes=[
+{id:'rose',name:'ローズガーネット原石',en:'Rose Garnet Ore',job:'採掘師',et:0,zone:'シャーローニ荒野',xy:'X:23.6 Y:27.2'},
+{id:'wind',name:'ウィンドスパス・ウォーター',en:'Windspath Water',job:'採掘師',et:2,zone:'リビング・メモリー',xy:'X:8.1 Y:14.1'},
+{id:'carnauba',name:'カルナウバの葉',en:'Carnauba Leaf',job:'園芸師',et:4,zone:'コザマル・カ',xy:'X:15.2 Y:10.6'},
+{id:'flax',name:'ウルコパチャ亜麻',en:'Urqopacha Flax',job:'園芸師',et:6,zone:'オルコ・パチャ',xy:'X:5.2 Y:25.3'},
+{id:'fulgur',name:'フルグルパイン原木',en:'Fulgurpine Log',job:'園芸師',et:8,zone:'リビング・メモリー',xy:'X:8.8 Y:9.6'},
+{id:'aluminum',name:'高密度アルミナ鉱',en:'Dense Aluminum Ore',job:'採掘師',et:10,zone:'ヘリテージファウンド',xy:'X:23.7 Y:27.4'}
+];
+nodeChecks.innerHTML=nodes.map(n=>'<label class="check-item"><input type="checkbox" value="'+n.id+'"><div><strong>ET '+String(n.et).padStart(2,'0')+':00 '+n.name+'</strong><span>'+n.job+' / '+n.zone+' / '+n.xy+'</span></div></label>').join('');
+function selected(){return [...nodeChecks.querySelectorAll('input:checked')].map(x=>nodes.find(n=>n.id===x.value))}
+selectAllNodes.onclick=()=>nodeChecks.querySelectorAll('input').forEach(x=>x.checked=true);
+clearNodes.onclick=()=>nodeChecks.querySelectorAll('input').forEach(x=>x.checked=false);
+makeRoute.onclick=()=>{
+ let arr=selected(); if(!arr.length){routeResult.textContent='素材を1つ以上選択してください。';return}
+ const start=+startET.value;
+ arr.sort((a,b)=>((a.et-start+24)%24)-((b.et-start+24)%24));
+ const reminder=alarmBefore.value;
+ const route=arr.map((n,i)=>'<div class="result-item"><strong>'+(i+1)+'. ET '+String(n.et).padStart(2,'0')+':00　'+n.name+'</strong><span>'+n.job+' / '+n.zone+' / '+n.xy+'</span></div>').join('');
+ const macro=arr.map(n=>'/alarm "'+n.name.slice(0,10)+'" et rp '+String(n.et).padStart(2,'0')+'00 '+reminder).join('\\n');
+ routeResult.innerHTML='<h3>採集ルート</h3><div class="result-list">'+route+'</div><h3 style="margin-top:16px">アラームマクロ</h3><div class="macro-output" id="alarmMacro">'+FF14Tools.esc(macro)+'</div><div class="tool-actions"><button class="tool-btn secondary" id="copyAlarm">マクロをコピー</button></div><p class="tool-note">現在の初期データはPatch 7.4追加の6ノードです。データは後から追加可能な構造です。</p>';
+ document.getElementById('copyAlarm').onclick=function(){FF14Tools.copy(macro,this)};
+ FF14Tools.save('legendNodes',{ids:arr.map(n=>n.id),start,reminder});
+};
+const old=FF14Tools.load('legendNodes',null);if(old){nodeChecks.querySelectorAll('input').forEach(x=>x.checked=old.ids.includes(x.value));startET.value=old.start;alarmBefore.value=old.reminder}
+</script></body></html>
