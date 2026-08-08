@@ -1,0 +1,48 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UI・操作設定を効率化 | FINAL FANTASY XIV 個人用ツールポータル</title><link rel="stylesheet" href="../assets/css/portal.css"></head><body>
+<div class="layout"><aside class="sidebar"><div class="brand"><strong>FINAL FANTASY XIV</strong><span>個人用ツールポータル</span></div>
+<nav class="nav"><p class="nav-label">PORTAL</p><a href="../index.html"><span class="nav-icon">◇</span><span>ホーム</span></a><a class="active" href="index.html"><span class="nav-icon">✦</span><span>初心者向け情報</span></a>
+<p class="nav-label">CATEGORY</p><a href="../battle/index.html"><span class="nav-icon">✧</span><span>戦闘</span></a><a href="../crafter/index.html"><span class="nav-icon">◆</span><span>クラフター</span></a><a href="../gatherer/index.html"><span class="nav-icon">◇</span><span>ギャザラー</span></a><a href="../other/index.html"><span class="nav-icon">＋</span><span>その他</span></a>
+<p class="nav-label">TOOLS</p><a href="../tools/index.html"><span class="nav-icon">⚒</span><span>効率化ツール一覧</span></a></nav></aside>
+<main class="main"><div class="crumb">ホーム / 初心者向け情報 / UI・操作設定</div>
+<section class="hero"><div class="eyebrow">UI / CONTROL EFFICIENCY</div><h1>UI・操作設定を効率化</h1><p>設定項目を全部説明するのではなく、「見る場所を減らす」「押す回数を減らす」「見落としを減らす」ために先に整える場所だけをまとめます。</p></section>
+
+<div class="toolbox"><h2>自分向けの調整順を出す</h2><div class="tool-form">
+<div class="tool-field"><label>主な操作</label><select id="uiInput"><option value="pad">ゲームパッド</option><option value="kb">キーボード＋マウス</option></select></div>
+<div class="tool-field"><label>よく遊ぶロール</label><select id="uiRole"><option value="dps">DPS</option><option value="tank">タンク</option><option value="heal">ヒーラー</option><option value="all">いろいろ</option></select></div>
+<div class="tool-field"><label>画面サイズ</label><select id="uiScreen"><option value="small">小さめ / 携帯表示</option><option value="normal" selected>一般的なモニター</option><option value="large">大きめモニター</option></select></div>
+<div class="tool-field"><label>困っていること</label><select id="uiProblem"><option value="miss">ギミック・情報を見落とす</option><option value="skill">スキルを探してしまう</option><option value="target">ターゲット操作が遅い</option><option value="clutter">画面がごちゃつく</option></select></div>
+</div><div class="tool-actions"><button class="tool-btn" id="uiRun">調整順を作る</button></div><div class="tool-result" id="uiResult">条件を選んでください。</div></div>
+
+<div class="content">
+<section class="article-card"><h2>最初に整える5か所</h2>
+<div class="priority"><div class="priority-rank">1</div><div><strong>自分のHP・ターゲット情報を視線の近くへ</strong><span>画面端へ目を飛ばす回数を減らし、敵の詠唱や自分の状態を同時に確認しやすくします。</span></div></div>
+<div class="priority"><div class="priority-rank">2</div><div><strong>パーティリストを戦闘エリア寄りへ</strong><span>ヒーラーだけでなく、デバフ・戦闘不能・頭割り対象などを確認しやすくなります。</span></div></div>
+<div class="priority"><div class="priority-rank">3</div><div><strong>頻繁に押すアクションを固める</strong><span>使用頻度の高い攻撃・防御・移動を離れた場所へ散らさず、指の移動量を減らします。</span></div></div>
+<div class="priority"><div class="priority-rank">4</div><div><strong>重要でないHUDは小さく・端へ</strong><span>戦闘中に不要な情報が視界を占領しないようにします。</span></div></div>
+<div class="priority"><div class="priority-rank">5</div><div><strong>ターゲット操作を1つに決める</strong><span>毎回カーソルで探すのではなく、パッド/キー操作で敵・味方を切り替える基準を作ります。</span></div></div>
+</section>
+
+<section class="article-card"><h2>効率化の考え方</h2>
+<div class="do-dont"><div><h3>優先する</h3><ul><li>戦闘中に何度も見る情報</li><li>頻繁に押すアクション</li><li>ミスすると大きく時間を失う情報</li><li>ジョブを変えても共通で使う配置</li></ul></div>
+<div><h3>後回しでいい</h3><ul><li>見た目だけの細かな調整</li><li>ほとんど使わないウィンドウ</li><li>最初から完璧なHUDを作ること</li><li>他人の配置をそのままコピーすること</li></ul></div></div>
+</section></div>
+</main></div><script src="../assets/js/portal.js"></script><script src="../assets/js/portal-tools.js"></script><script>
+uiRun.onclick=()=>{
+ const inp=uiInput.value,role=uiRole.value,scr=uiScreen.value,prob=uiProblem.value;
+ let a=[];
+ if(prob==='miss')a.push(['敵の詠唱・ターゲット情報を中央寄りへ','ギミックを見る視線と近づける。']);
+ if(prob==='skill')a.push(['主力スキルを1〜2ブロックへ集約','押す場所を探す時間を減らす。']);
+ if(prob==='target')a.push(['ターゲット切替の操作を固定','敵・味方の切替方法を毎回変えない。']);
+ if(prob==='clutter')a.push(['戦闘中に不要なHUDを縮小','空白を作り、床予兆を見やすくする。']);
+ if(inp==='pad')a.push(['クロスホットバーを使用頻度で整理','基本攻撃・防御・移動を同じ入力パターンへ。']);
+ else a.push(['移動キーから届く範囲へ主力キーを配置','修飾キーを増やしすぎず、手の移動を抑える。']);
+ if(role==='heal')a.push(['パーティリストを最優先で見やすく','HP・デバフ確認の視線移動を減らす。']);
+ if(role==='tank')a.push(['防御アクションを一か所にまとめる','防御バフの押し忘れと探す時間を減らす。']);
+ if(role==='dps')a.push(['バースト系を近い位置へまとめる','リキャスト確認と入力移動を減らす。']);
+ if(scr==='small')a.push(['HUDを増やしすぎない','小画面では情報量より戦闘エリアの確保を優先。']);
+ uiResult.innerHTML='<h3>おすすめ調整順</h3><div class="result-list">'+a.map((x,i)=>'<div class="result-item"><strong>'+(i+1)+'. '+x[0]+'</strong><span>'+x[1]+'</span></div>').join('')+'</div>';
+ FF14Tools.save('uiNav',{inp,role,scr,prob});
+};
+const us=FF14Tools.load('uiNav',null);if(us){uiInput.value=us.inp;uiRole.value=us.role;uiScreen.value=us.scr;uiProblem.value=us.prob}
+</script></body></html>
