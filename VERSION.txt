@@ -1,0 +1,2 @@
+FF14 Personal Tool Portal - Production v2
+UI settings moved to beginner category; legendary quantity removed.
