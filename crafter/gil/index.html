@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>製作利益目標計算機 | FINAL FANTASY XIV 個人用ツールポータル</title><link href="../../assets/css/portal.css" rel="stylesheet"/><link href="../../assets/branding/favicon.svg" rel="icon" type="image/svg+xml"/><link href="../../assets/branding/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/><link href="../../assets/branding/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/><link href="../../assets/branding/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/><link href="../../site.webmanifest" rel="manifest"/><link href="https://kazeno0116-design.github.io/ff14-profit-calculator/crafter/gil/" rel="canonical"/><meta content="#0c111b" name="theme-color"/><meta content="website" property="og:type"/><meta content="ja_JP" property="og:locale"/><meta content="FINAL FANTASY XIV 個人用ツールポータル" property="og:site_name"/><meta content="製作利益目標計算機 | FINAL FANTASY XIV 個人用ツールポータル" property="og:title"/><meta content="売価と素材価格を入力すると、素材購入と自力調達を比較し、目標利益までに必要な製作回数・素材数・資金・時間を計算します。" property="og:description"/><meta content="https://kazeno0116-design.github.io/ff14-profit-calculator/crafter/gil/" property="og:url"/><meta content="https://kazeno0116-design.github.io/ff14-profit-calculator/assets/branding/ogp.png" property="og:image"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="summary_large_image" name="twitter:card"/><meta content="製作利益目標計算機 | FINAL FANTASY XIV 個人用ツールポータル" name="twitter:title"/><meta content="売価と素材価格を入力すると、素材購入と自力調達を比較し、目標利益までに必要な製作回数・素材数・資金・時間を計算します。" name="twitter:description"/><meta content="https://kazeno0116-design.github.io/ff14-profit-calculator/assets/branding/ogp.png" name="twitter:image"/></head><body>
+<div class="layout"><aside class="sidebar"><div class="brand"><strong>FINAL FANTASY XIV</strong><span>個人用ツールポータル</span></div>
+<nav class="nav"><p class="nav-label">PORTAL</p><a href="../../index.html"><span class="nav-icon">◇</span><span>ホーム</span></a><a href="../../beginner/index.html"><span class="nav-icon">✦</span><span>初心者向け情報</span></a><p class="nav-label">CATEGORY</p><a href="../../battle/index.html"><span class="nav-icon">✧</span><span>戦闘</span></a><a class="active" href="../index.html"><span class="nav-icon">◆</span><span>クラフター</span></a><a href="../../gatherer/index.html"><span class="nav-icon">◇</span><span>ギャザラー</span></a><a href="../../other/index.html"><span class="nav-icon">＋</span><span>その他</span></a><p class="nav-label">TOOLS</p><a href="../../tools/index.html"><span class="nav-icon">⚒</span><span>効率化ツール一覧</span></a></nav></aside>
+<main class="main"><div class="crumb">ホーム / クラフター / 製作利益目標計算機</div>
+<section class="hero"><div class="eyebrow">CRAFT PROFIT</div><h1>製作利益目標計算機</h1><p>売価と素材価格を入力すると、素材購入と自力調達を比較し、目標利益までに必要な製作回数・素材数・資金・時間を計算します。</p></section>
+<div class="content">
+<section class="article-card">
+<div class="tool-form">
+<div class="tool-field"><label>完成品の売価（1個）</label><input id="sellPrice" min="0" type="number" value="0"/></div>
+<div class="tool-field"><label>1回の製作でできる個数</label><input id="craftYield" min="1" type="number" value="1"/></div>
+<div class="tool-field"><label>販売手数料</label><input id="marketTax" max="100" min="0" step="0.1" type="number" value="5"/></div>
+<div class="tool-field"><label>1回の製作時間（分）</label><input id="craftMinutes" min="0" step="0.1" type="number" value="1"/></div>
+<div class="tool-field wide"><label>目標利益</label><input id="targetProfit" min="0" type="number" value="100000"/></div>
+</div>
+<h2 style="margin-top:24px">必要素材</h2>
+<p>素材ごとに「1回の製作で必要な数」「マケボ価格」「自力で1個集める目安時間」を入力してください。</p>
+<div class="profit-material-head"><span>素材名</span><span>必要数</span><span>購入単価</span><span>自力調達 分/個</span><span></span></div>
+<div class="profit-materials" id="materialRows"></div>
+<div class="tool-actions"><button class="tool-btn secondary" id="addMaterial">素材を追加</button><button class="tool-btn" id="calcProfit">計算する</button></div>
+<div class="tool-result" id="profitResult">条件を入力してください。</div>
+</section>
+<section class="article-card">
+<div class="compare-heading"><div><h2>比較に追加した結果</h2><p>計算結果を残して、複数の製作候補を比較できます。</p></div><button class="tool-btn secondary" id="clearComparisons">比較をすべて削除</button></div>
+<div class="profit-comparisons" id="profitComparisons"><p class="muted-copy">まだ比較結果はありません。</p></div>
+</section>
+</div>
+<div class="site-rights"><div class="site-rights__copyright">© SQUARE ENIX</div><div class="site-rights__note">本サイトはファイナルファンタジーXIVの非公式個人サイトです。</div></div></main></div>
+<script src="../../assets/js/portal.js"></script><script src="../../assets/js/portal-tools.js"></script>
+<script>
+const DEFAULT_ROWS=3; let currentResult=null;
+function esc(s){return FF14Tools.esc(s)}
+function fmt(n,d=0){return Number(n).toLocaleString('ja-JP',{maximumFractionDigits:d})}
+function num(id){return Math.max(0,Number(document.getElementById(id).value)||0)}
+function rowTemplate(v={}){
+ return `<div class="profit-material-row"><input class="pm-name" type="text" placeholder="素材名" value="${esc(v.name||'')}"><input class="pm-qty" type="number" min="0" step="1" value="${v.qty??1}"><input class="pm-price" type="number" min="0" step="1" value="${v.price??0}"><input class="pm-time" type="number" min="0" step="0.1" value="${v.time??0}"><button class="icon-remove" type="button" aria-label="削除">×</button></div>`;
+}
+function bindRows(){
+ document.querySelectorAll('.profit-material-row .icon-remove').forEach(b=>b.onclick=()=>{b.closest('.profit-material-row').remove();saveProfitInputs()});
+ document.querySelectorAll('#materialRows input').forEach(i=>i.addEventListener('change',saveProfitInputs));
+}
+function addRow(v={}){materialRows.insertAdjacentHTML('beforeend',rowTemplate(v));bindRows()}
+function getMaterials(){
+ return [...document.querySelectorAll('.profit-material-row')].map(r=>({name:r.querySelector('.pm-name').value.trim()||'素材',qty:Math.max(0,+r.querySelector('.pm-qty').value||0),price:Math.max(0,+r.querySelector('.pm-price').value||0),time:Math.max(0,+r.querySelector('.pm-time').value||0)})).filter(x=>x.qty>0);
+}
+function saveProfitInputs(){
+ FF14Tools.save('profitCalculatorInputs',{sell:num('sellPrice'),yield:num('craftYield')||1,tax:num('marketTax'),craftTime:num('craftMinutes'),target:num('targetProfit'),materials:getMaterials()});
+}
+function restoreProfitInputs(){
+ const s=FF14Tools.load('profitCalculatorInputs',null); if(!s){for(let i=0;i<DEFAULT_ROWS;i++)addRow();return}
+ sellPrice.value=s.sell??0;craftYield.value=s.yield??1;marketTax.value=s.tax??5;craftMinutes.value=s.craftTime??1;targetProfit.value=s.target??100000;(s.materials?.length?s.materials:Array(DEFAULT_ROWS).fill({})).forEach(addRow);
+}
+function modeCalc(mode,materials,sell,yld,tax,craftTime,target){
+ const netRevenue=sell*yld*(1-tax/100);
+ const materialCost=mode==='buy'?materials.reduce((a,x)=>a+x.qty*x.price,0):0;
+ const gatherMin=mode==='self'?materials.reduce((a,x)=>a+x.qty*x.time,0):0;
+ const profit=netRevenue-materialCost;
+ const totalMin=craftTime+gatherMin;
+ const crafts=profit>0?Math.ceil(target/profit):null;
+ const itemCount=crafts==null?null:crafts*yld;
+ const targetRevenue=crafts==null?null:crafts*netRevenue;
+ const targetCost=crafts==null?null:crafts*materialCost;
+ const totalTime=crafts==null?null:crafts*totalMin;
+ const hourly=totalMin>0?profit/(totalMin/60):null;
+ const roi=materialCost>0?profit/materialCost:null;
+ return {mode,netRevenue,materialCost,gatherMin,profit,totalMin,crafts,itemCount,targetRevenue,targetCost,totalTime,hourly,roi};
+}
+function materialsHtml(materials,crafts,mode){
+ if(crafts==null)return '';
+ return materials.map(x=>`<div class="result-item"><strong>${esc(x.name)} × ${fmt(x.qty*crafts)}</strong><span>${mode==='buy'?'購入額 '+fmt(x.qty*crafts*x.price)+'ギル':'自力調達目安 '+fmt(x.qty*crafts*x.time,1)+'分'}</span></div>`).join('');
+}
+function modeCard(x,label,materials){
+ if(x.profit<=0)return `<div class="profit-mode-card"><div class="profit-mode-title">${label}</div><strong class="profit-negative">1回の製作で利益が出ません</strong><p>売価または素材価格を見直してください。</p></div>`;
+ return `<div class="profit-mode-card"><div class="profit-mode-title">${label}</div><div class="profit-kpis"><div><small>1回の純利益</small><strong>${fmt(x.profit)} ギル</strong></div><div><small>目標まで</small><strong>${fmt(x.crafts)} 回</strong></div><div><small>時間効率</small><strong>${x.hourly==null?'—':fmt(x.hourly)+' ギル/時'}</strong></div><div><small>${x.mode==='buy'?'必要資金':'調達時間'}</small><strong>${x.mode==='buy'?fmt(x.targetCost)+' ギル':fmt(x.totalTime,1)+' 分'}</strong></div></div><div class="profit-detail"><span>完成品：${fmt(x.itemCount)}個</span><span>所要時間：約${fmt(x.totalTime,1)}分</span>${x.roi==null?'':`<span>費用効率：投資1ギルあたり ${x.roi.toFixed(2)}ギル利益</span>`}</div><details><summary>目標までに必要な素材</summary><div class="result-list">${materialsHtml(materials,x.crafts,x.mode)}</div></details></div>`;
+}
+function calc(){
+ const sell=num('sellPrice'),yld=Math.max(1,num('craftYield')),tax=Math.min(100,num('marketTax')),craftTime=num('craftMinutes'),target=num('targetProfit'),materials=getMaterials();
+ if(!sell||!materials.length){profitResult.innerHTML='<h3>入力が不足しています</h3><p>完成品の売価と、1つ以上の必要素材を入力してください。</p>';return}
+ const buy=modeCalc('buy',materials,sell,yld,tax,craftTime,target),self=modeCalc('self',materials,sell,yld,tax,craftTime,target);
+ const viable=[buy,self].filter(x=>x.profit>0);
+ let recommendation='利益が出る条件がありません。';
+ if(viable.length){
+   const timeBest=viable.filter(x=>x.hourly!=null).sort((a,b)=>b.hourly-a.hourly)[0];
+   if(timeBest?.mode==='buy') recommendation='時間効率は「素材を購入」が高いです。素材集めの時間を使わず、製作回数を回しやすいためです。';
+   else recommendation='時間効率は「自力調達」が高いです。購入費を使わず確保できる利益が、入力した調達時間を含めても有利です。';
+   if(buy.profit>0&&self.profit>0) recommendation+=` 費用を抑えるなら自力調達、短時間で回したいなら ${buy.hourly>=self.hourly?'購入':'自力調達'} が向いています。`;
+ }
+ currentResult={timestamp:Date.now(),sell,yld,tax,craftTime,target,materials,buy,self,recommendation};
+ profitResult.innerHTML=`<div class="profit-recommend"><strong>比較結果</strong><p>${esc(recommendation)}</p></div><div class="profit-mode-grid">${modeCard(buy,'素材を購入',materials)}${modeCard(self,'素材を自力調達',materials)}</div><div class="tool-actions"><button class="tool-btn" id="addComparison">この結果を比較に追加</button></div>`;
+ document.getElementById('addComparison').onclick=()=>addComparison(currentResult);
+ saveProfitInputs();
+}
+function comparisonLabel(i){return '比較 '+(i+1)}
+function getScore(r){
+ const hs=[r.buy.hourly||0,r.self.hourly||0],bestHourly=Math.max(...hs);
+ const bestProfit=Math.max(r.buy.profit||0,r.self.profit||0);
+ return {hourly:bestHourly,profit:bestProfit};
+}
+function addComparison(r){
+ const arr=FF14Tools.load('profitComparisons',[]);arr.push(r);FF14Tools.save('profitComparisons',arr);renderComparisons();
+}
+function renderComparisons(){
+ const arr=FF14Tools.load('profitComparisons',[]);
+ if(!arr.length){profitComparisons.innerHTML='<p class="muted-copy">まだ比較結果はありません。</p>';return}
+ const scores=arr.map(getScore),maxH=Math.max(...scores.map(x=>x.hourly)),maxP=Math.max(...scores.map(x=>x.profit));
+ profitComparisons.innerHTML=arr.map((r,i)=>{
+   const s=scores[i],best=s.hourly===maxH&&s.profit===maxP;
+   return `<div class="saved-profit ${best?'is-best':''}"><div><small>${best?'総合候補':'保存結果'}</small><h3>${comparisonLabel(i)}</h3><p>売価 ${fmt(r.sell)} / 目標 ${fmt(r.target)}ギル</p></div><div class="saved-profit-metrics"><span>最高純利益 <strong>${fmt(s.profit)}G/回</strong></span><span>最高時間効率 <strong>${fmt(s.hourly)}G/時</strong></span></div><button class="icon-remove" data-remove="${i}" type="button">×</button></div>`;
+ }).join('')+`<div class="profit-best-reason"><strong>最も有利な候補</strong><p>時間効率と1回あたりの利益の両方が最大の結果を「総合候補」として表示しています。片方だけを重視する場合は各数値を比較してください。</p></div>`;
+ profitComparisons.querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>{const a=FF14Tools.load('profitComparisons',[]);a.splice(+b.dataset.remove,1);FF14Tools.save('profitComparisons',a);renderComparisons()});
+}
+addMaterial.onclick=()=>addRow();
+calcProfit.onclick=calc;
+clearComparisons.onclick=()=>{FF14Tools.save('profitComparisons',[]);renderComparisons()};
+['sellPrice','craftYield','marketTax','craftMinutes','targetProfit'].forEach(id=>document.getElementById(id).addEventListener('change',saveProfitInputs));
+restoreProfitInputs();renderComparisons();
+</script></body></html>

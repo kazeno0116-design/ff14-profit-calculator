@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>今日やることナビ | FINAL FANTASY XIV 個人用ツールポータル</title><link href="../assets/css/portal.css" rel="stylesheet"/><link href="../assets/branding/favicon.svg" rel="icon" type="image/svg+xml"/><link href="../assets/branding/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/><link href="../assets/branding/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/><link href="../assets/branding/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/><link href="../site.webmanifest" rel="manifest"/><link href="https://kazeno0116-design.github.io/ff14-profit-calculator/tools/today.html" rel="canonical"/><meta content="#0c111b" name="theme-color"/><meta content="website" property="og:type"/><meta content="ja_JP" property="og:locale"/><meta content="FINAL FANTASY XIV 個人用ツールポータル" property="og:site_name"/><meta content="今日やることナビ | FINAL FANTASY XIV 個人用ツールポータル" property="og:title"/><meta content="今日やりたいことと遊べる時間から、取り組みやすい順番を表示します。" property="og:description"/><meta content="https://kazeno0116-design.github.io/ff14-profit-calculator/tools/today.html" property="og:url"/><meta content="https://kazeno0116-design.github.io/ff14-profit-calculator/assets/branding/ogp.png" property="og:image"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="summary_large_image" name="twitter:card"/><meta content="今日やることナビ | FINAL FANTASY XIV 個人用ツールポータル" name="twitter:title"/><meta content="今日やりたいことと遊べる時間から、取り組みやすい順番を表示します。" name="twitter:description"/><meta content="https://kazeno0116-design.github.io/ff14-profit-calculator/assets/branding/ogp.png" name="twitter:image"/></head><body>
+<div class="layout"><aside class="sidebar"><div class="brand"><strong>FINAL FANTASY XIV</strong><span>個人用ツールポータル</span></div><nav class="nav"><p class="nav-label">PORTAL</p><a href="../index.html"><span class="nav-icon">◇</span><span>ホーム</span></a><a href="../beginner/index.html"><span class="nav-icon">✦</span><span>初心者向け情報</span></a><p class="nav-label">CATEGORY</p><a href="../battle/index.html"><span class="nav-icon">✧</span><span>戦闘</span></a><a href="../crafter/index.html"><span class="nav-icon">◆</span><span>クラフター</span></a><a href="../gatherer/index.html"><span class="nav-icon">◇</span><span>ギャザラー</span></a><a href="../other/index.html"><span class="nav-icon">＋</span><span>その他</span></a><p class="nav-label">TOOLS</p><a class="active" href="index.html"><span class="nav-icon">⚒</span><span>効率化ツール一覧</span></a></nav></aside>
+<main class="main"><div class="crumb">ホーム / 今日やることナビ</div><section class="hero"><div class="eyebrow">TODAY NAVIGATOR</div><h1>今日やることナビ</h1><p>今日やりたいことと遊べる時間から、取り組みやすい順番を表示します。</p></section>
+<div class="toolbox"><h2>今日の条件</h2><div class="tool-form">
+<div class="tool-field"><label>一番やりたいこと</label><select id="goal"><option value="battle">戦闘・装備更新</option><option value="crafter">クラフター</option><option value="gatherer">ギャザラー</option><option value="cosmic">コスモエクスプローラー</option><option value="weekly">日課・週課だけ</option></select></div>
+<div class="tool-field"><label>遊べる時間</label><select id="minutes"><option value="30">30分程度</option><option selected="" value="60">1時間程度</option><option value="120">2時間程度</option><option value="240">長時間</option></select></div>
+<div class="tool-field"><label>優先したいもの</label><select id="priority"><option value="progress">進行</option><option value="gil">ギル節約・金策</option><option value="low">手間を減らす</option></select></div>
+<div class="tool-field"><label>週制限・日課</label><select id="routine"><option value="open">未確認</option><option value="done">必要分は済み</option><option value="skip">今日は無視</option></select></div>
+</div><div class="tool-actions"><button class="tool-btn" id="runToday">今日の順番を作る</button></div><div class="tool-result" id="todayResult">条件を選んで実行してください。</div></div>
+<div class="site-rights"><div class="site-rights__copyright">© SQUARE ENIX</div><div class="site-rights__note">本サイトはファイナルファンタジーXIVの非公式個人サイトです。</div></div>
+</main></div><script src="../assets/js/portal.js"></script><script src="../assets/js/portal-tools.js"></script>
+<script>
+const routes={
+ battle:{title:'戦闘・装備更新',items:[['まず装備更新ルートを確認','../battle/gear-progression/index.html'],['IDへ行く場合は事故ポイントを確認','../battle/dungeons/index.html'],['高難度なら目的段階を確認','../battle/high-end/index.html']]},
+ crafter:{title:'クラフター',items:[['作る物が決まっているなら必要素材を逆算','../crafter/materials/index.html'],['レベリングなら時間・費用・手間で選択','../crafter/leveling/index.html'],['収集品目的なら必要数を逆算','../crafter/scrips/index.html']]},
+ gatherer:{title:'ギャザラー',items:[['伝説素材ならETルートを作成','../gatherer/legendary/index.html'],['収集品なら目標交換品から逆算','../gatherer/scrips/index.html'],['通常レベリングは移動込みで比較','../gatherer/leveling/index.html']]},
+ cosmic:{title:'コスモエクスプローラー',items:[['目的別ナビを実行','../crafter/cosmic/index.html'],['製作中心ならクラフター側を確認','../crafter/cosmic/index.html'],['採集中心ならギャザラー側を確認','../gatherer/cosmic/index.html']]},
+ weekly:{title:'日課・週課',items:[['今の目的と一致する日課だけ選ぶ','../beginner/index.html#routine'],['戦闘装備が目的なら更新ルートへ','../battle/gear-progression/index.html'],['ギャザクラなら回数制限コンテンツへ','../crafter/repeatable/index.html']]}
+};
+runToday.onclick=()=>{
+ const g=goal.value,m=+minutes.value,p=priority.value,r=routine.value,base=routes[g];
+ let lead=m<=30?'30分ほどなら、準備が少ないものを1つ選ぶと遊びやすいです。':m<=60?'1時間ほどなら、まず1つ進めて、余裕があれば次へ進むとまとまりやすいです。':'時間に余裕があるので、準備が必要なものも含めて順番に進めやすいです。';
+ if(p==='gil') lead+=' ギルを使う方法より、手持ちの素材や自分で集める方法を選ぶと出費を抑えやすいです。';
+ if(p==='low') lead+=' 準備や移動が少ないものを選ぶと、気軽に始めやすいです。';
+ const max=m<=30?1:m<=60?2:3;
+ let items=base.items.slice(0,max);
+ if(r==='open'&&g!=='weekly') items.unshift(['最初に必要な日課・週課だけ確認','../beginner/index.html#routine']);
+ todayResult.innerHTML='<h3>'+base.title+'：今日のおすすめ順</h3><p>'+lead+'</p><div class="nav-result">'+items.map((x,i)=>'<div class="nav-choice"><strong>'+(i+1)+'. '+x[0]+'</strong><a href="'+x[1]+'">このページへ →</a></div>').join('')+'</div>';
+ FF14Tools.save('todayNav',{g,m,p,r});
+};
+const st=FF14Tools.load('todayNav',null); if(st){goal.value=st.g;minutes.value=st.m;priority.value=st.p;routine.value=st.r}
+</script></body></html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>FF14 クラフターマクロ生成 7.55</title>
+<style>
+:root{--bg:#050505;--panel:#fff;--ink:#111;--cyan:#00e5ff;--muted:#687078;--bad:#c52b2b;--ok:#008a62}*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#050505;color:var(--ink);font-family:Poppins,"Noto Sans JP",Arial,sans-serif}body{padding:32px 16px;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:50px 50px}.app{max-width:760px;margin:auto;padding:34px;background:var(--panel);border-radius:12px;box-shadow:0 10px 40px #ffffff18}h1{margin:0 0 22px;padding-bottom:14px;border-bottom:3px solid;font-size:clamp(1.5rem,5vw,2.15rem);text-align:center;letter-spacing:.06em}.version{text-align:center;color:var(--muted);margin:-12px 0 24px;font-size:.85rem}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field{display:flex;flex-direction:column;gap:7px}.wide{grid-column:1/-1}label{font-weight:700;font-size:.9rem}input,select{width:100%;padding:12px;background:#050505;color:#fff;border:2px solid #333;border-radius:6px;font:700 1rem inherit}input:focus,select:focus{border-color:var(--cyan);outline:0}.initial-row{display:grid;grid-template-columns:1fr auto;gap:10px}.quality-toggle{min-width:116px;padding:0 16px;border:2px solid #222;border-radius:6px;background:#111;color:#fff;font-weight:900;cursor:pointer;transition:.22s ease}.quality-toggle::before{content:'●';margin-right:8px;color:var(--cyan);text-shadow:0 0 8px var(--cyan)}.quality-toggle.off{border-color:#aaa;background:#e6e8e9;color:#5d6469}.quality-toggle.off::before{color:#91989d;text-shadow:none}.quality-state{min-height:1.2em;color:var(--ok);font-size:.76rem;font-weight:700}.quality-state.off{color:var(--muted)}.checks{display:flex;flex-wrap:wrap;gap:12px 22px;padding:12px 0}.checks label{display:flex;gap:8px;align-items:center}.checks input{width:auto}.run,.copy{position:relative;isolation:isolate;overflow:hidden;border:0;border-radius:6px;background:#111;color:#fff;font-weight:900;letter-spacing:.08em;cursor:pointer;transform:translateZ(0);transition:transform .16s ease,box-shadow .25s ease,background .25s ease,color .25s ease}.run{width:100%;margin:22px 0 16px;padding:17px;font-size:1.05rem}.run:hover,.copy:hover{background:#17191a;box-shadow:0 0 6px #00e5ff77,0 0 14px #00e5ff33}.run:active,.copy:active,.quality-toggle:active{background:#fff;color:#111;transform:scale(.98);box-shadow:0 0 9px #fff9}.run:disabled{cursor:wait;opacity:.85}.run.loading{animation:calculating 1.05s ease-in-out infinite}.run.success,.copy.ok{background:#fff;color:#111;box-shadow:0 0 8px #fff,0 0 18px #ffffff77;animation:success-pop .45s ease}.ripple{position:absolute;z-index:2;width:12px;height:12px;border-radius:50%;pointer-events:none;background:#fff;box-shadow:0 0 10px #fff;transform:translate(-50%,-50%) scale(0);animation:ripple .62s ease-out forwards}.result{min-height:120px;padding:18px;border:2px solid #111;border-radius:7px;background:#f7f7f7;white-space:pre-wrap;overflow-wrap:anywhere;font:14px/1.65 "Share Tech Mono",Consolas,monospace}.summary{margin:0 0 12px;padding:12px;background:#eefbfc;border-left:4px solid var(--cyan);font:600 .9rem/1.55 inherit}.error{color:var(--bad);font-weight:700}.copies{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px}.copy{padding:13px}.note{font-size:.78rem;color:var(--muted);line-height:1.55;margin-top:18px}@keyframes ripple{to{opacity:0;transform:translate(-50%,-50%) scale(25)}}@keyframes calculating{50%{box-shadow:0 0 8px #00e5ffbb,0 0 20px #00e5ff55;letter-spacing:.12em}}@keyframes success-pop{45%{transform:scale(1.012)}}@media(prefers-reduced-motion:reduce){.run,.copy,.quality-toggle{transition:none!important;animation:none!important}.ripple{display:none}}@media(max-width:600px){body{padding:12px 8px}.app{padding:20px 14px}.grid{grid-template-columns:1fr}.wide{grid-column:auto}.copies{grid-template-columns:1fr}.initial-row{grid-template-columns:1fr}.quality-toggle{min-height:44px}}
+/* Interactive button feedback */
+.run:hover,.copy:hover,.quality-toggle:hover,.run:focus-visible,.copy:focus-visible,.quality-toggle:focus-visible{transform:translateY(-1px);outline:0;box-shadow:0 3px 7px #0004,0 0 6px #00e5ff88,0 0 14px #00e5ff33}
+.quality-toggle.off:hover,.quality-toggle.off:focus-visible{border-color:#00e5ff;background:#eefcfd;color:#283438;box-shadow:0 3px 7px #0003,0 0 6px #00e5ff77,0 0 12px #00e5ff33}
+.run:active,.copy:active,.quality-toggle:active,.quality-toggle.off:active{background:#fff;color:#111;transform:translateY(0) scale(.98);box-shadow:0 0 9px #fff9}
+.run.loading{background:#10191b;color:#bffaff;animation:loading-glow .85s ease-in-out infinite alternate}
+.run.success{color:#111}
+.loading-dot{display:inline-block;min-width:.35em;animation:loading-dot 1.05s infinite ease-in-out;opacity:.2;transform:translateY(0)}
+.loading-dot:nth-child(2){animation-delay:.15s}.loading-dot:nth-child(3){animation-delay:.3s}
+@keyframes loading-glow{from{box-shadow:0 0 7px #00e5ff88,0 0 16px #00e5ff44;letter-spacing:.08em}to{box-shadow:0 0 15px #00e5ff,0 0 38px #00e5ffaa;letter-spacing:.16em}}
+@keyframes loading-dot{0%,60%,100%{opacity:.2;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px);text-shadow:0 0 8px #00e5ff}}
+@media(prefers-reduced-motion:reduce){.loading-dot{animation:none;opacity:1}}
+.run.success,.copy.ok{outline:2px solid #111;outline-offset:-2px;box-shadow:0 3px 8px #0005,0 0 0 3px #ffffffaa}
+
+.tabs{display:flex;gap:8px;margin:0 0 22px}.tab-button{flex:1;padding:12px;border:2px solid #111;border-radius:6px;background:#fff;color:#111;font-weight:900;cursor:pointer}.tab-button.active{background:#111;color:#fff;box-shadow:0 0 10px #00e5ff55}.tab-panel[hidden]{display:none}.skill-toolbar{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px}.skill-toolbar button{padding:11px;border:0;border-radius:6px;background:#111;color:#fff;font-weight:800;cursor:pointer}.level-select-row{display:grid;grid-template-columns:1fr auto;gap:10px;grid-column:1/-1}.skill-group{margin-top:18px;padding:14px;border:2px solid #111;border-radius:8px}.skill-group h2{margin:0 0 12px;font-size:1.05rem}.skill-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 14px}.skill-item{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:8px;padding:9px;border-radius:6px;background:#f3f5f6}.skill-item input{width:auto}.skill-meta{font-size:.72rem;color:var(--muted);white-space:nowrap}.skill-note{margin-top:10px;font-size:.78rem;color:var(--muted)}.diagnosis{padding:14px;border:2px solid var(--bad);border-radius:7px;background:#fff4f4;line-height:1.65}.diagnosis strong{color:var(--bad)}
+@media(max-width:600px){.skill-list{grid-template-columns:1fr}.skill-toolbar{grid-template-columns:1fr}.level-select-row{grid-template-columns:1fr}.tabs{flex-direction:column}}
+</style>
+<style>
+/* Portal embedded appearance */
+html,body{background:transparent!important;background-image:none!important;padding:0!important;color:#18202b!important}
+body{overflow-x:hidden}
+.app{max-width:none!important;margin:0!important;padding:0!important;background:transparent!important;border-radius:0!important;box-shadow:none!important}
+.app>h1,.app>.version{display:none!important}
+.grid{gap:16px!important}
+.field label{color:#4b5667!important;font-size:.9rem!important}
+.field input,.field select{min-height:46px!important;padding:12px 14px!important;background:#fff!important;color:#222!important;border:1px solid #cfd5de!important;border-radius:9px!important;font-weight:600!important}
+.field input:focus,.field select:focus{outline:2px solid #d8c78f!important;border-color:#9e8953!important}
+.tabs{margin:0 0 20px!important;background:#f3f5f8!important;border:1px solid #dfe4ec!important;border-radius:12px!important;padding:5px!important}
+.tab-button{min-height:42px!important;border-radius:8px!important;color:#526070!important}
+.tab-button.active{background:#111722!important;color:#fff!important}
+.run{margin:20px 0 16px!important;border-radius:9px!important;background:#111722!important;min-height:50px!important}
+.result{border:1px solid #dfe4ec!important;border-radius:12px!important;background:#f8f9fb!important;font-size:14px!important;line-height:1.7!important}
+.summary{background:#f8f5ec!important;border-left-color:#b88b35!important}
+.copy{border-radius:9px!important;background:#111722!important}
+.note,.skill-note,.quality-state{font-size:.84rem!important;line-height:1.7!important}
+.skill-toolbar{background:#f8f9fb!important;border:1px solid #dfe4ec!important;border-radius:12px!important;padding:14px!important}
+.skill-toolbar button{border-radius:8px!important}
+.skill-group{border:1px solid #dfe4ec!important;border-radius:12px!important;padding:18px!important;background:#fff!important;margin-top:14px!important}
+.skill-group h2{font-size:1.05rem!important}
+.skill-item{border-color:#dfe4ec!important;background:#fafbfc!important}
+.quality-toggle{border-radius:9px!important}
+@media(max-width:600px){.app{padding:0!important}.grid{grid-template-columns:1fr!important}}
+</style>
+<link href="../../assets/branding/favicon.svg" rel="icon" type="image/svg+xml"/><link href="../../assets/branding/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/><link href="../../assets/branding/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/><link href="../../assets/branding/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/><link href="../../site.webmanifest" rel="manifest"/><link href="https://kazeno0116-design.github.io/ff14-profit-calculator/crafter/macro/generator.html" rel="canonical"/><meta content="#0c111b" name="theme-color"/><meta content="website" property="og:type"/><meta content="ja_JP" property="og:locale"/><meta content="FINAL FANTASY XIV 個人用ツールポータル" property="og:site_name"/><meta content="FF14 クラフターマクロ生成 7.55" property="og:title"/><meta content="FF14 クラフターマクロ生成 7.55を確認できる、FINAL FANTASY XIV 個人用ツールポータルのページです。" property="og:description"/><meta content="https://kazeno0116-design.github.io/ff14-profit-calculator/crafter/macro/generator.html" property="og:url"/><meta content="https://kazeno0116-design.github.io/ff14-profit-calculator/assets/branding/ogp.png" property="og:image"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="summary_large_image" name="twitter:card"/><meta content="FF14 クラフターマクロ生成 7.55" name="twitter:title"/><meta content="FF14 クラフターマクロ生成 7.55を確認できる、FINAL FANTASY XIV 個人用ツールポータルのページです。" name="twitter:description"/><meta content="https://kazeno0116-design.github.io/ff14-profit-calculator/assets/branding/ogp.png" name="twitter:image"/></head><body><main class="app"><h1>マクロジェネレーター</h1><div class="version">Patch 7.55</div>
+<div class="tabs" role="tablist"><button aria-selected="true" class="tab-button active" id="generatorTabButton" role="tab" type="button">マクロ生成</button><button aria-selected="false" class="tab-button" id="skillsTabButton" role="tab" type="button">使用スキル設定</button></div>
+<section class="tab-panel" id="generatorPanel" role="tabpanel">
+<section class="grid">
+<div class="field wide"><label for="recipeLevel">レシピレベル・種類</label><select id="recipeLevel">
+<optgroup label="旧レベル帯"><option value="50">Lv50以下</option><option value="60">Lv60</option><option value="70">Lv70</option><option value="80">Lv80</option><option value="90">Lv90</option></optgroup>
+<optgroup label="Lv100 通常レシピ"><option selected="" value="100">Lv100（星なし）</option><option value="100s1">Lv100 ★1</option><option value="100s2">Lv100 ★2</option><option value="100s3">Lv100 ★3</option><option value="100s4">Lv100 ★4</option><option value="100s5">Lv100 ★5</option></optgroup>
+<optgroup label="Lv100 高難度"><option value="100expert">Lv100 高難度レシピ</option></optgroup>
+<optgroup label="コスモエクスプローラー"><option value="cosmic">コスモエクスプローラー（通常）</option><option value="cosmicExpert">コスモエクスプローラー（高難度）</option></optgroup>
+</select></div>
+<div class="field wide"><label for="crafterLevel">クラフターレベル</label><input id="crafterLevel" max="100" min="1" type="number" value="100"/></div>
+<div class="field"><label for="craftsmanship">作業精度</label><input id="craftsmanship" inputmode="numeric" min="1" type="number"/></div><div class="field"><label for="control">加工精度</label><input id="control" inputmode="numeric" min="1" type="number"/></div>
+<div class="field"><label for="cp">CP</label><input id="cp" inputmode="numeric" min="0" type="number"/></div><div class="field"><label for="durability">耐久</label><input id="durability" inputmode="numeric" min="10" type="number"/></div>
+<div class="field"><label for="difficulty">工数</label><input id="difficulty" inputmode="numeric" min="1" type="number"/></div><div class="field"><label for="maxQuality">目標品質</label><input id="maxQuality" inputmode="numeric" min="0" type="number"/></div>
+<div class="field wide"><label for="initialQuality">初期品質</label><div class="initial-row"><input id="initialQuality" inputmode="numeric" min="0" type="number" value="0"/><button aria-pressed="true" class="quality-toggle" id="initialQualityToggle" type="button">計算 ON</button></div><span class="quality-state" id="initialQualityState">初期品質を計算に含めます</span></div>
+</section><div class="checks"><label><input checked="" id="useTrainedEye" type="checkbox"/>条件内なら匠の早業を優先</label><label><input checked="" id="safeOnly" type="checkbox"/>成功率100%のみ</label></div>
+<button class="run" id="run" type="button">EXECUTE SIMULATION</button><div id="summary"></div><div aria-live="polite" class="result" id="result">Waiting for input...</div><div class="copies" id="copies"></div>
+<p class="note">工数・品質・耐久は製作手帳に表示された値を入力してください。使用するアクションは「使用スキル設定」タブで変更できます。固定マクロは状態を判定できないため、通常状態・成功率100%の決定的シミュレーションを基準にします。</p>
+</section>
+<section class="tab-panel" hidden="" id="skillsPanel" role="tabpanel">
+<div class="skill-toolbar"><button id="selectAllSkills" type="button">すべて選択</button><button id="clearAllSkills" type="button">すべて解除</button><div class="level-select-row"><input aria-label="スキル選択レベル" id="skillLevelLimit" max="100" min="1" type="number" value="100"/><button id="selectByLevel" type="button">指定レベル以下を選択</button></div><button id="selectCurrentLevel" type="button">現在レベル以下を選択</button></div>
+<div class="skill-group"><h2>通常クラフターアクション</h2><div class="skill-list" id="normalSkillList"></div></div>
+<div class="skill-group"><h2>コスモエクスプローラー専用スキル</h2><div class="skill-list" id="cosmicSkillList"></div><p class="skill-note">専用スキルは使用可能なものを1つだけ選択できます。通常レシピでは計算に使用されません。</p></div>
+</section>
+</main>
+<script>
+(()=>{'use strict';
+const A={
+ contentAction2:{n:'コンテンツアクション2',lv:1,cp:0,d:0,nostep:true,w:2},
+ basicSynthesis:{n:'作業',lv:1,cp:0,d:10,p:120,w:3},basicTouch:{n:'加工',lv:5,cp:18,d:10,q:100,iq:1,w:3},mastersMend:{n:'マスターズメンド',lv:7,cp:88,d:0,e:'mend30',w:3},rapidSynthesis:{n:'突貫作業',lv:9,cp:0,d:10,p:500,rate:50,w:3},observe:{n:'経過観察',lv:13,cp:7,d:0,w:2},wasteNot:{n:'倹約',lv:15,cp:56,d:0,e:'wn4',w:2},veneration:{n:'ヴェネレーション',lv:15,cp:18,d:0,e:'ven4',w:2},standardTouch:{n:'中級加工',lv:18,cp:32,d:10,q:125,iq:1,w:3},greatStrides:{n:'グレートストライド',lv:21,cp:32,d:0,e:'gs3',w:2},innovation:{n:'イノベーション',lv:26,cp:18,d:0,e:'inn4',w:2},finalAppraisal:{n:'最終確認',lv:42,cp:1,d:0,e:'fa5',nostep:true,w:2},wasteNot2:{n:'長期倹約',lv:47,cp:98,d:0,e:'wn8',w:2},byregot:{n:'ビエルゴの祝福',lv:50,cp:24,d:10,q:100,finish:true,w:3},muscleMemory:{n:'確信',lv:54,cp:6,d:10,p:300,e:'mm5',first:true,w:3},prudentTouch:{n:'倹約加工',lv:66,cp:25,d:5,q:100,iq:1,noWN:true,w:3},advancedTouch:{n:'上級加工',lv:68,cp:46,d:10,q:150,iq:1,w:3},reflect:{n:'真価',lv:69,cp:6,d:10,q:300,iq:2,first:true,w:3},groundwork:{n:'下地作業',lv:72,cp:18,d:20,p:360,w:3},preparatoryTouch:{n:'下地加工',lv:71,cp:40,d:20,q:200,iq:2,w:3},prudentSynthesis:{n:'倹約作業',lv:88,cp:18,d:5,p:180,noWN:true,w:3},carefulSynthesis:{n:'模範作業',lv:62,cp:7,d:10,p:180,w:3},manipulation:{n:'マニピュレーション',lv:65,cp:96,d:0,e:'man8',w:2},delicateSynthesis:{n:'精密作業',lv:76,cp:32,d:10,p:150,q:100,iq:1,w:3},trainedEye:{n:'匠の早業',lv:80,cp:250,d:10,e:'eye',first:true,w:3},trainedFinesse:{n:'匠の神業',lv:90,cp:32,d:0,q:100,needIQ10:true,w:3},refinedTouch:{n:'洗練加工',lv:92,cp:24,d:10,q:100,iq:1,w:3},perfectMend:{n:'パーフェクトメンド',lv:98,cp:112,d:0,e:'fullmend',w:3},trainedPerfection:{n:'匠の絶技',lv:100,cp:0,d:0,e:'perfect',once:true,w:2}
+};
+// 匠の絶技は実機で次アクションを安定して実行するため3秒待機する。
+A.trainedPerfection.w=3;
+const LEVEL_TABLE={51:120,52:125,53:130,54:133,55:136,56:139,57:142,58:145,59:148,60:150,61:260,62:265,63:270,64:273,65:276,66:279,67:282,68:285,69:288,70:290,71:390,72:395,73:400,74:403,75:406,76:409,77:412,78:415,79:418,80:420,81:517,82:520,83:525,84:530,85:535,86:540,87:545,88:550,89:555,90:560,91:650,92:653,93:656,94:660,95:665,96:670,97:675,98:680,99:685,100:690};
+const PROFILES={
+  50:{label:'Lv50以下',recipeLv:50,rlvl:50,pd:50,pm:100,qd:30,qm:100},
+  60:{label:'Lv60',recipeLv:60,rlvl:150,pd:70,pm:100,qd:50,qm:100},
+  70:{label:'Lv70',recipeLv:70,rlvl:290,pd:90,pm:100,qd:70,qm:100},
+  80:{label:'Lv80',recipeLv:80,rlvl:420,pd:110,pm:100,qd:90,qm:100},
+  90:{label:'Lv90',recipeLv:90,rlvl:560,pd:130,pm:90,qd:115,qm:80},
+  100:{label:'Lv100（星なし）',recipeLv:100,rlvl:690,pd:170,pm:90,qd:150,qm:75},
+  '100s1':{label:'Lv100 ★1',recipeLv:100,rlvl:700,pd:170,pm:90,qd:150,qm:75},
+  '100s2':{label:'Lv100 ★2',recipeLv:100,rlvl:710,pd:170,pm:90,qd:150,qm:75},
+  '100s3':{label:'Lv100 ★3',recipeLv:100,rlvl:740,pd:170,pm:90,qd:150,qm:75},
+  '100s4':{label:'Lv100 ★4',recipeLv:100,rlvl:770,pd:170,pm:90,qd:150,qm:75},
+  '100s5':{label:'Lv100 ★5',recipeLv:100,rlvl:776,pd:180,pm:100,qd:180,qm:100,expert:true},
+  '100expert':{label:'Lv100 高難度',recipeLv:100,rlvl:776,pd:180,pm:100,qd:180,qm:100,expert:true},
+  cosmic:{label:'コスモエクスプローラー（通常）',recipeLv:100,rlvl:690,pd:170,pm:90,qd:150,qm:75,cosmic:true},
+  cosmicExpert:{label:'コスモエクスプローラー（高難度）',recipeLv:100,rlvl:776,pd:180,pm:100,qd:180,qm:100,cosmic:true,expert:true}
+};
+const $=id=>document.getElementById(id),num=id=>Math.max(0,Number($(id).value)||0),clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+function fresh(s){const miracle=s.cosmicAction==='miracle';return{p:0,q:s.initial,d:s.dur,cp:s.cp,iq:0,step:0,last:'',done:false,failed:false,usedPerfect:false,usedCosmic:miracle,b:{ven:0,inn:0,gs:0,man:0,wn:0,mm:0,fa:0,steady:0,perfect:false},log:miracle?['contentAction2']:[]}}
+function bases(s){const apply=s.effectiveLevel<=s.rlvl;const rawP=s.craft*10/s.pd+2,rawQ=s.control*10/s.qd+35;return{p:Math.floor(apply?Math.fround(rawP*s.pm*Math.fround(.01)):rawP),q:Math.floor(apply?Math.fround(rawQ*s.qm*Math.fround(.01)):rawQ)}}
+function act(st,id,s){const a=A[id],x={...st,b:{...st.b},log:st.log.concat(id)};if(!a||x.done||x.failed||s.lv<a.lv)return null;if(id==='contentAction2'&&(s.cosmicAction!=='steady'||x.usedCosmic))return null;if(id==='rapidSynthesis'&&s.safeOnly&&x.b.steady<=0)return null;if(a.first&&x.step!==0||a.needIQ10&&x.iq!==10||a.once&&x.usedPerfect||a.noWN&&x.b.wn>0)return null;
+let cost=a.cp;if(id==='standardTouch'&&x.last==='basicTouch')cost=18;if(id==='advancedTouch'&&(x.last==='standardTouch'||x.last==='observe'))cost=18;if(x.cp<cost)return null;x.cp-=cost;
+let dc=a.d;if(x.b.perfect&&dc>0){dc=0;x.b.perfect=false}else if(x.b.wn>0&&dc>0)dc=Math.ceil(dc/2);if(a.d>0&&x.d<=0)return null;const durabilityBefore=x.d;x.d-=dc;
+const base=bases(s),oldIQ=x.iq;if(a.p){let eff=a.p;if(id==='groundwork'&&durabilityBefore<dc)eff=180;let bonus=1+(x.b.ven?0.5:0)+(x.b.mm?1:0);x.p+=Math.floor(base.p*eff/100*bonus);if(x.b.mm)x.b.mm=0}
+if(a.q){let eff=a.finish?100+20*x.iq:a.q;let iqMult=1+oldIQ*.1,bonus=1+(x.b.inn?0.5:0)+(x.b.gs?1:0);x.q=Math.min(s.target, x.q+Math.floor(base.q*iqMult*eff/100*bonus));if(a.finish)x.iq=0;else{x.iq=clamp(x.iq+(a.iq||0)+(id==='refinedTouch'&&x.last==='basicTouch'?1:0),0,10)}if(x.b.gs)x.b.gs=0}
+if(a.e==='mend30')x.d=Math.min(s.dur,x.d+30);if(a.e==='fullmend')x.d=s.dur;if(a.e==='eye')x.q=s.target;if(a.e==='perfect'){x.b.perfect=true;x.usedPerfect=true}if(id==='contentAction2'){x.b.steady=3;x.usedCosmic=true}
+if(x.p>=s.diff){if(x.b.fa){x.p=s.diff-1;x.b.fa=0}else{x.done=true;x.p=s.diff}}
+if(!x.done&&x.d<=0){x.failed=true;return null}
+if(!a.nostep){const heal=x.b.man>0;for(const k of ['ven','inn','gs','man','wn','mm','fa','steady'])if(x.b[k]>0)x.b[k]--;if(heal)x.d=Math.min(s.dur,x.d+5);x.step++}
+if(a.e==='wn4')x.b.wn=4;if(a.e==='wn8')x.b.wn=8;if(a.e==='ven4')x.b.ven=4;if(a.e==='inn4')x.b.inn=4;if(a.e==='gs3')x.b.gs=3;if(a.e==='man8')x.b.man=8;if(a.e==='mm5')x.b.mm=5;if(a.e==='fa5')x.b.fa=5;x.last=id;return x}
+function isGoal(x,s){return!!(x&&x.done&&x.q>=s.target&&x.d>=0)}
+function score(x,s){const qp=x.q/s.target,pp=x.p/s.diff;return(x.done&&x.q>=s.target?1e9:0)+qp*2e6+pp*7e5+x.cp*20+x.d*10-x.log.length*80}
+function key(x){return[x.p,x.q,x.d,x.cp,x.iq,x.last,x.usedCosmic?1:0,x.b.ven,x.b.inn,x.b.gs,x.b.man,x.b.wn,x.b.mm,x.b.fa,x.b.steady,x.b.perfect?1:0].join('|')}
+function candidates(x,s){let z=['basicSynthesis','basicTouch','mastersMend','wasteNot','veneration','standardTouch','greatStrides','innovation','wasteNot2','byregot','muscleMemory','prudentTouch','advancedTouch','reflect','groundwork','preparatoryTouch','prudentSynthesis','carefulSynthesis','manipulation','delicateSynthesis','trainedFinesse','refinedTouch','perfectMend','trainedPerfection'];if(s.cosmicAction==='steady'&&!x.usedCosmic)z.unshift('contentAction2');if(x.b.steady>0||!s.safeOnly)z.push('rapidSynthesis');if(x.step===0&&s.eye)z.unshift('trainedEye');z=z.filter(id=>id==='contentAction2'||s.enabledSkills.has(id));if(x.iq<1)z=z.filter(v=>v!=='byregot');if(x.q>=s.target)z=z.filter(v=>!A[v].q);if(x.p>=s.diff*.82)z.push('finalAppraisal');return z}
+let lastSearchReport=null;
+async function search(s,opts={}){const beamWidth=opts.beamWidth??850,timeLimit=opts.timeLimit??5000,maxDepth=opts.maxDepth??30-(s.cosmicAction==='none'?0:1),started=performance.now();let beam=[fresh(s)],best=null,maxP=0,maxQ=s.initial,bestPartial=fresh(s),completedBest=null,depthReached=0,timedOut=false;for(let depth=0;depth<maxDepth;depth++){depthReached=depth+1;const next=[],seen=new Map;for(const x of beam){for(const id of candidates(x,s)){const y=act(x,id,s);if(!y)continue;if(y.p>maxP)maxP=y.p;if(y.q>maxQ)maxQ=y.q;if(!bestPartial||score(y,s)>score(bestPartial,s))bestPartial=y;if(y.done&&(!completedBest||y.q>completedBest.q||(y.q===completedBest.q&&y.cp>completedBest.cp)))completedBest=y;if(isGoal(y,s)){if(!best||y.log.length<best.log.length||score(y,s)>score(best,s))best=y;continue}const k=key(y),old=seen.get(k);if(!old||score(y,s)>score(old,s))seen.set(k,y)}if(performance.now()-started>timeLimit){timedOut=true;break}}if(best){lastSearchReport={timedOut:false,depthReached,maxP,maxQ,bestPartial,completedBest};return best}if(timedOut)break;next.push(...seen.values());next.sort((a,b)=>score(b,s)-score(a,s));beam=next.slice(0,beamWidth);if(!beam.length)break;if(depth%2===1)await new Promise(r=>setTimeout(r,0))}lastSearchReport={timedOut,depthReached,maxP,maxQ,bestPartial,completedBest};return best}
+function simulate(ids,s){let x=fresh(s),start=x.log.length&&ids[0]==='contentAction2'?1:0;for(let i=start;i<ids.length;i++){x=act(x,ids[i],s);if(!x)return null}return x}
+function prune(ids,s){let out=ids.slice(),first=out[0]==='contentAction2'?1:0;for(let i=out.length-1;i>=first;i--){const t=out.slice(0,i).concat(out.slice(i+1)),x=simulate(t,s);if(isGoal(x,s))out=t}return out}
+function buffCoverage(ids,s){let x=fresh(s),ven=0,start=x.log.length&&ids[0]==='contentAction2'?1:0;for(let i=start;i<ids.length;i++){const id=ids[i],a=A[id];if(a&&a.p&&x.b.ven>0)ven+=id==='groundwork'&&x.d<20?180:a.p;x=act(x,id,s);if(!x)return null}return ven}
+function normalizeBuffOrder(ids,s){let out=ids.slice(),changed=true;while(changed){changed=false;for(let i=1;i<out.length;i++){if(out[i]!=='veneration'||!A[out[i-1]]?.p)continue;const t=out.slice();[t[i-1],t[i]]=[t[i],t[i-1]];const before=simulate(out,s),after=simulate(t,s);if(!before||!after||!after.done||after.q<s.target||after.cp<before.cp||after.d<before.d)continue;if(buffCoverage(t,s)>buffCoverage(out,s)){out=t;changed=true;break}}}return out}
+function format(ids){const lines=ids.map(id=>`/ac "${A[id].n}" <wait.${A[id].w}>`),parts=[];while(lines.length){const room=lines.length>15?14:15,p=lines.splice(0,room);if(lines.length)p.push(`/echo 次のマクロへ <se.1>`);parts.push(p.join('\n'))}return parts}
+function getStats(){const profile=PROFILES[$('recipeLevel').value]||PROFILES[100];const lv=num('crafterLevel'),includeInitial=$('initialQualityToggle').getAttribute('aria-pressed')==='true',cosmicAction=profile.cosmic?getSelectedCosmicAction():'none';return{...profile,effectiveLevel:LEVEL_TABLE[lv]||lv,lv,craft:num('craftsmanship'),control:num('control'),cp:num('cp'),dur:num('durability'),diff:num('difficulty'),target:num('maxQuality'),initial:includeInitial?num('initialQuality'):0,eye:$('useTrainedEye').checked&&!profile.expert&&lv>=profile.recipeLv+10&&enabledSkills.has('trainedEye'),safeOnly:$('safeOnly').checked,cosmicAction,enabledSkills:new Set(enabledSkills)}}
+let parts=[];function validate(s){if(!s.craft||!s.control||!s.cp||!s.dur||!s.diff||!s.target)return'全ステータス、耐久、工数、目標品質を入力してください。';if(s.initial>s.target)return'初期品質は目標品質以下にしてください。';return''}
+function minValueForRoute(ids,s,key,low,high){
+ let lo=Math.max(0,Math.floor(low)),hi=Math.max(lo,Math.ceil(high));
+ const works=v=>{const t={...s,[key]:v,enabledSkills:new Set(s.enabledSkills)},x=simulate(ids,t);return isGoal(x,t)};
+ if(!works(hi))return null;
+ while(lo<hi){const mid=Math.floor((lo+hi)/2);if(works(mid))hi=mid;else lo=mid+1}return lo
+}
+async function relaxedRequirement(s,key,high){
+ const t={...s,[key]:high,enabledSkills:new Set(s.enabledSkills)};
+ const x=await search(t,{beamWidth:320,timeLimit:900,maxDepth:30-(s.cosmicAction==='none'?0:1)});
+ if(!x)return null;
+ const min=minValueForRoute(x.log,s,key,s[key],high);
+ return min==null?null:{required:min,shortage:Math.max(0,min-s[key]),actions:x.log.length}
+}
+async function findRequirement(s,key,steps){
+ // 「比例換算」ではなく、実際に成立する数値だけを採用する。
+ // 各試行は短時間に制限し、診断全体が長時間化しないようにする。
+ const base=s[key];
+ let fail=base,pass=null,route=null;
+ for(const v of steps){
+   if(v<=base)continue;
+   const t={...s,[key]:v,enabledSkills:new Set(s.enabledSkills)};
+   const x=await search(t,{beamWidth:420,timeLimit:650,maxDepth:30-(s.cosmicAction==='none'?0:1)});
+   if(x){pass=v;route=x;break}
+   fail=v;
+ }
+ if(pass==null)return null;
+ // 成立区間内を二分探索。探索がヒューリスティックなので「確認できた最低値」として扱う。
+ let lo=Math.max(base+1,fail+1),hi=pass,bestRoute=route;
+ for(let i=0;i<7&&lo<hi;i++){
+   const mid=Math.floor((lo+hi)/2);
+   const t={...s,[key]:mid,enabledSkills:new Set(s.enabledSkills)};
+   const x=await search(t,{beamWidth:460,timeLimit:700,maxDepth:30-(s.cosmicAction==='none'?0:1)});
+   if(x){hi=mid;bestRoute=x}else lo=mid+1;
+ }
+ // 最終値をもう一度確認する。
+ const finalStats={...s,[key]:hi,enabledSkills:new Set(s.enabledSkills)};
+ const finalRoute=await search(finalStats,{beamWidth:520,timeLimit:850,maxDepth:30-(s.cosmicAction==='none'?0:1)});
+ if(!finalRoute)return{required:pass,shortage:pass-base,verified:true,actions:bestRoute?.log.length||route?.log.length||0};
+ return{required:hi,shortage:hi-base,verified:true,actions:finalRoute.log.length};
+}
+async function findCombinedRequirement(s){
+ // 単独改善で成立しない場合のみ、現実的な複合改善パターンを確認する。
+ const patterns=[
+   {craft:250,control:250,cp:50},{craft:500,control:500,cp:50},
+   {craft:500,control:750,cp:100},{craft:750,control:750,cp:100},
+   {craft:1000,control:1000,cp:150},{craft:1500,control:1500,cp:200}
+ ];
+ for(const d of patterns){
+   const t={...s,craft:s.craft+d.craft,control:s.control+d.control,cp:s.cp+d.cp,enabledSkills:new Set(s.enabledSkills)};
+   const x=await search(t,{beamWidth:450,timeLimit:750,maxDepth:30-(s.cosmicAction==='none'?0:1)});
+   if(x)return{...d,requiredCraft:t.craft,requiredControl:t.control,requiredCp:t.cp,actions:x.log.length};
+ }
+ return null;
+}
+async function diagnoseFailure(s,report){
+ const notes=[],r=report||{},recommend=[];
+ const pReach=Math.floor(r.maxP||0),bestCompletedQ=Math.floor((r.completedBest&&r.completedBest.q)||0),qReach=Math.floor(r.maxQ||0);
+ if(r.completedBest&&bestCompletedQ<s.target){
+   notes.push(`<strong>品質不足：</strong>完成できた候補の最高品質は ${bestCompletedQ}/${s.target}（品質 ${s.target-bestCompletedQ} 不足）です。`);
+ }else if(pReach<s.diff){
+   notes.push(`<strong>工数不足：</strong>探索中の最大工数は ${pReach}/${s.diff}（工数 ${s.diff-pReach} 不足）です。`);
+ }else if(qReach<s.target){
+   notes.push(`<strong>品質不足：</strong>探索中の最大品質は ${qReach}/${s.target}（品質 ${s.target-qReach} 不足）です。`);
+ }else{
+   notes.push('<strong>工数・品質の単純な到達差だけでは原因を確定できません。</strong> CP・耐久・30アクション上限・スキル構成を含めて成立条件を確認します。');
+ }
+
+ // 現実的な範囲だけで「その数値で実際にマクロが成立した」条件を探す。
+ const cpSteps=[s.cp+25,s.cp+50,s.cp+75,s.cp+100,s.cp+150,s.cp+200,s.cp+300,s.cp+450];
+ const craftSteps=[s.craft+100,s.craft+250,s.craft+500,s.craft+750,s.craft+1000,s.craft+1500,s.craft+2200,s.craft+3000];
+ const controlSteps=[s.control+100,s.control+250,s.control+500,s.control+750,s.control+1000,s.control+1500,s.control+2200,s.control+3000];
+
+ // 主症状に近い項目から調査し、無駄な探索を減らす。
+ let craftReq=null,controlReq=null,cpReq=null;
+ if(pReach<s.diff)craftReq=await findRequirement(s,'craft',craftSteps);
+ if((bestCompletedQ&&bestCompletedQ<s.target)||qReach<s.target)controlReq=await findRequirement(s,'control',controlSteps);
+ cpReq=await findRequirement(s,'cp',cpSteps);
+ // 上で未調査だったものも、原因が複合の可能性があるため短く確認。
+ if(!craftReq&&pReach>=s.diff)craftReq=await findRequirement(s,'craft',craftSteps.slice(0,6));
+ if(!controlReq&&bestCompletedQ>=s.target&&qReach>=s.target)controlReq=await findRequirement(s,'control',controlSteps.slice(0,6));
+
+ if(craftReq)recommend.push(`<strong>作業精度 ${craftReq.required} 以上</strong>（現在 ${s.craft} / <strong>+${craftReq.shortage}</strong>）で成立を確認`);
+ if(controlReq)recommend.push(`<strong>加工精度 ${controlReq.required} 以上</strong>（現在 ${s.control} / <strong>+${controlReq.shortage}</strong>）で成立を確認`);
+ if(cpReq)recommend.push(`<strong>CP ${cpReq.required} 以上</strong>（現在 ${s.cp} / <strong>+${cpReq.shortage}</strong>）で成立を確認`);
+
+ if(recommend.length){
+   recommend.sort((a,b)=>{const na=+(a.match(/\+(\d+)/)||[0,999999])[1],nb=+(b.match(/\+(\d+)/)||[0,999999])[1];return na-nb});
+   notes.push(`<strong>単独で改善する場合の成立目安：</strong><br>${recommend.map((v,i)=>`${i+1}. ${v}`).join('<br>')}<br><span class="skill-note">ここに表示するのは、実際に再探索して目標工数・目標品質の両方を満たすマクロが見つかった数値だけです。単純比例で算出した推定値は表示しません。</span>`);
+ }else{
+   const combo=await findCombinedRequirement(s);
+   if(combo){
+     notes.push(`<strong>複数ステータスの同時改善が必要な可能性が高いです。</strong><br>成立を確認できた例：<br>・作業精度 ${combo.requiredCraft}（+${combo.craft}）<br>・加工精度 ${combo.requiredControl}（+${combo.control}）<br>・CP ${combo.requiredCp}（+${combo.cp}）<br><span class="skill-note">この組み合わせは最小値の保証ではありませんが、実際にマクロ成立を確認した具体例です。</span>`);
+   }else{
+     notes.push('<strong>ステータス単独の不足量は確定できませんでした。</strong><br>作業精度 +3000、加工精度 +3000、CP +450 まで単独改善を試しても、この短時間探索では成立を確認できませんでした。スキル設定・耐久・30アクション上限、または複数ステータスの組み合わせが主因の可能性があります。');
+   }
+ }
+
+ const disabled=Object.keys(A).filter(id=>id!=='contentAction2'&&A[id].lv<=s.lv&&!s.enabledSkills.has(id));
+ if(disabled.length){
+   const all={...s,enabledSkills:new Set(Object.keys(A).filter(id=>id!=='contentAction2'&&A[id].lv<=s.lv))};
+   const x=await search(all,{beamWidth:300,timeLimit:650});
+   if(x)notes.push(`<strong>スキル設定：</strong>現在無効のスキルを有効にすると、現在ステータスのままで成立するマクロを確認しました。無効中：${disabled.slice(0,8).map(id=>A[id].n).join('、')}${disabled.length>8?' ほか':''}`)
+ }
+ if(r.timedOut)notes.push('<span class="skill-note">通常探索は時間上限で打ち切られました。診断値は別の短時間再探索で成立確認したものです。</span>');
+ return `<div class="diagnosis"><strong>条件を満たすマクロを生成できませんでした。</strong><br>${notes.join('<br>')}</div>`
+}
+function resetRun(b){b.disabled=false;b.classList.remove('loading','success');b.textContent='EXECUTE SIMULATION'}
+async function run(){const b=$('run'),r=$('result'),sum=$('summary');b.disabled=true;b.classList.remove('success');b.classList.add('loading');b.setAttribute('aria-label','loading...');b.innerHTML='loading<span class="loading-dot">.</span><span class="loading-dot">.</span><span class="loading-dot">.</span>';r.textContent='候補を探索しています…';sum.innerHTML='';$('copies').innerHTML='';const s=getStats(),err=validate(s);if(err){r.innerHTML=`<span class="error">ERROR: ${err}</span>`;b.removeAttribute('aria-label');resetRun(b);return}await new Promise(q=>setTimeout(q,0));let x=await search(s);const primaryReport=lastSearchReport;if(!x){r.textContent='生成できませんでした。原因を高速診断しています…';r.innerHTML=await diagnoseFailure(s,primaryReport);b.removeAttribute('aria-label');resetRun(b);return}const optimized=normalizeBuffOrder(prune(x.log,s),s);x=simulate(optimized,s);if(!isGoal(x,s)||x.p<s.diff){r.innerHTML='<span class="error">最終再検証で未完成または耐久不足を検出したため、マクロ出力を中止しました。</span>';b.removeAttribute('aria-label');resetRun(b);return}parts=format(x.log);const seconds=x.log.reduce((n,id)=>n+A[id].w,0),base=bases(s),actionLabel=s.cosmicAction==='steady'?'コスモステディハンド':s.cosmicAction==='miracle'?'ミラクルマテリアル':'なし',miracle=s.cosmicAction==='miracle'?'<br><span class="error">ミラクルマテリアルのランダムな有利状態は保証値へ加算していません。</span>':'',warning=s.expert?'<br><span class="error">高難度レシピは状態変化を再現しない通常状態での参考計算です。</span>':'';sum.innerHTML=`<div class="summary">${s.label}<br>専用アクション: ${actionLabel}<br>${x.log.length}アクション / ${parts.length}マクロ / 約${seconds}秒　到達: 工数 ${x.p}/${s.diff}・品質 ${x.q}/${s.target}・残CP ${x.cp}・残耐久 ${x.d}<br>検算値: 基礎工数 ${base.p}・基礎品質 ${base.q}${miracle}${warning}</div>`;r.textContent=parts.map((p,i)=>`--- MACRO ${i+1} ---\n${p}`).join('\n\n');$('copies').innerHTML=parts.map((_,i)=>`<button class="copy" data-i="${i}">COPY MACRO ${i+1}</button>`).join('');b.disabled=false;b.removeAttribute('aria-label');b.classList.remove('loading');b.classList.add('success');b.textContent='completed'}
+async function copy(text,btn){try{await navigator.clipboard.writeText(text)}catch(_){const t=document.createElement('textarea');t.value=text;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();document.execCommand('copy');t.remove()}const old=btn.textContent;btn.textContent='COMPLETED';btn.classList.add('ok');setTimeout(()=>{btn.textContent=old;btn.classList.remove('ok')},1500)}
+function ripple(e){const b=e.target.closest('.run,.copy');if(!b)return;const rect=b.getBoundingClientRect(),dot=document.createElement('span');dot.className='ripple';dot.style.left=`${e.clientX-rect.left}px`;dot.style.top=`${e.clientY-rect.top}px`;b.appendChild(dot);setTimeout(()=>dot.remove(),650)}
+function syncInitialQuality(){if(!$('initialQuality').dataset.edited)$('initialQuality').value=Math.floor(num('maxQuality')*.5)}
+function setInitialToggle(on){const b=$('initialQualityToggle');b.setAttribute('aria-pressed',String(on));b.textContent=on?'計算 ON':'計算 OFF';b.classList.toggle('off',!on);$('initialQualityState').textContent=on?'初期品質を計算に含めます':'数値を保持したまま計算から除外中';$('initialQualityState').classList.toggle('off',!on);$('initialQuality').style.opacity=on?'1':'.55'}
+function toggleInitial(){const on=$('initialQualityToggle').getAttribute('aria-pressed')!=='true';setInitialToggle(on)}
+
+
+const SKILL_STORAGE_KEY='ff14CrafterMacroGenerator.skills.v1';
+let enabledSkills=new Set(Object.keys(A).filter(id=>id!=='contentAction2'));
+let selectedCosmicAction='none';
+const COSMIC_SKILLS=[{id:'miracle',name:'ミラクルマテリアル',note:'ランダムな有利状態を発生させます'},{id:'steady',name:'コスモステディハンド',note:'続く3工程の成功率を100%として扱います'}];
+function skillCategory(a){return a.p&&a.q?'作業・加工':a.p?'作業':a.q?'加工':'補助'}
+function renderSkills(){const normal=$('normalSkillList');normal.innerHTML=Object.entries(A).filter(([id])=>id!=='contentAction2').sort((a,b)=>a[1].lv-b[1].lv).map(([id,a])=>`<label class="skill-item"><input class="skill-check" type="checkbox" data-skill="${id}" ${enabledSkills.has(id)?'checked':''}><span>${a.n}</span><span class="skill-meta">Lv${a.lv} / ${skillCategory(a)}</span></label>`).join('');$('cosmicSkillList').innerHTML=COSMIC_SKILLS.map(x=>`<label class="skill-item"><input class="cosmic-skill-check" type="checkbox" data-cosmic="${x.id}" ${selectedCosmicAction===x.id?'checked':''}><span>${x.name}</span><span class="skill-meta">専用</span></label>`).join('')}
+function saveSkillSettings(){try{localStorage.setItem(SKILL_STORAGE_KEY,JSON.stringify({enabled:[...enabledSkills],cosmic:selectedCosmicAction}))}catch(_){}}
+function restoreSkillSettings(){try{const raw=localStorage.getItem(SKILL_STORAGE_KEY);if(!raw)return;const d=JSON.parse(raw);if(Array.isArray(d.enabled))enabledSkills=new Set(d.enabled.filter(id=>A[id]&&id!=='contentAction2'));if(COSMIC_SKILLS.some(x=>x.id===d.cosmic))selectedCosmicAction=d.cosmic}catch(_){}}
+function getSelectedCosmicAction(){return selectedCosmicAction}
+function setSkillsByLevel(level){enabledSkills=new Set(Object.entries(A).filter(([id,a])=>id!=='contentAction2'&&a.lv<=level).map(([id])=>id));renderSkills();saveSkillSettings()}
+function showTab(which){const gen=which==='generator';$('generatorPanel').hidden=!gen;$('skillsPanel').hidden=gen;$('generatorTabButton').classList.toggle('active',gen);$('skillsTabButton').classList.toggle('active',!gen);$('generatorTabButton').setAttribute('aria-selected',String(gen));$('skillsTabButton').setAttribute('aria-selected',String(!gen))}
+
+const STATUS_STORAGE_KEY='ff14CrafterMacroGenerator.playerStatus.v2',STATUS_FIELDS=['craftsmanship','control','cp'];
+function savePlayerStatus(){try{const data={};for(const id of STATUS_FIELDS)data[id]=$(id).value;localStorage.setItem(STATUS_STORAGE_KEY,JSON.stringify(data))}catch(_){}}
+function restorePlayerStatus(){try{const raw=localStorage.getItem(STATUS_STORAGE_KEY);if(!raw)return;const data=JSON.parse(raw);for(const id of STATUS_FIELDS){if(data&&Object.prototype.hasOwnProperty.call(data,id)&&data[id]!==null&&data[id]!==undefined)$(id).value=String(data[id])}}catch(_){}}
+function enableReplaceOnFocus(){for(const input of document.querySelectorAll('input[type=\"number\"]')){input.addEventListener('focus',()=>input.select());input.addEventListener('pointerup',e=>{e.preventDefault();input.select()})}}
+$('run').addEventListener('click',run);$('run').addEventListener('pointerleave',()=>{const b=$('run');if(b.classList.contains('success'))resetRun(b)});document.addEventListener('pointerdown',ripple);$('copies').addEventListener('click',e=>{const b=e.target.closest('[data-i]');if(b)copy(parts[+b.dataset.i],b)});$('initialQualityToggle').addEventListener('click',toggleInitial);$('maxQuality').addEventListener('input',syncInitialQuality);$('initialQuality').addEventListener('input',()=>{$('initialQuality').dataset.edited='1'});$('generatorTabButton').addEventListener('click',()=>showTab('generator'));$('skillsTabButton').addEventListener('click',()=>showTab('skills'));$('selectAllSkills').addEventListener('click',()=>{enabledSkills=new Set(Object.keys(A).filter(id=>id!=='contentAction2'));renderSkills();saveSkillSettings()});$('clearAllSkills').addEventListener('click',()=>{enabledSkills.clear();renderSkills();saveSkillSettings()});$('selectByLevel').addEventListener('click',()=>setSkillsByLevel(Math.max(1,Math.min(100,num('skillLevelLimit')))));$('selectCurrentLevel').addEventListener('click',()=>setSkillsByLevel(Math.max(1,Math.min(100,num('crafterLevel')))));$('normalSkillList').addEventListener('change',e=>{const c=e.target.closest('[data-skill]');if(!c)return;c.checked?enabledSkills.add(c.dataset.skill):enabledSkills.delete(c.dataset.skill);saveSkillSettings()});$('cosmicSkillList').addEventListener('change',e=>{const c=e.target.closest('[data-cosmic]');if(!c)return;selectedCosmicAction=c.checked?c.dataset.cosmic:'none';renderSkills();saveSkillSettings()});restorePlayerStatus();restoreSkillSettings();renderSkills();enableReplaceOnFocus();for(const id of STATUS_FIELDS)$(id).addEventListener('input',savePlayerStatus);syncInitialQuality();showTab('generator')
+})();
+</script>
+<script>
+(()=>{let last=0;const send=()=>{const h=Math.max(document.documentElement.scrollHeight,document.body.scrollHeight);if(h!==last){last=h;parent.postMessage({type:'ff14MacroHeight',height:h},location.origin)}};new ResizeObserver(send).observe(document.body);window.addEventListener('load',send);setTimeout(send,50);setTimeout(send,500)})();
+</script>
+<div style="margin-top:22px;text-align:center;color:#7c8797;font-size:.78rem">© SQUARE ENIX</div></body></html>
