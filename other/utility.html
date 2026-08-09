@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>便利機能 | FINAL FANTASY XIV 個人用ツールポータル</title>
+<link href="../assets/css/portal.css" rel="stylesheet"/><link href="../assets/branding/favicon.svg" rel="icon" type="image/svg+xml"/><link href="../assets/branding/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/><link href="../assets/branding/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/><link href="../assets/branding/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/><link href="../site.webmanifest" rel="manifest"/><link href="https://kazeno0116-design.github.io/ff14-profit-calculator/other/utility.html" rel="canonical"/><meta content="#0c111b" name="theme-color"/><meta content="website" property="og:type"/><meta content="ja_JP" property="og:locale"/><meta content="FINAL FANTASY XIV 個人用ツールポータル" property="og:site_name"/><meta content="便利機能 | FINAL FANTASY XIV 個人用ツールポータル" property="og:title"/><meta content="繰り返し使う入力や確認を、少ない操作で済ませるための便利機能です。" property="og:description"/><meta content="https://kazeno0116-design.github.io/ff14-profit-calculator/other/utility.html" property="og:url"/><meta content="https://kazeno0116-design.github.io/ff14-profit-calculator/assets/branding/ogp.png" property="og:image"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="summary_large_image" name="twitter:card"/><meta content="便利機能 | FINAL FANTASY XIV 個人用ツールポータル" name="twitter:title"/><meta content="繰り返し使う入力や確認を、少ない操作で済ませるための便利機能です。" name="twitter:description"/><meta content="https://kazeno0116-design.github.io/ff14-profit-calculator/assets/branding/ogp.png" name="twitter:image"/><meta content="繰り返し使う入力や確認を、少ない操作で済ませるための便利機能です。" name="description"/></head><body>
+<div class="layout"><aside class="sidebar"><div class="brand"><strong>FINAL FANTASY XIV</strong><span>個人用ツールポータル</span></div>
+<nav class="nav"><p class="nav-label">PORTAL</p><a class="" href="../index.html"><span class="nav-icon">◇</span><span>ホーム</span></a><a class="" href="../beginner/index.html"><span class="nav-icon">✦</span><span>初心者向け情報</span></a><p class="nav-label">CATEGORY</p><a class="" href="../battle/index.html"><span class="nav-icon">✧</span><span>戦闘</span></a><a class="" href="../crafter/index.html"><span class="nav-icon">◆</span><span>クラフター</span></a><a class="" href="../gatherer/index.html"><span class="nav-icon">◇</span><span>ギャザラー</span></a><a class="active" href="../other/index.html"><span class="nav-icon">＋</span><span>その他</span></a><p class="nav-label">TOOLS</p><a class="" href="../tools/index.html"><span class="nav-icon">⚒</span><span>効率化ツール一覧</span></a></nav></aside>
+<main class="main"><div class="crumb">ホーム / その他 / 便利機能</div><section class="hero"><div class="eyebrow">UTILITY</div><h1>便利機能</h1><p>繰り返し使う入力や確認を、少ない操作で済ませるための便利機能です。</p></section>
+<div class="content">
+<section class="article-card">
+<div class="article-kicker">QUICK TOOLS</div>
+<h2>すぐ使える便利機能</h2>
+<div class="utility-tool-grid">
+<div class="utility-mini-tool">
+<h3>マクロ行数チェッカー</h3>
+<p>マクロを貼り付けると、行数と15行ごとの分割位置を確認できます。</p>
+<textarea id="macroLineInput" placeholder='/ac "アクション名" &lt;wait.3&gt;' rows="8"></textarea>
+<div class="utility-result" id="macroLineResult">0行</div>
+<button class="tool-btn secondary-btn" id="macroLineClear" type="button">クリア</button>
+</div>
+<div class="utility-mini-tool">
+<h3>チャット文字数チェッカー</h3>
+<p>募集文や挨拶文を貼り付けて、文章量を確認できます。</p>
+<textarea id="chatCountInput" placeholder="文章を入力" rows="8"></textarea>
+<div class="utility-result" id="chatCountResult">0文字</div>
+<button class="tool-btn secondary-btn" id="chatCountCopy" type="button">コピー</button>
+</div>
+</div>
+</section>
+<section class="article-card">
+<div class="article-kicker">CHAT SHORTCUTS</div>
+<h2>文章を作る</h2>
+<div class="goal-grid utility-shortcuts">
+<a class="goal-card" href="greeting-macro.html"><div class="goal-label">GREETING</div><h3>挨拶マクロ生成器</h3><p>開始・終了・途中参加・途中退出の挨拶をマクロ形式で生成。</p></a>
+<a class="goal-card" href="chat-generator.html"><div class="goal-label">RECRUIT</div><h3>定型チャット募集文ジェネレーター</h3><p>コンテンツ・目的・人数・ロールから募集文を生成。</p></a>
+<a class="goal-card" href="reference.html"><div class="goal-label">REFERENCE</div><h3>用語・公式リンク集</h3><p>略語を確認し、公式データベースやUIガイドへ移動。</p></a>
+</div>
+</section>
+<section class="article-card">
+<div class="article-kicker">USEFUL COMMAND</div>
+<h2>所持品を探すとき</h2>
+<p>ゲーム内の所持品検索を使うと、所持品・アーマリーチェスト・リテイナーなどから対象アイテムを探せます。</p>
+<div class="command-example"><code>/itemsearch アイテム名</code><span>短縮形：<code>/isearch アイテム名</code></span></div>
+<a class="official-inline-link" href="https://jp.finalfantasyxiv.com/lodestone/playguide/db/text_command/107573661a8/" rel="noopener" target="_blank">公式の /itemsearch 説明を見る →</a>
+</section>
+</div>
+<div class="site-rights"><div class="site-rights__copyright">© SQUARE ENIX</div><div class="site-rights__note">本サイトはファイナルファンタジーXIVの非公式個人サイトです。</div></div></main></div><script src="../assets/js/portal.js"></script><script>
+(()=>{
+ const lineIn=document.getElementById('macroLineInput'), lineOut=document.getElementById('macroLineResult');
+ const updateLines=()=>{
+   const raw=lineIn.value.replace(/\r/g,'');
+   const lines=raw?raw.split('\n').filter((x,i,a)=>!(i===a.length-1&&x==='')).length:0;
+   const blocks=lines?Math.ceil(lines/15):0;
+   lineOut.innerHTML=lines+'行'+(lines?` <span>／ 15行単位なら ${blocks}ブロック</span>`:'');
+ };
+ lineIn.addEventListener('input',updateLines);
+ document.getElementById('macroLineClear').onclick=()=>{lineIn.value='';updateLines();lineIn.focus()};
+ const chatIn=document.getElementById('chatCountInput'), chatOut=document.getElementById('chatCountResult');
+ const updateChat=()=>chatOut.textContent=chatIn.value.length+'文字';
+ chatIn.addEventListener('input',updateChat);
+ document.getElementById('chatCountCopy').onclick=async function(){
+   try{await navigator.clipboard.writeText(chatIn.value);this.textContent='コピーしました';setTimeout(()=>this.textContent='コピー',1200)}
+   catch(_){chatIn.select();document.execCommand('copy')}
+ };
+})();
+</script></body></html>
