@@ -1,0 +1,48 @@
+{
+  "updated_at": "2026-08-08T21:03:00+09:00",
+  "source": "https://jp.finalfantasyxiv.com/lodestone/news/",
+  "items": [
+    {
+      "date": "2026.08.07",
+      "badge": "NOTICE",
+      "title": "現在確認されている不具合について(8/7)",
+      "summary": "現在確認されている不具合について、公式Lodestoneで案内されています。詳細と対応状況は公式ページで確認できます。",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/c7ec0e4905ef2b2ed759b16dcb4f1b0a50ff12b6"
+    },
+    {
+      "date": "2026.08.07",
+      "badge": "UPDATE",
+      "title": "更新のお知らせ(8/7)",
+      "summary": "ゲーム更新に関する公式のお知らせです。プレイ前に変更内容や更新状況を確認できます。",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/0a9d90f58862a886f4f5877cb0ce27c8e23b4ca3"
+    },
+    {
+      "date": "2026.08.07",
+      "badge": "TOPIC",
+      "title": "「ミラプリコレクション（インゲーム部門）」応募受付スタート",
+      "summary": "ファンフェスティバル2026 in 東京のステージ企画について、インゲーム部門の応募受付が開始されています。",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/43fb490a561a5005293da62f2b4ca3d1b2f421ad"
+    },
+    {
+      "date": "2026.08.05",
+      "badge": "EVENT",
+      "title": "「紅蓮祭」8月12日（水）より開催！",
+      "summary": "2026年の紅蓮祭が8月12日から開催予定です。開催期間や参加方法、報酬は公式ページで確認できます。",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/fb68f3881a9157ba0036992ffe28c86c8b5a74c0"
+    },
+    {
+      "date": "2026.08.04",
+      "badge": "TOPIC",
+      "title": "Nintendo Switch 2 版 サービス開始に関して",
+      "summary": "Nintendo Switch 2版のサービス開始に関する公式案内です。対象ユーザー向けの注意事項を確認できます。",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/040aa54a8cfa162b61c287d074b894000189dcd2"
+    },
+    {
+      "date": "2026.07.27",
+      "badge": "PATCH",
+      "title": "7.55パッチノート公開！",
+      "summary": "Patch 7.55の追加・変更内容を確認できます。8月4日にも追記・更新されています。",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/dfb99538aaee5e47079411b07356ef3c4a820486"
+    }
+  ]
+}
