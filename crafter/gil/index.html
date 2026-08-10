@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>製作利益目標計算機 | FINAL FANTASY XIV 個人用ツールポータル</title><link href="../../assets/css/portal.css" rel="stylesheet"/><link href="../../assets/branding/favicon.svg" rel="icon" type="image/svg+xml"/><link href="../../assets/branding/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/><link href="../../assets/branding/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/><link href="../../assets/branding/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/><link href="../../site.webmanifest" rel="manifest"/><link href="https://kazeno0116-design.github.io/ff14-profit-calculator/crafter/gil/" rel="canonical"/><meta content="#0c111b" name="theme-color"/><meta content="website" property="og:type"/><meta content="ja_JP" property="og:locale"/><meta content="FINAL FANTASY XIV 個人用ツールポータル" property="og:site_name"/><meta content="製作利益目標計算機 | FINAL FANTASY XIV 個人用ツールポータル" property="og:title"/><meta content="売価と素材価格を入力すると、素材購入と自力調達を比較し、目標利益までに必要な製作回数・素材数・資金・時間を計算します。" property="og:description"/><meta content="https://kazeno0116-design.github.io/ff14-profit-calculator/crafter/gil/" property="og:url"/><meta content="https://kazeno0116-design.github.io/ff14-profit-calculator/assets/branding/ogp.png" property="og:image"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="summary_large_image" name="twitter:card"/><meta content="製作利益目標計算機 | FINAL FANTASY XIV 個人用ツールポータル" name="twitter:title"/><meta content="売価と素材価格を入力すると、素材購入と自力調達を比較し、目標利益までに必要な製作回数・素材数・資金・時間を計算します。" name="twitter:description"/><meta content="https://kazeno0116-design.github.io/ff14-profit-calculator/assets/branding/ogp.png" name="twitter:image"/><meta content="売価と素材価格を入力すると、素材購入と自力調達を比較し、目標利益までに必要な製作回数・素材数・資金・時間を計算します。" name="description"/></head><body>
+<div class="layout"><aside class="sidebar"><div class="brand"><strong>FINAL FANTASY XIV</strong><span>個人用ツールポータル</span></div>
+<nav class="nav"><p class="nav-label">PORTAL</p><a href="../../index.html"><span class="nav-icon">◇</span><span>ホーム</span></a><a href="../../beginner/index.html"><span class="nav-icon">✦</span><span>初心者向け情報</span></a><p class="nav-label">CATEGORY</p><a href="../../battle/index.html"><span class="nav-icon">✧</span><span>戦闘</span></a><a class="active" href="../index.html"><span class="nav-icon">◆</span><span>クラフター</span></a><a href="../../gatherer/index.html"><span class="nav-icon">◇</span><span>ギャザラー</span></a><a href="../../other/index.html"><span class="nav-icon">＋</span><span>その他</span></a><p class="nav-label">TOOLS</p><a href="../../tools/index.html"><span class="nav-icon">⚒</span><span>効率化ツール一覧</span></a></nav></aside>
+<main class="main"><div class="crumb">ホーム / クラフター / 製作利益目標計算機</div>
+<section class="hero"><div class="eyebrow">CRAFT PROFIT</div><h1>製作利益目標計算機</h1><p>売価と素材価格を入力すると、素材購入と自力調達を比較し、目標利益までに必要な製作回数・素材数・資金・時間を計算します。</p></section>
+<div class="content">
+<section class="article-card">
+<div class="tool-form">
+<div class="tool-field"><label>完成品の売価（1個）</label><input id="sellPrice" min="0" type="number" value="0"/></div>
+<div class="tool-field"><label>1回の製作でできる個数</label><input id="craftYield" min="1" type="number" value="1"/></div>
+<div class="tool-field"><label>販売手数料</label><input id="marketTax" max="100" min="0" step="0.1" type="number" value="5"/></div>
+<div class="tool-field"><label>1回の製作時間（分）</label><input id="craftMinutes" min="0" step="0.1" type="number" value="1"/></div>
+<div class="tool-field wide"><label>目標利益</label><input id="targetProfit" min="0" type="number" value="100000"/></div>
+</div>
+<h2 style="margin-top:24px">必要素材</h2>
+<p>素材ごとに「1回の製作で必要な数」「マケボ価格」「自力で1個集める目安時間」を入力してください。</p>
+<div class="profit-material-head"><span>素材名</span><span>必要数</span><span>購入単価</span><span>自力調達 分/個</span><span></span></div>
+<div class="profit-materials" id="materialRows"></div>
+<div class="tool-actions"><button class="tool-btn secondary" id="addMaterial">素材を追加</button><button class="tool-btn primary" id="calcProfit">計算する</button></div>
+<div class="tool-result is-empty" id="profitResult"></div>
+</section>
+<section class="article-card">
+<div class="compare-heading"><div><h2>比較に追加した結果</h2><p>計算結果を残して、複数の製作候補を比較できます。</p></div><button class="tool-btn secondary" id="clearComparisons">比較をすべて削除</button></div>
+<div class="profit-comparisons" id="profitComparisons"><p class="muted-copy">まだ比較結果はありません。</p></div>
+</section>
+</div>
+<div class="site-rights"><div class="site-rights__copyright">© SQUARE ENIX</div><div class="site-rights__note">本サイトはファイナルファンタジーXIVの非公式個人サイトです。</div></div></main></div>
+<script src="../../assets/js/portal.js"></script><script src="../../assets/js/portal-tools.js"></script><script src="../../assets/js/pages/crafter-gil.js"></script></body></html>
