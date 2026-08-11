@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>クラフターマクロ生成器 | FINAL FANTASY XIV 個人用ツールポータル</title>
+<link href="../../assets/css/portal.css" rel="stylesheet"/><link href="../../assets/branding/favicon.svg" rel="icon" type="image/svg+xml"/><link href="../../assets/branding/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/><link href="../../assets/branding/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/><link href="../../assets/branding/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/><link href="../../site.webmanifest" rel="manifest"/><link href="https://kazeno0116-design.github.io/ff14-profit-calculator/crafter/macro/" rel="canonical"/><meta content="#0c111b" name="theme-color"/><meta content="website" property="og:type"/><meta content="ja_JP" property="og:locale"/><meta content="FINAL FANTASY XIV 個人用ツールポータル" property="og:site_name"/><meta content="クラフターマクロ生成器 | FINAL FANTASY XIV 個人用ツールポータル" property="og:title"/><meta content="ステータスとレシピ条件から、工数・品質・耐久を満たす固定マクロを探索します。" property="og:description"/><meta content="https://kazeno0116-design.github.io/ff14-profit-calculator/crafter/macro/" property="og:url"/><meta content="https://kazeno0116-design.github.io/ff14-profit-calculator/assets/branding/ogp.png" property="og:image"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="summary_large_image" name="twitter:card"/><meta content="クラフターマクロ生成器 | FINAL FANTASY XIV 個人用ツールポータル" name="twitter:title"/><meta content="ステータスとレシピ条件から、工数・品質・耐久を満たす固定マクロを探索します。" name="twitter:description"/><meta content="https://kazeno0116-design.github.io/ff14-profit-calculator/assets/branding/ogp.png" name="twitter:image"/><meta content="ステータスとレシピ条件から、工数・品質・耐久を満たす固定マクロを探索します。" name="description"/><link href="../../assets/css/crafter-macro.css" rel="stylesheet"/></head><body>
+<div class="layout"><aside class="sidebar"><div class="brand"><strong>FINAL FANTASY XIV</strong><span>個人用ツールポータル</span></div>
+<nav class="nav"><p class="nav-label">PORTAL</p><a href="../../index.html"><span class="nav-icon">◇</span><span>ホーム</span></a><a href="../../beginner/index.html"><span class="nav-icon">✦</span><span>初心者向け情報</span></a><p class="nav-label">CATEGORY</p><a href="../../battle/index.html"><span class="nav-icon">✧</span><span>戦闘</span></a><a class="active" href="../../crafter/index.html"><span class="nav-icon">◆</span><span>クラフター</span></a><a href="../../gatherer/index.html"><span class="nav-icon">◇</span><span>ギャザラー</span></a><a href="../../other/index.html"><span class="nav-icon">＋</span><span>その他</span></a><p class="nav-label">TOOLS</p><a href="../../tools/index.html"><span class="nav-icon">⚒</span><span>効率化ツール一覧</span></a></nav></aside>
+<main class="main"><div class="crumb">ホーム / クラフター / クラフターマクロ生成器</div>
+<section class="hero"><div class="eyebrow">CRAFTER MACRO</div><h1>クラフターマクロ生成器</h1><p>ステータスとレシピ条件から、工数・品質・耐久を満たす固定マクロを探索します。</p></section>
+<div class="content">
+<section class="article-card macro-generator-card">
+<div class="content-intro-band"><div aria-label="クラフターマクロ設定" class="macro-tabs" role="tablist"><button aria-controls="generatorPanel" aria-selected="true" class="macro-tab is-active" id="macroGeneratorTab" role="tab" type="button">マクロ生成</button><button aria-controls="skillsPanel" aria-selected="false" class="macro-tab" id="macroSkillsTab" role="tab" type="button">使用スキル設定</button></div></div>
+<div class="macro-generator-inline" id="macroGeneratorInline"><h1>マクロジェネレーター</h1><div class="version">Patch 7.55</div>
+<section class="" id="generatorPanel">
+<section class="grid">
+<div class="field wide"><label for="recipeLevel">レシピレベル・種類</label><select id="recipeLevel">
+<optgroup label="Lv50以下"><option value="50">Lv50以下</option></optgroup>
+<optgroup label="Lv51～60"><option value="51">Lv51</option><option value="52">Lv52</option><option value="53">Lv53</option><option value="54">Lv54</option><option value="55">Lv55</option><option value="56">Lv56</option><option value="57">Lv57</option><option value="58">Lv58</option><option value="59">Lv59</option><option value="60">Lv60</option></optgroup>
+<optgroup label="Lv61～70"><option value="61">Lv61</option><option value="62">Lv62</option><option value="63">Lv63</option><option value="64">Lv64</option><option value="65">Lv65</option><option value="66">Lv66</option><option value="67">Lv67</option><option value="68">Lv68</option><option value="69">Lv69</option><option value="70">Lv70</option></optgroup>
+<optgroup label="Lv71～80"><option value="71">Lv71</option><option value="72">Lv72</option><option value="73">Lv73</option><option value="74">Lv74</option><option value="75">Lv75</option><option value="76">Lv76</option><option value="77">Lv77</option><option value="78">Lv78</option><option value="79">Lv79</option><option value="80">Lv80</option></optgroup>
+<optgroup label="Lv81～90"><option value="81">Lv81</option><option value="82">Lv82</option><option value="83">Lv83</option><option value="84">Lv84</option><option value="85">Lv85</option><option value="86">Lv86</option><option value="87">Lv87</option><option value="88">Lv88</option><option value="89">Lv89</option><option value="90">Lv90</option></optgroup>
+<optgroup label="Lv91～99"><option value="91">Lv91</option><option value="92">Lv92</option><option value="93">Lv93</option><option value="94">Lv94</option><option value="95">Lv95</option><option value="96">Lv96</option><option value="97">Lv97</option><option value="98">Lv98</option><option value="99">Lv99</option></optgroup>
+<optgroup label="Lv100 通常レシピ"><option selected="" value="100">Lv100（星なし）</option><option value="100s1">Lv100 ★1</option><option value="100s2">Lv100 ★2</option><option value="100s3">Lv100 ★3</option><option value="100s4">Lv100 ★4</option><option value="100s5">Lv100 ★5</option></optgroup>
+<optgroup label="Lv100 高難度"><option value="100expert">Lv100 高難度レシピ</option></optgroup>
+<optgroup label="コスモエクスプローラー"><option value="cosmic">コスモエクスプローラー（通常）</option><option value="cosmicExpert">コスモエクスプローラー（A★1 高難易度専用）</option></optgroup>
+</select></div>
+<div class="field wide cosmic-action-field" hidden id="cosmicActionField">
+<label>コスモエクスプローラー専用アクション</label>
+<div aria-label="コスモエクスプローラー専用アクション" class="cosmic-action-choice">
+<label class="cosmic-action-toggle">
+<input id="cosmicSteadyToggle" type="checkbox" value="steady"/>
+<span aria-hidden="true" class="cosmic-toggle-track"><span class="cosmic-toggle-thumb"></span></span>
+<span class="cosmic-action-copy"><strong>コスモステディハンド</strong><small>ON / OFFを個別に切り替え</small></span>
+</label>
+<label class="cosmic-action-toggle">
+<input id="cosmicMiracleToggle" type="checkbox" value="miracle"/>
+<span aria-hidden="true" class="cosmic-toggle-track"><span class="cosmic-toggle-thumb"></span></span>
+<span class="cosmic-action-copy"><strong>ミラクルマテリアル</strong><small>ON / OFFを個別に切り替え</small></span>
+</label>
+</div>
+</div>
+<div class="field wide"><label for="crafterLevel">クラフターレベル</label><input id="crafterLevel" max="100" min="1" type="number" value="100"/></div>
+<div class="field"><label for="craftsmanship">作業精度</label><input id="craftsmanship" inputmode="numeric" min="1" type="number"/></div><div class="field"><label for="control">加工精度</label><input id="control" inputmode="numeric" min="1" type="number"/></div>
+<div class="field"><label for="cp">CP</label><input id="cp" inputmode="numeric" min="0" type="number"/></div><div class="field"><label for="durability">耐久</label><input id="durability" inputmode="numeric" min="10" type="number"/></div>
+<div class="field"><label for="difficulty">工数</label><input id="difficulty" inputmode="numeric" min="1" type="number"/></div><div class="field"><label for="maxQuality">目標品質</label><input id="maxQuality" inputmode="numeric" min="0" type="number"/></div>
+<div class="field wide"><label for="initialQuality">初期品質</label><div class="initial-row"><input id="initialQuality" inputmode="numeric" min="0" type="number" value="0"/><div class="initial-quality-actions"><button aria-checked="true" aria-label="初期品質を計算に含める" aria-pressed="true" class="quality-switch" id="initialQualityToggle" role="switch" type="button"><span class="quality-switch-track"><span class="quality-switch-thumb"></span></span><span class="quality-switch-text">含める</span></button></div></div></div>
+</section><div class="checks"><label><input checked="" id="useTrainedEye" type="checkbox"/>条件内なら匠の早業を優先</label><label><input checked="" id="safeOnly" type="checkbox"/>成功率100%のみ</label></div>
+<button class="run primary" id="run" type="button">マクロ生成</button><div id="summary"></div><div aria-live="polite" class="result is-empty" id="result"></div><div class="copies" id="copies"></div>
+</section><section class="" id="skillsPanel">
+<div class="skill-toolbar"><button id="selectAllSkills" type="button">すべて選択</button><button id="clearAllSkills" type="button">すべて解除</button><div class="level-select-row"><input aria-label="スキル選択レベル" id="skillLevelLimit" max="100" min="1" type="number" value="100"/><button class="secondary" id="selectByLevel" type="button">指定レベル以下を選択</button></div><button class="secondary" id="selectCurrentLevel" type="button">現在レベル以下を選択</button></div>
+<div class="skill-group"><h2>通常クラフターアクション</h2><div class="skill-list" id="normalSkillList"></div></div>
+</section>
+</div>
+</section>
+</div>
+<div class="site-rights"><div class="site-rights__copyright">© SQUARE ENIX</div><div class="site-rights__note">本サイトはファイナルファンタジーXIVの非公式個人サイトです。</div></div>
+</main></div>
+<script src="../../assets/js/pages/crafter-macro.js"></script><script src="../../assets/js/portal.js"></script>
+</body></html>
