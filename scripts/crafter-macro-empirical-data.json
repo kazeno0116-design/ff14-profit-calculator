@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-08-11",
+  "purpose": "Machine-measured reference data kept separate from calculation code. Player stats are always stored with single-action results to prevent food/medicine effects from being mistaken for recipe modifiers.",
+  "supportedPolicy": {
+    "cosmicNormal": "Lv100 normal formula PD170/PM90/QD150/QM75. B/C/D/A and A star1-star4 measured consistent.",
+    "cosmicExpert": "Only exact machine-verified recipe tuples are supported. A star2 and later are intentionally outside final supported range."
+  },
+  "measurements": [
+    {
+      "id": "cosmic-normal-a-star1-4-account1",
+      "scope": "Cosmic normal A star1-star4",
+      "player": {"level":100,"craftsmanship":5624,"control":5487,"cp":627,"food":false,"medicine":false},
+      "observed": {"basicSynthesis":358,"basicTouch":300},
+      "profile": {"pd":170,"pm":90,"qd":150,"qm":75},
+      "status": "supported"
+    },
+    {
+      "id": "cosmic-normal-a-star1-4-account2",
+      "scope": "Cosmic normal A star1-star4",
+      "player": {"level":100,"craftsmanship":5778,"control":5517,"cp":660,"food":false,"medicine":false},
+      "observed": {"basicSynthesis":368,"basicTouch":302},
+      "profile": {"pd":170,"pm":90,"qd":150,"qm":75},
+      "status": "supported"
+    },
+    {
+      "id": "cosmic-expert-a-star1-7500-15000-70-account2",
+      "scope": "Cosmic A star1 high difficulty",
+      "recipe": {"difficulty":7500,"maxQuality":15000,"durability":70},
+      "player": {"level":100,"craftsmanship":5778,"control":5517,"cp":660,"food":false,"medicine":false},
+      "observed": {"basicSynthesis":368,"basicTouch":302},
+      "profile": {"pd":170,"pm":90,"qd":150,"qm":75},
+      "status": "supported-exact-recipe"
+    },
+    {
+      "id": "cosmic-expert-a-star2-2300-24700-70-account1",
+      "scope": "Cosmic A star2 high difficulty",
+      "recipe": {"difficulty":2300,"maxQuality":24700,"durability":70},
+      "player": {"level":100,"craftsmanship":5624,"control":5487,"cp":627,"food":false,"medicine":false},
+      "observed": {"basicSynthesis":376,"basicTouch":339},
+      "profileMatch": {"pd":180,"pm":100,"qd":180,"qm":100},
+      "status": "reference-only-unsupported"
+    },
+    {
+      "id": "cosmic-expert-a-star2-7800-14900-65-account2",
+      "scope": "Cosmic A star2 high difficulty",
+      "recipe": {"difficulty":7800,"maxQuality":14900,"durability":65},
+      "player": {"level":100,"craftsmanship":5778,"control":5517,"cp":660,"food":false,"medicine":false},
+      "observed": {"basicSynthesis":368,"basicTouch":302},
+      "profileMatch": {"pd":170,"pm":90,"qd":150,"qm":75},
+      "status": "reference-only-unsupported"
+    }
+  ]
+}
