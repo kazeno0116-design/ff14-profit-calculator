@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "purpose": "FF14 crafter macro generator regression baselines. A future implementation must not exceed maxActions/maxWaitSeconds when the same profile and stats are used. Runtime site code does not load this file.",
+  "playerDefaults": {
+    "level": 100,
+    "craftsmanship": 5778,
+    "control": 5514,
+    "cp": 729,
+    "initialQuality": 0
+  },
+  "cases": [
+    {
+      "id": "cosmic-a-star1-normal-4500-10500-80",
+      "label": "Cosmic A ★1 normal 4500/10500/80",
+      "recipe": {"type":"cosmic","rank":"A","stars":1,"expert":false,"difficulty":4500,"maxQuality":10500,"durability":80},
+      "expected": {"mustComplete":true,"mustReachMaxQuality":true,"maxActions":15,"maxWaitSeconds":41},
+      "verification": "v75 strategy comparison baseline"
+    },
+    {
+      "id": "cosmic-a-normal-8500-14000-80",
+      "label": "Cosmic A normal 8500/14000/80",
+      "recipe": {"type":"cosmic","rank":"A","stars":0,"expert":false,"difficulty":8500,"maxQuality":14000,"durability":80},
+      "expected": {"mustComplete":true,"mustReachMaxQuality":true,"maxActions":23,"maxWaitSeconds":62},
+      "verification": "v75 strategy comparison baseline"
+    },
+    {
+      "id": "cosmic-a-star1-expert-7500-15000-70",
+      "label": "Cosmic A ★1 expert 7500/15000/70",
+      "recipe": {"type":"cosmicExpert","rank":"A","stars":1,"expert":true,"difficulty":7500,"maxQuality":15000,"durability":70},
+      "expected": {"mustComplete":true,"mustReachMaxQuality":true,"maxActions":22,"maxWaitSeconds":59},
+      "verification": "v75 strategy comparison baseline"
+    },
+    {
+      "id": "cosmic-b-normal-9504-1200-25",
+      "label": "Cosmic B normal 9504/1200/25",
+      "recipe": {"type":"cosmic","rank":"B","stars":0,"expert":false,"difficulty":9504,"maxQuality":1200,"durability":25},
+      "expected": {"mustComplete":true,"mustReachMaxQuality":true,"maxActions":13},
+      "verification": "machine-success route uses Trained Perfection; Groundwork boundary regression"
+    },
+    {
+      "id": "cosmic-c-normal-4092-6000-40",
+      "label": "Cosmic C normal 4092/6000/40",
+      "recipe": {"type":"cosmic","rank":"C","stars":0,"expert":false,"difficulty":4092,"maxQuality":6000,"durability":40},
+      "expected": {"mustComplete":true,"mustReachMaxQuality":true,"maxActions":12},
+      "verification": "v73/v75 shortened baseline"
+    },
+    {
+      "id": "cosmic-d-normal-4422-6360-60",
+      "label": "Cosmic D normal 4422/6360/60",
+      "recipe": {"type":"cosmic","rank":"D","stars":0,"expert":false,"difficulty":4422,"maxQuality":6360,"durability":60},
+      "expected": {"mustComplete":true,"mustReachMaxQuality":true,"maxActions":12},
+      "verification": "v73/v75 baseline"
+    },
+    {
+      "id": "lv99-stuffed-pepper-6300-11400-80",
+      "label": "Lv99 Staffed Pepper 6300/11400/80",
+      "player": {"level":100,"craftsmanship":5778,"control":5517,"cp":633,"initialQuality":5700},
+      "recipe": {"type":"normal","recipeLevel":99,"difficulty":6300,"maxQuality":11400,"durability":80},
+      "expected": {"mustComplete":true,"mustReachMaxQuality":true,"maxActions":11,"maxWaitSeconds":31},
+      "verification": "machine-tested"
+    },
+    {
+      "id": "lv100-normal-6600-12000-80",
+      "label": "Lv100 normal 6600/12000/80",
+      "player": {"level":100,"craftsmanship":5778,"control":5517,"cp":633,"initialQuality":6000},
+      "recipe": {"type":"normal","recipeLevel":100,"stars":0,"difficulty":6600,"maxQuality":12000,"durability":80},
+      "expected": {"mustComplete":true,"mustReachMaxQuality":true,"maxActions":13,"maxWaitSeconds":37},
+      "verification": "machine-tested"
+    }
+  ]
+}
