@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+'use strict';
+const fs=require('fs'),path=require('path'),vm=require('vm'),{performance}=require('perf_hooks');
+const root=path.resolve(__dirname,'..'),src=fs.readFileSync(path.join(root,'assets/js/pages/crafter-macro.js'),'utf8');const st=src.indexOf("(()=>{'use strict';\nconst A=");const en=src.indexOf("$('run').addEventListener('click',run);",st);let core=src.slice(st,en)+"\nglobalThis.api={A,fresh,act,candidates,key,actionDurabilityCost,effectiveProgressEfficiency,bases,simulate,isGoal};\n})();";const c={console,performance,setTimeout,clearTimeout,Math,Number,Set,Map,JSON,String,Array,Object,Promise};c.globalThis=c;vm.createContext(c);vm.runInContext(core,c);const api=c.api;
+const ids=Object.keys(api.A).filter(id=>id!=='contentAction2'),all=new Set(ids);let checks=0,fail=0,trans=0;function ck(ok,msg){checks++;if(!ok){fail++;if(fail<40)console.log('FAIL',msg)}}
+function S(o={}){return{effectiveLevel:690,rlvl:690,lv:100,recipeLv:90,expert:false,craft:5644,control:5507,cp:642,dur:70,diff:10040,target:21200,initial:10600,pd:170,pm:90,qd:150,qm:75,safeOnly:true,cosmicAction:'none',cosmicSteadyUses:1,enabledSkills:new Set(all),eye:true,...o}}
+const buffKeys=['ven','inn','gs','man','wn','mm','fa','steady'];
+const dVals=[1,4,5,9,10,19,20,21,35,70],iqVals=[0,1,9,10],steps=[0,1,4],cpDeltas=[-1,0,1,50],lasts=['','basicTouch','standardTouch','observe','advancedTouch'];
+for(const id of ids){const a=api.A[id];
+ for(const d of dVals)for(const iq of iqVals)for(const step of steps)for(const delta of cpDeltas){const s=S({cp:Math.max(0,a.cp+delta)});let x=api.fresh(s);x.d=d;x.iq=iq;x.step=step;x.cp=s.cp;x.last=lasts[(d+iq+step+delta+10)%lasts.length];const y=api.act(x,id,s);if(y){trans++;ck(Number.isFinite(y.p)&&y.p>=0&&y.p<=s.diff,'p range '+id);ck(Number.isFinite(y.q)&&y.q>=0&&y.q<=s.target,'q range '+id);ck(y.cp>=0&&y.cp<=x.cp,'cp range '+id);ck(y.d>=0&&y.d<=s.dur,'dur range '+id);ck(y.iq>=0&&y.iq<=10,'iq range '+id);ck(y.step>=x.step&&y.step<=x.step+1,'step range '+id);ck(!y.done||y.p===s.diff,'done progress clamp '+id);}
+ }
+ // each single buff active + valid baseline
+ for(const buff of buffKeys){const s=S();let x=api.fresh(s);x.step=a.first?0:2;x.iq=a.needIQ10?10:5;x.last='basicTouch';x.b[buff]=buff==='steady'?3:2;if(id==='rapidSynthesis')x.b.steady=3;if(id==='trainedEye'){x.step=0;s.recipeLv=90;s.expert=false}if(id==='prudentTouch'||id==='prudentSynthesis')x.b.wn=0;const y=api.act(x,id,s);if(y){trans++;for(const k of buffKeys)ck(y.b[k]>=0,`buff nonnegative ${id}/${buff}/${k}`)}}
+}
+// Candidate generation is heuristic and may intentionally surface actions that act() rejects after full prerequisite checks.
+// Correctness is enforced in act(); reachability is checked below with purpose-built valid states.
+// Candidate reachability: every deterministic normal skill should appear in some purpose-built state.
+for(const id of ids){const s=S();let x=api.fresh(s);x.step=1;x.iq=10;x.cp=999;x.d=70;x.last='basicTouch';if(api.A[id].first)x.step=0;if(id==='rapidSynthesis')x.b.steady=3;if(id==='trainedEye'){x.step=0;s.eye=true;s.recipeLv=90}else if(id==='finalAppraisal'){x.p=s.diff-1-api.bases(s).p*2;x.q=0}else if(id==='observe'){x.cp=999;x.d=70}if(id==='prudentTouch'||id==='prudentSynthesis')x.b.wn=0;const cs=api.candidates(x,s);if(id==='trainedEye')ck(cs.includes(id),'trainedEye candidate reachability');else if(id==='finalAppraisal')ck(cs.includes(id),'finalAppraisal candidate reachability');else ck(cs.includes(id),`${id} candidate reachability`)}
+// Pairwise transitions from valid-ish initial setups: detect invalid numeric or negative state across action interactions.
+let pairs=0;for(const id1 of ids)for(const id2 of ids){const s=S({cp:999,dur:80,diff:999999,target:999999,initial:0});let x=api.fresh(s);x.iq=10;if(api.A[id1].first)x.step=0;else x.step=1;if(id1==='trainedEye'){s.recipeLv=90;s.expert=false;x.step=0}if(id1==='rapidSynthesis')x.b.steady=3;let y=api.act(x,id1,s);if(!y)continue;if(id2==='rapidSynthesis')y.b.steady=Math.max(1,y.b.steady);const z=api.act(y,id2,s);if(z){pairs++;ck(z.cp>=0&&z.d>=0&&z.iq>=0&&z.iq<=10&&z.step>=0,`pair ${id1}->${id2} invariant`)}}
+console.log(`EXHAUSTIVE_STATE actions=${ids.length} transitions=${trans} pairs=${pairs} checks=${checks} fail=${fail}`);process.exitCode=fail?1:0;
