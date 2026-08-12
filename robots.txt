@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kazeno0116-design.github.io/ff14-profit-calculator/sitemap.xml

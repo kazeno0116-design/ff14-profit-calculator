@@ -1,0 +1,317 @@
+{
+  "schemaVersion": 6,
+  "purpose": "V83 full-audit regression policy: Mastery-aware Lv1-100 action efficiencies, Lv51-99 UI access, dynamic Final Appraisal gating, state safety, formula checks, and known-route checks.",
+  "playerDefaults": {
+    "level": 100,
+    "craftsmanship": 5778,
+    "control": 5517,
+    "cp": 633,
+    "initialQuality": 0
+  },
+  "formulaChecks": [
+    {
+      "id": "lv50-formula",
+      "player": {
+        "level": 100,
+        "craftsmanship": 5778,
+        "control": 5517,
+        "cp": 633
+      },
+      "recipe": {
+        "type": "normal",
+        "recipeLevel": 50,
+        "difficulty": 180,
+        "maxQuality": 2000,
+        "durability": 80
+      },
+      "expected": {
+        "basicSynthesis": 1388,
+        "basicTouch": 1874
+      }
+    },
+    {
+      "id": "lv60-formula",
+      "player": {
+        "level": 100,
+        "craftsmanship": 5778,
+        "control": 5517,
+        "cp": 633
+      },
+      "recipe": {
+        "type": "normal",
+        "recipeLevel": 60,
+        "difficulty": 580,
+        "maxQuality": 2700,
+        "durability": 70
+      },
+      "expected": {
+        "basicSynthesis": 992,
+        "basicTouch": 1138
+      }
+    },
+    {
+      "id": "lv70-formula",
+      "player": {
+        "level": 100,
+        "craftsmanship": 5778,
+        "control": 5517,
+        "cp": 633
+      },
+      "recipe": {
+        "type": "normal",
+        "recipeLevel": 70,
+        "difficulty": 1080,
+        "maxQuality": 3600,
+        "durability": 80
+      },
+      "expected": {
+        "basicSynthesis": 772,
+        "basicTouch": 823
+      }
+    },
+    {
+      "id": "lv80-formula",
+      "player": {
+        "level": 100,
+        "craftsmanship": 5778,
+        "control": 5517,
+        "cp": 633
+      },
+      "recipe": {
+        "type": "normal",
+        "recipeLevel": 80,
+        "difficulty": 1780,
+        "maxQuality": 4600,
+        "durability": 80
+      },
+      "expected": {
+        "basicSynthesis": 632,
+        "basicTouch": 648
+      }
+    },
+    {
+      "id": "lv90-formula",
+      "player": {
+        "level": 100,
+        "craftsmanship": 5778,
+        "control": 5517,
+        "cp": 633
+      },
+      "recipe": {
+        "type": "normal",
+        "recipeLevel": 90,
+        "difficulty": 3500,
+        "maxQuality": 7200,
+        "durability": 80
+      },
+      "expected": {
+        "basicSynthesis": 535,
+        "basicTouch": 514
+      }
+    },
+    {
+      "id": "cosmic-normal-stats-5624-5487",
+      "player": {
+        "level": 100,
+        "craftsmanship": 5624,
+        "control": 5487,
+        "cp": 627
+      },
+      "recipe": {
+        "type": "cosmic",
+        "difficulty": 12300,
+        "maxQuality": 2500,
+        "durability": 60
+      },
+      "expected": {
+        "basicSynthesis": 358,
+        "basicTouch": 300
+      }
+    },
+    {
+      "id": "cosmic-normal-stats-5778-5517",
+      "player": {
+        "level": 100,
+        "craftsmanship": 5778,
+        "control": 5517,
+        "cp": 660
+      },
+      "recipe": {
+        "type": "cosmic",
+        "difficulty": 8500,
+        "maxQuality": 14000,
+        "durability": 80
+      },
+      "expected": {
+        "basicSynthesis": 368,
+        "basicTouch": 302
+      }
+    },
+    {
+      "id": "cosmic-a-star1-expert-7500-15000-70",
+      "player": {
+        "level": 100,
+        "craftsmanship": 5778,
+        "control": 5517,
+        "cp": 660
+      },
+      "recipe": {
+        "type": "cosmicExpert",
+        "difficulty": 7500,
+        "maxQuality": 15000,
+        "durability": 70
+      },
+      "expected": {
+        "basicSynthesis": 368,
+        "basicTouch": 302
+      }
+    },
+    {
+      "id": "cosmic-a-star1-expert-9900-20300-80",
+      "player": {
+        "level": 100,
+        "craftsmanship": 5778,
+        "control": 5517,
+        "cp": 660
+      },
+      "recipe": {
+        "type": "cosmicExpert",
+        "difficulty": 9900,
+        "maxQuality": 20300,
+        "durability": 80
+      },
+      "expected": {
+        "basicSynthesis": 368,
+        "basicTouch": 302
+      }
+    }
+  ],
+  "rejectionChecks": [],
+  "searchChecks": [
+    {
+      "id": "lv99-stuffed-pepper",
+      "player": {
+        "level": 100,
+        "craftsmanship": 5778,
+        "control": 5517,
+        "cp": 633,
+        "initialQuality": 5700
+      },
+      "recipe": {
+        "type": "normal",
+        "recipeLevel": 99,
+        "difficulty": 6300,
+        "maxQuality": 11400,
+        "durability": 80
+      },
+      "expected": {
+        "maxActions": 11
+      }
+    },
+    {
+      "id": "lv100-normal",
+      "player": {
+        "level": 100,
+        "craftsmanship": 5778,
+        "control": 5517,
+        "cp": 633,
+        "initialQuality": 6000
+      },
+      "recipe": {
+        "type": "normal",
+        "recipeLevel": 100,
+        "stars": 0,
+        "difficulty": 6600,
+        "maxQuality": 12000,
+        "durability": 80
+      },
+      "expected": {
+        "maxActions": 13
+      }
+    },
+    {
+      "id": "cosmic-b-groundwork-boundary",
+      "player": {
+        "level": 100,
+        "craftsmanship": 5778,
+        "control": 5517,
+        "cp": 633,
+        "initialQuality": 0
+      },
+      "recipe": {
+        "type": "cosmic",
+        "difficulty": 9504,
+        "maxQuality": 1200,
+        "durability": 25
+      },
+      "expected": {
+        "maxActions": 13
+      }
+    },
+    {
+      "id": "cosmic-c-known-shortest",
+      "player": {
+        "level": 100,
+        "craftsmanship": 5778,
+        "control": 5517,
+        "cp": 633,
+        "initialQuality": 0
+      },
+      "recipe": {
+        "type": "cosmic",
+        "difficulty": 4092,
+        "maxQuality": 6000,
+        "durability": 40
+      },
+      "beamWidth": 7000,
+      "expected": {
+        "maxActions": 12
+      }
+    },
+    {
+      "id": "cosmic-d-known-shortest",
+      "player": {
+        "level": 100,
+        "craftsmanship": 5778,
+        "control": 5517,
+        "cp": 633,
+        "initialQuality": 0
+      },
+      "recipe": {
+        "type": "cosmic",
+        "difficulty": 4422,
+        "maxQuality": 6360,
+        "durability": 60
+      },
+      "beamWidth": 7000,
+      "expected": {
+        "maxActions": 12
+      }
+    },
+    {
+      "id": "cosmic-a-cp757-known",
+      "player": {
+        "level": 100,
+        "craftsmanship": 5778,
+        "control": 5517,
+        "cp": 757,
+        "initialQuality": 0
+      },
+      "recipe": {
+        "type": "cosmic",
+        "difficulty": 8500,
+        "maxQuality": 14000,
+        "durability": 80
+      },
+      "beamWidth": 7000,
+      "expected": {
+        "maxActions": 22
+      }
+    }
+  ],
+  "notes": [
+    "cosmicExpert selection explicitly means A star1 high difficulty. Tuple-based rejection was removed because A star1 has multiple recipe tuples.",
+    "A star2+ must not be entered using cosmicExpert; those recipes remain outside supported scope due mixed measured profiles.",
+    "V81 uses safer dominance (same progress and durability only) and a 7000 default beam to preserve known short routes after reducing unsafe pruning."
+  ]
+}
