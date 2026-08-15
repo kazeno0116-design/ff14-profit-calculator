@@ -1,0 +1,19 @@
+{
+  "item_source": "https://raw.githubusercontent.com/xivapi/ffxiv-datamining/master/csv/ja/Item.csv",
+  "category_source": "https://raw.githubusercontent.com/xivapi/ffxiv-datamining/master/csv/ja/ItemUICategory.csv",
+  "item_source_sha256": "99fcb36bccc362774d2cab8c3c3ac101a0a309dfcf4d24d4ea29698363e1c4f2",
+  "category_source_sha256": "24e7c320e20c6e4b72f7080d64309a3a1cc7e569836cde6879a7806d3b2a8111",
+  "source_rows": 52801,
+  "indexed_items": 50773,
+  "skipped_rows": 2028,
+  "min_item_id": 1,
+  "max_item_id": 52712,
+  "category_count": 112,
+  "schema": [
+    "id",
+    "name_ja",
+    "category_ja",
+    "item_level",
+    "equip_level"
+  ]
+}
