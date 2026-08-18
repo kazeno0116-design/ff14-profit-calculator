@@ -134,8 +134,10 @@
 .article-section{scroll-margin-top:22px}.article-lead{font-size:.95rem;line-height:1.9;color:#585858;max-width:920px}.article-kicker{font-size:.68rem;font-weight:900;color:#777777;letter-spacing:.09em;text-transform:uppercase}
 .content-overview{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}.overview-main,.overview-side{border:1px solid var(--line);border-radius:14px;background:#ffffff;padding:20px}.overview-main h2,.overview-side h3{margin-top:0}
 .feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.feature-box{border:1px solid var(--line);border-radius:12px;background:#ffffff;padding:16px}.feature-box small{font-size:.66rem;font-weight:900;color:#787878}.feature-box h3{margin:7px 0}.feature-box p{font-size:.8rem;line-height:1.65;color:#6f6f6f;margin:0}
+.dungeon-reward-box{margin-top:14px}.dungeon-reward-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px 18px}.dungeon-reward-link{min-width:0;padding:9px 0;border-bottom:1px solid var(--line);color:inherit;font-size:.84rem;font-weight:700;line-height:1.55;overflow-wrap:anywhere;text-decoration:none}.dungeon-reward-link:hover{text-decoration:underline}.dungeon-reward-error{margin:0}
 .expansion-list{display:grid;gap:10px}.expansion-panel{border:1px solid var(--line);border-radius:13px;background:#ffffff;overflow:hidden}.expansion-toggle{width:100%;display:flex;justify-content:space-between;align-items:center;text-align:left;padding:16px 18px;border:0;background:#ffffff;cursor:pointer;font:inherit}.expansion-toggle strong{display:block}.expansion-toggle span{font-size:.75rem;color:#808080}.expansion-toggle::after{content:"＋";font-weight:900}.expansion-panel.is-open .expansion-toggle::after{content:"−"}.dungeon-list{display:none;border-top:1px solid var(--line);padding:8px 14px 14px}.expansion-panel.is-open .dungeon-list{display:block}.dungeon-row{display:grid;grid-template-columns:minmax(220px,1fr) minmax(220px,1fr) auto;gap:12px;align-items:center;padding:11px 5px;border-bottom:1px solid #f0f0f0}.dungeon-row:last-child{border-bottom:0}.dungeon-quest{font-size:.76rem;color:#7d7d7d}.dungeon-name-btn{border:0;background:none;text-align:left;padding:0;color:#454545;font-weight:900;cursor:pointer}.dungeon-name-btn:hover{text-decoration:underline;color:#666666}.dungeon-level{font-size:.7rem;font-weight:900;background:#f1f1f1;border-radius:999px;padding:5px 8px;color:#656565}.dungeon-detail{margin-top:16px;border:1px solid #c7c7c7;border-radius:14px;padding:18px;background:#fdfdfd}.dungeon-detail:empty{display:none}.drop-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.drop-item{border:1px solid var(--line);border-radius:9px;padding:10px;background:#ffffff;font-size:.78rem}.recipe-candidates{display:grid;gap:8px;margin-top:10px}.recipe-candidate{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 12px;border:1px solid var(--line);border-radius:9px;background:#ffffff;cursor:pointer}.recipe-candidate:hover{border-color:#a8a8a8}.recipe-candidate small{display:block;color:#818181;margin-top:3px}.content-intro-band{border-left:5px solid #a6a6a6;background:#fdfdfd;padding:18px 20px;border-radius:0 12px 12px 0;margin-bottom:16px}.content-intro-band h2{margin:0 0 8px}.content-intro-band p{margin:0;line-height:1.8;color:#636363}
 @media(max-width:900px){.article-nav{grid-template-columns:repeat(2,minmax(0,1fr))}.content-overview{grid-template-columns:1fr}.feature-grid,.drop-grid{grid-template-columns:1fr}.dungeon-row{grid-template-columns:1fr;gap:4px}}
+@media(max-width:600px){.dungeon-reward-list{grid-template-columns:minmax(0,1fr)}}
 .legendary-node-grid{margin-top:14px;max-height:560px;overflow:auto;padding-right:4px}.legend-count{display:inline-flex;align-items:center;padding:0 8px;color:#727272;font-size:.78rem;font-weight:800}
 
 /* ===== v12 Readability / Layout Rebalance ===== */
@@ -1781,6 +1783,9 @@ pre{
   gap:16px;
 }
 .detail-head-row>div{min-width:0}
+.dungeon-detail-actions{display:flex;align-items:center;justify-content:flex-end;gap:9px;flex:0 0 auto}
+.dungeon-guide-link{display:inline-flex;align-items:center;justify-content:center;min-height:39px;padding:9px 13px;border:1px solid #303030;border-radius:9px;background:#303030;color:#ffffff;text-decoration:none;font-size:.82rem;font-weight:900;white-space:nowrap}
+.dungeon-guide-link:hover{background:#111111;border-color:#111111;color:#ffffff;text-decoration:none}
 .detail-close-btn{
   flex:0 0 auto;
   min-width:78px;
@@ -1916,7 +1921,7 @@ pre{
   .detail-head-row{
     flex-direction:column;
   }
-  .detail-close-btn{align-self:flex-end}
+  .dungeon-detail-actions{align-self:flex-end;max-width:100%}
 }
 
 .duty-direct-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:10px;margin-top:14px}.duty-direct-list .tool-btn{width:100%;min-width:0;white-space:normal;text-align:left;overflow-wrap:break-word}
@@ -2952,6 +2957,11 @@ body.section-dark-ui .dungeon-row{border-bottom-color:#3c3c3c!important}
 body.section-dark-ui .dungeon-name-btn{color:#f0f0f0!important}
 body.section-dark-ui .dungeon-name-btn:hover{color:#ffffff!important}
 body.section-dark-ui .dungeon-level{background:#eeeeee!important;color:#202020!important}
+body.section-dark-ui .dungeon-reward-box{background:#ffffff!important;border-color:#d5d5d5!important;color:#1f1f1f!important}
+body.section-dark-ui .dungeon-reward-box h3{color:#111111!important}
+body.section-dark-ui .dungeon-reward-box small{color:#5f5f5f!important}
+body.section-dark-ui .dungeon-reward-link{color:#242424!important;border-bottom-color:#dddddd!important}
+body.section-dark-ui .dungeon-reward-link:hover{color:#000000!important}
 body.section-dark-ui .timed-control-panel{
   padding:16px;border:2px solid rgba(255,255,255,.52);border-radius:14px;background:#242424;
 }
@@ -2983,6 +2993,8 @@ body.section-dark-ui .article-card a:not(.tool-btn):hover,
 body.section-dark-ui .toolbox a:not(.tool-btn):hover,
 body.section-dark-ui .official-link-card:hover,
 body.section-dark-ui .fish-direct-head a:hover{color:#ffffff!important}
+body.section-dark-ui .article-card .dungeon-reward-box a.dungeon-reward-link:not(.tool-btn){color:#242424!important}
+body.section-dark-ui .article-card .dungeon-reward-box a.dungeon-reward-link:not(.tool-btn):hover{color:#000000!important}
 @media(max-width:760px){
   body.section-dark-ui .timed-control-panel{padding:13px}
   body.section-dark-ui .article-card,
