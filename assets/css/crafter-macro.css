@@ -912,6 +912,22 @@ body.section-dark-ui .macro-generator-inline .quality-toggle.off{
   background:#e7e7e7!important;
   color:#4a4a4a!important;
 }
+body.section-dark-ui .macro-generator-inline .cosmic-action-toggle,
+body.section-dark-ui .macro-generator-inline .cosmic-action-copy strong,
+body.section-dark-ui .macro-generator-inline .cosmic-action-copy small,
+body.section-dark-ui .macro-generator-inline .cosmic-steady-uses,
+body.section-dark-ui .macro-generator-inline .cosmic-steady-uses label{
+  color:#242424!important;
+}
+body.section-dark-ui .macro-generator-inline .field>.note .error{
+  color:#eeeeee!important;
+}
+body.section-dark-ui .macro-generator-inline .result .error,
+body.section-dark-ui .macro-generator-inline .result .skill-note,
+body.section-dark-ui .macro-generator-inline .summary .error,
+body.section-dark-ui .macro-generator-inline .summary .skill-note{
+  color:#434343!important;
+}
 body.section-dark-ui .macro-generator-inline .skill-toolbar,
 body.section-dark-ui .macro-generator-inline .skill-group,
 body.section-dark-ui .macro-skill-details{
