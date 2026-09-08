@@ -18,7 +18,7 @@
 <meta content="ja_JP" property="og:locale"/>
 <meta content="FINAL FANTASY XIV 個人用ツールポータル" property="og:site_name"/>
 <meta content="パーティーリスト対象スキル用マクロ作成ツール" property="og:title"/>
-<meta content="迅速魔→レイズのような、事前アクション＋パーティー番号指定アクションのマクロを一括生成します。" property="og:description"/>
+<meta content="事前アクション＋パーティー番号指定アクションの連続マクロを一括生成します。" property="og:description"/>
 <meta content="https://kazeno0116-design.github.io/ff14-profit-calculator/tools/party-target-macro/" property="og:url"/>
 <meta content="https://kazeno0116-design.github.io/ff14-profit-calculator/assets/branding/ogp.png" property="og:image"/>
 <meta content="summary_large_image" name="twitter:card"/>
@@ -45,16 +45,13 @@
 <section class="hero">
 <div class="eyebrow">PARTY TARGET MACRO</div>
 <h1>パーティーリスト対象スキル用<br class="party-target-title-break"/>マクロ作成ツール</h1>
-<p>単体の対象指定マクロに加えて、「迅速魔 → パーティーリスト○番にレイズ」のような連続マクロも作成できます。</p>
+<p>単体の対象指定マクロに加えて、事前アクションのあとにパーティーリスト指定アクションを実行する連続マクロも作成できます。</p>
 </section>
 <div class="content">
 <section class="article-card party-target-builder">
 <div class="party-target-heading">
 <div><h2>マクロを作る</h2><p>事前アクションは任意です。空欄なら従来どおり <code>&lt;1&gt;</code> ～ <code>&lt;8&gt;</code> を直接指定する単体マクロを生成します。</p></div>
 <span class="party-target-badge">PvE / PARTY</span>
-</div>
-<div class="tool-actions party-target-actions">
-<button class="tool-btn" id="swiftRaisePreset" type="button">迅速魔 → レイズをセット</button>
 </div>
 <div class="tool-form party-target-form">
 <div class="tool-field wide">
@@ -116,14 +113,14 @@
 <section class="article-card party-target-guide">
 <h2>使い方</h2>
 <ol>
-<li>「迅速魔 → レイズ」のように前処理が必要なら事前アクションを入力します。不要なら空欄で構いません。</li>
+<li>前処理が必要なら事前アクションを入力します。不要なら空欄で構いません。</li>
 <li>対象指定アクションを入力し、マクロを作りたいパーティーリスト番号を選びます。</li>
 <li>生成後、各番号の「コピー」を押し、FF14のユーザーマクロへ貼り付けます。</li>
 <li>ホットバーへ配置し、実戦投入前に対象と発動タイミングを確認してください。</li>
 </ol>
 <div class="party-target-note">
-<strong>迅速魔 → レイズの例</strong>
-<p><code>/ac "迅速魔"</code> → <code>/wait 1</code> → <code>/ac "レイズ" &lt;4&gt;</code> のように生成します。待機時間は0～3秒から変更できます。</p>
+<strong>連続マクロの例</strong>
+<p><code>/ac "迅速魔"</code> → <code>/wait 1</code> → <code>/ac "レイズ" &lt;4&gt;</code> のように生成できます。待機時間は0～3秒から変更できます。</p>
 </div>
 <div class="party-target-note">
 <strong>補足</strong>
