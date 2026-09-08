@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>パーティーリスト対象スキル用マクロ作成ツール | FINAL FANTASY XIV 個人用ツールポータル</title>
+<meta content="アクション名とパーティーリスト番号を選び、FF14で使える対象指定マクロをまとめて生成します。" name="description"/>
+<link href="../../assets/css/portal.css" rel="stylesheet"/>
+<link href="../../assets/css/party-target-macro.css" rel="stylesheet"/>
+<link href="../../assets/branding/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="../../assets/branding/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="../../assets/branding/favicon-16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="../../assets/branding/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="../../site.webmanifest" rel="manifest"/>
+<link href="https://kazeno0116-design.github.io/ff14-profit-calculator/tools/party-target-macro/" rel="canonical"/>
+<meta content="#0c111b" name="theme-color"/>
+<meta content="website" property="og:type"/>
+<meta content="ja_JP" property="og:locale"/>
+<meta content="FINAL FANTASY XIV 個人用ツールポータル" property="og:site_name"/>
+<meta content="パーティーリスト対象スキル用マクロ作成ツール" property="og:title"/>
+<meta content="パーティーリスト番号ごとの対象指定マクロを一括生成します。" property="og:description"/>
+<meta content="https://kazeno0116-design.github.io/ff14-profit-calculator/tools/party-target-macro/" property="og:url"/>
+<meta content="https://kazeno0116-design.github.io/ff14-profit-calculator/assets/branding/ogp.png" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+</head>
+<body class="section-dark-ui">
+<div class="layout">
+<aside class="sidebar">
+<div class="brand"><strong>FINAL FANTASY XIV</strong><span>個人用ツールポータル</span></div>
+<nav class="nav">
+<p class="nav-label">PORTAL</p>
+<a href="../../index.html"><span class="nav-icon">◆</span><span>ホーム</span></a>
+<a href="../../beginner/index.html"><span class="nav-icon">◆</span><span>初心者向け情報</span></a>
+<p class="nav-label">CATEGORY</p>
+<a href="../../battle/index.html"><span class="nav-icon">◆</span><span>戦闘</span></a>
+<a href="../../crafter/index.html"><span class="nav-icon">◆</span><span>クラフター</span></a>
+<a href="../../gatherer/index.html"><span class="nav-icon">◆</span><span>ギャザラー</span></a>
+<a href="../../other/index.html"><span class="nav-icon">＋</span><span>その他</span></a>
+<p class="nav-label">TOOLS</p>
+<a class="active" href="../index.html"><span class="nav-icon">⚒</span><span>効率化ツール一覧</span></a>
+</nav>
+</aside>
+<main class="main">
+<div class="crumb">ホーム / 効率化ツール一覧 / パーティーリスト対象スキル用マクロ作成ツール</div>
+<section class="hero">
+<div class="eyebrow">PARTY TARGET MACRO</div>
+<h1>パーティーリスト対象スキル用<br class="party-target-title-break"/>マクロ作成ツール</h1>
+<p>アクション名を入力し、対象にしたいパーティーリスト番号を選ぶだけで、番号ごとのマクロをまとめて作成できます。</p>
+</section>
+<div class="content">
+<section class="article-card party-target-builder">
+<div class="party-target-heading">
+<div><h2>マクロを作る</h2><p>パーティーリストの <code>&lt;1&gt;</code> ～ <code>&lt;8&gt;</code> を直接指定するマクロを生成します。</p></div>
+<span class="party-target-badge">PvE / PARTY</span>
+</div>
+<div class="tool-form party-target-form">
+<div class="tool-field wide">
+<label for="actionName">アクション名</label>
+<input id="actionName" type="text" autocomplete="off" placeholder="例：ブラックナイト / アクアヴェール / 救出"/>
+<small>ゲーム内のアクション名をそのまま入力してください。</small>
+</div>
+<div class="tool-field wide">
+<label>生成するパーティーリスト番号</label>
+<div class="party-target-slots" id="partySlots">
+<label><input type="checkbox" value="1"/><span><strong>1</strong><small>自分</small></span></label>
+<label><input type="checkbox" value="2" checked/><span><strong>2</strong><small>PT 2</small></span></label>
+<label><input type="checkbox" value="3" checked/><span><strong>3</strong><small>PT 3</small></span></label>
+<label><input type="checkbox" value="4" checked/><span><strong>4</strong><small>PT 4</small></span></label>
+<label><input type="checkbox" value="5" checked/><span><strong>5</strong><small>PT 5</small></span></label>
+<label><input type="checkbox" value="6" checked/><span><strong>6</strong><small>PT 6</small></span></label>
+<label><input type="checkbox" value="7" checked/><span><strong>7</strong><small>PT 7</small></span></label>
+<label><input type="checkbox" value="8" checked/><span><strong>8</strong><small>PT 8</small></span></label>
+</div>
+</div>
+<div class="tool-field">
+<label for="repeatCount">アクション行の繰り返し</label>
+<select id="repeatCount">
+<option value="1">1回（最小構成）</option>
+<option value="3">3回</option>
+<option value="5">5回</option>
+<option value="13" selected>13回（15行上限まで使用）</option>
+</select>
+</div>
+<div class="tool-field party-target-options">
+<label>追加設定</label>
+<label class="party-target-toggle"><input id="includeErrorOff" type="checkbox" checked/><span>/merror off を入れる</span></label>
+<label class="party-target-toggle"><input id="includeIcon" type="checkbox" checked/><span>/micon を入れる</span></label>
+</div>
+</div>
+<div class="tool-actions party-target-actions">
+<button class="tool-btn primary" id="generateMacros" type="button">マクロを生成する</button>
+<button class="tool-btn" id="selectAllSlots" type="button">1～8をすべて選択</button>
+<button class="tool-btn" id="clearSlots" type="button">選択をクリア</button>
+</div>
+<div class="party-target-message" id="macroMessage" role="status" aria-live="polite">アクション名を入力して「マクロを生成する」を押してください。</div>
+<div class="party-target-results" id="macroResults"></div>
+</section>
+<section class="article-card party-target-guide">
+<h2>使い方</h2>
+<ol>
+<li>ゲーム内で使いたいアクション名を入力します。</li>
+<li>マクロを作りたいパーティーリスト番号を選びます。</li>
+<li>生成後、各番号の「コピー」を押し、FF14のユーザーマクロへ貼り付けます。</li>
+<li>ホットバーへ配置し、実戦投入前に対象と発動を確認してください。</li>
+</ol>
+<div class="party-target-note">
+<strong>補足</strong>
+<p><code>&lt;1&gt;～&lt;8&gt;</code> はパーティーリスト上からの順番を指定します。アクションによっては対象指定できないものがあります。また、マクロ化したアクションは通常のアクション操作と挙動が異なるため、用途に応じて使い分けてください。</p>
+</div>
+</section>
+</div>
+<div class="site-rights"><div class="site-rights__copyright">© SQUARE ENIX</div><div class="site-rights__note">本サイトはファイナルファンタジーXIVの非公式個人サイトです。</div></div>
+</main>
+</div>
+<script src="../../assets/js/portal.js"></script>
+<script src="../../assets/js/pages/party-target-macro.js"></script>
+</body>
+</html>
