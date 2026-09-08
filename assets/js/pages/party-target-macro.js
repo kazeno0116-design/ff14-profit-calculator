@@ -6,7 +6,6 @@
   const includeErrorOff = document.getElementById('includeErrorOff');
   const includeIcon = document.getElementById('includeIcon');
   const generateButton = document.getElementById('generateMacros');
-  const presetButton = document.getElementById('swiftRaisePreset');
   const selectAllButton = document.getElementById('selectAllSlots');
   const clearButton = document.getElementById('clearSlots');
   const message = document.getElementById('macroMessage');
@@ -115,14 +114,6 @@
   });
   preActionName?.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') generate();
-  });
-
-  presetButton?.addEventListener('click', () => {
-    preActionName.value = '迅速魔';
-    actionName.value = 'レイズ';
-    if (preWaitSeconds) preWaitSeconds.value = '1';
-    message.textContent = '「迅速魔 → レイズ」をセットしました。対象番号を選んで生成してください。';
-    actionName.focus();
   });
 
   selectAllButton.addEventListener('click', () => {
