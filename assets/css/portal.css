@@ -2821,6 +2821,9 @@ body.category-index .goal-card .goal-label{
 }
 body.category-index .goal-card h3{
   color:#ffffff!important;
+  word-break:normal;
+  overflow-wrap:anywhere;
+  white-space:normal;
 }
 body.category-index .goal-card p{
   color:#c6c6c6!important;

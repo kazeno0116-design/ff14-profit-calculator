@@ -29,9 +29,8 @@
     if (includeErrorOff.checked) lines.push('/merror off');
 
     if (preAction) {
-      lines.push(`/ac "${preAction}"`);
       const wait = Math.max(0, Math.min(3, Number(preWaitSeconds?.value) || 0));
-      if (wait > 0) lines.push(`/wait ${wait}`);
+      lines.push(`/ac "${preAction}"${wait > 0 ? ` <wait.${wait}>` : ''}`);
     }
 
     const requested = Math.max(1, Math.min(13, Number(repeatCount.value) || 1));
