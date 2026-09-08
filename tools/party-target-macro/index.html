@@ -62,8 +62,8 @@
 <div class="tool-field">
 <label for="preWaitSeconds">事前アクション後の待機</label>
 <select id="preWaitSeconds">
-<option value="0">待機なし</option>
-<option value="1" selected>1秒</option>
+<option value="0" selected>待機なし</option>
+<option value="1">1秒</option>
 <option value="2">2秒</option>
 <option value="3">3秒</option>
 </select>
@@ -90,10 +90,10 @@
 <div class="tool-field">
 <label for="repeatCount">対象アクション行の繰り返し</label>
 <select id="repeatCount">
-<option value="1">1回（最小構成）</option>
+<option value="1" selected>1回（最小構成）</option>
 <option value="3">3回</option>
 <option value="5">5回</option>
-<option value="13" selected>最大まで使用</option>
+<option value="13">最大まで使用</option>
 </select>
 </div>
 <div class="tool-field party-target-options">
@@ -120,7 +120,7 @@
 </ol>
 <div class="party-target-note">
 <strong>連続マクロの例</strong>
-<p><code>/ac "迅速魔"</code> → <code>/wait 1</code> → <code>/ac "レイズ" &lt;4&gt;</code> のように生成できます。待機時間は0～3秒から変更できます。</p>
+<p><code>/ac "迅速魔"</code> → <code>/ac "レイズ" &lt;4&gt;</code> のように生成できます。必要な場合のみ待機時間を0～3秒から設定できます。</p>
 </div>
 <div class="party-target-note">
 <strong>補足</strong>
