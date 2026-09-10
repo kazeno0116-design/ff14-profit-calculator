@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>パーティーリスト対象スキル用マクロ作成ツール | FINAL FANTASY XIV 個人用ツールポータル</title>
-<meta content="事前アクションと対象アクション、パーティーリスト番号を選び、FF14で使える連続マクロをまとめて生成します。" name="description"/>
+<meta content="複数のアクションを自由に並べ、パーティーリスト番号を対象にしたFF14用マクロを作成します。" name="description"/>
 <link href="../../assets/css/portal.css" rel="stylesheet"/>
 <link href="../../assets/css/party-target-macro.css" rel="stylesheet"/>
 <link href="../../assets/branding/favicon.svg" rel="icon" type="image/svg+xml"/>
@@ -18,7 +18,7 @@
 <meta content="ja_JP" property="og:locale"/>
 <meta content="FINAL FANTASY XIV 個人用ツールポータル" property="og:site_name"/>
 <meta content="パーティーリスト対象スキル用マクロ作成ツール" property="og:title"/>
-<meta content="事前アクション＋パーティー番号指定アクションの連続マクロを一括生成します。" property="og:description"/>
+<meta content="複数アクションを自由に追加して、対象指定付きの連続マクロを作成できます。" property="og:description"/>
 <meta content="https://kazeno0116-design.github.io/ff14-profit-calculator/tools/party-target-macro/" property="og:url"/>
 <meta content="https://kazeno0116-design.github.io/ff14-profit-calculator/assets/branding/ogp.png" property="og:image"/>
 <meta content="summary_large_image" name="twitter:card"/>
@@ -45,36 +45,21 @@
 <section class="hero">
 <div class="eyebrow">PARTY TARGET MACRO</div>
 <h1>パーティーリスト対象スキル用<br class="party-target-title-break"/>マクロ作成ツール</h1>
-<p>単体の対象指定マクロに加えて、事前アクションのあとにパーティーリスト指定アクションを実行する連続マクロも作成できます。</p>
+<p>複数のアクションを好きな順番で追加し、パーティーリスト対象を含む連続マクロを作成できます。</p>
 </section>
 <div class="content">
 <section class="article-card party-target-builder">
 <div class="party-target-heading">
-<div><h2>マクロを作る</h2><p>事前アクションは任意です。空欄なら従来どおり <code>&lt;1&gt;</code> ～ <code>&lt;8&gt;</code> を直接指定する単体マクロを生成します。</p></div>
+<div><h2>マクロを作る</h2><p>アクションを必要な数だけ追加してください。各行ごとに対象と待機時間を設定できます。</p></div>
 <span class="party-target-badge">PvE / PARTY</span>
 </div>
-<div class="tool-form party-target-form">
-<div class="tool-field wide">
-<label for="preActionName">事前アクション（任意）</label>
-<input id="preActionName" type="text" autocomplete="off" placeholder="例：迅速魔"/>
-<small>対象指定アクションより先に自分が使用するアクション。不要なら空欄にしてください。</small>
+
+<div id="actionRows" class="party-action-rows" aria-label="アクション一覧"></div>
+<div class="tool-actions party-target-actions compact-actions">
+<button class="tool-btn" id="addActionRow" type="button">＋ アクションを追加</button>
 </div>
-<div class="tool-field">
-<label for="preWaitSeconds">事前アクション後の待機</label>
-<select id="preWaitSeconds">
-<option value="0" selected>待機なし</option>
-<option value="1">1秒</option>
-<option value="2">2秒</option>
-<option value="3">3秒</option>
-</select>
-<small>事前アクションがあり、待機時間が1秒以上の場合、同じ行の末尾に <code>&lt;wait.1&gt;</code> などを付けます。</small>
-</div>
-<div class="tool-field wide">
-<label for="actionName">対象指定アクション</label>
-<input id="actionName" type="text" autocomplete="off" placeholder="例：レイズ / ブラックナイト / アクアヴェール / 救出"/>
-<small>ゲーム内のアクション名をそのまま入力してください。</small>
-</div>
-<div class="tool-field wide">
+
+<div class="tool-field wide party-target-slot-field">
 <label>生成するパーティーリスト番号</label>
 <div class="party-target-slots" id="partySlots">
 <label><input type="checkbox" value="1"/><span><strong>1</strong><small>自分</small></span></label>
@@ -87,44 +72,40 @@
 <label><input type="checkbox" value="8" checked/><span><strong>8</strong><small>PT 8</small></span></label>
 </div>
 </div>
-<div class="tool-field">
-<label for="repeatCount">対象アクション行の繰り返し</label>
-<select id="repeatCount">
-<option value="1" selected>1回（最小構成）</option>
-<option value="3">3回</option>
-<option value="5">5回</option>
-<option value="13">最大まで使用</option>
-</select>
-</div>
+
+<div class="tool-form party-target-form party-target-bottom-options">
 <div class="tool-field party-target-options">
 <label>追加設定</label>
 <label class="party-target-toggle"><input id="includeErrorOff" type="checkbox" checked/><span>/merror off を入れる</span></label>
 <label class="party-target-toggle"><input id="includeIcon" type="checkbox" checked/><span>/micon を入れる</span></label>
 </div>
 </div>
+
 <div class="tool-actions party-target-actions">
 <button class="tool-btn primary" id="generateMacros" type="button">マクロを生成する</button>
 <button class="tool-btn" id="selectAllSlots" type="button">1～8をすべて選択</button>
 <button class="tool-btn" id="clearSlots" type="button">選択をクリア</button>
 </div>
-<div class="party-target-message" id="macroMessage" role="status" aria-live="polite">対象指定アクションを入力して「マクロを生成する」を押してください。</div>
+<div class="party-target-message" id="macroMessage" role="status" aria-live="polite">アクションを入力して「マクロを生成する」を押してください。</div>
 <div class="party-target-results" id="macroResults"></div>
 </section>
+
 <section class="article-card party-target-guide">
 <h2>使い方</h2>
 <ol>
-<li>前処理が必要なら事前アクションを入力します。不要なら空欄で構いません。</li>
-<li>対象指定アクションを入力し、マクロを作りたいパーティーリスト番号を選びます。</li>
-<li>生成後、各番号の「コピー」を押し、FF14のユーザーマクロへ貼り付けます。</li>
-<li>ホットバーへ配置し、実戦投入前に対象と発動タイミングを確認してください。</li>
+<li>各行にアクション名を入力します。</li>
+<li>その行を「自分に使用」するか「選択したパーティー番号に使用」するか選びます。</li>
+<li>必要なら待機時間を設定します。待機は同じ行の末尾に <code>&lt;wait.1&gt;</code> の形で入ります。</li>
+<li>「アクションを追加」で3種類以上の連続マクロにもできます。</li>
+<li>対象番号を選んで生成し、番号ごとのマクロをコピーします。</li>
 </ol>
 <div class="party-target-note">
-<strong>連続マクロの例</strong>
-<p><code>/ac "迅速魔"</code> → <code>/ac "レイズ" &lt;4&gt;</code> のように生成できます。必要な場合のみ待機時間を0～3秒から設定できます。</p>
+<strong>例</strong>
+<p><code>/ac "迅速魔"</code><br/><code>/ac "レイズ" &lt;4&gt;</code><br/><code>/ac "アクアヴェール" &lt;4&gt; &lt;wait.1&gt;</code> のように、複数種類を順番に並べられます。</p>
 </div>
 <div class="party-target-note">
 <strong>補足</strong>
-<p><code>&lt;1&gt;～&lt;8&gt;</code> はパーティーリスト上からの順番を指定します。アクションによっては対象指定できないものがあります。また、マクロ化したアクションは通常のアクション操作と挙動が異なるため、用途に応じて使い分けてください。</p>
+<p><code>&lt;1&gt;～&lt;8&gt;</code> はパーティーリスト上からの順番です。15行を超える構成は生成できません。</p>
 </div>
 </section>
 </div>
