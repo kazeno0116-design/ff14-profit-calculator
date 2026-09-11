@@ -1,7 +1,14 @@
 {
-  "updated_at": "2026-09-10T20:18:58+09:00",
+  "updated_at": "2026-09-11T20:20:22+09:00",
   "source": "https://jp.finalfantasyxiv.com/lodestone/news/",
   "items": [
+    {
+      "date": "2027.01.08",
+      "badge": "TOPIC",
+      "title": "「黄金秘話」第7話公開！",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/57a0d7ec5a7e75c3557b580c08c731e1b55fc556",
+      "summary": "「黄金秘話」第7話公開！"
+    },
     {
       "date": "2027.01.08",
       "badge": "TOPIC",
@@ -50,13 +57,6 @@
       "title": "東京ゲームショウ2026 出展情報&会場グッズ販売情報！",
       "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/ae0caabcfeb32c5f503100419189d7de93f70a78",
       "summary": "東京ゲームショウ2026 出展情報&会場グッズ販売情報！"
-    },
-    {
-      "date": "2027.01.08",
-      "badge": "PATCH",
-      "title": "パッチ7.5「彼方に至る路」特設サイト更新！",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/cb3522e3551a4e4af0eb46c88ba904b64d718f7a",
-      "summary": "パッチ7.5「彼方に至る路」特設サイト更新！"
     }
   ]
 }
