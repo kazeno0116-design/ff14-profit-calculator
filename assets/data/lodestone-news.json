@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-09-11T20:20:22+09:00",
+  "updated_at": "2026-09-14T21:45:38+09:00",
   "source": "https://jp.finalfantasyxiv.com/lodestone/news/",
   "items": [
-    {
-      "date": "2027.01.08",
-      "badge": "TOPIC",
-      "title": "「黄金秘話」第7話公開！",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/57a0d7ec5a7e75c3557b580c08c731e1b55fc556",
-      "summary": "「黄金秘話」第7話公開！"
-    },
     {
       "date": "2027.01.08",
       "badge": "TOPIC",
@@ -17,46 +10,53 @@
       "summary": "コレクションカードシリーズ 「スクウェア・エニックス ギャラリーカード」 第1弾 登場！"
     },
     {
-      "date": "2027.01.08",
+      "date": "2026.09.14",
+      "badge": "TOPIC",
+      "title": "コレクターズエディション デジタルアップグレード 50%OFFセール実施中！",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/274d7fd8aeb46865562388bc625c6d01dba9e76e",
+      "summary": "コレクターズエディション デジタルアップグレード 50%OFFセール実施中！"
+    },
+    {
+      "date": "2026.09.14",
+      "badge": "TOPIC",
+      "title": "「黄金秘話」第7話公開！",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/57a0d7ec5a7e75c3557b580c08c731e1b55fc556",
+      "summary": "「黄金秘話」第7話公開！"
+    },
+    {
+      "date": "2026.09.14",
       "badge": "TOPIC",
       "title": "PvPのシリーズ11が終了し、シリーズ12が始まりました！",
       "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/d74451563cd67055d6f653e608e33cf65fe1ea13",
       "summary": "PvPのシリーズ11が終了し、シリーズ12が始まりました！"
     },
     {
-      "date": "2027.01.08",
+      "date": "2026.09.14",
       "badge": "PATCH",
       "title": "7.56パッチノート公開！",
       "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/67caf3b6b5e0ee7569afb5ec8bdcae5113f9df49",
       "summary": "7.56パッチノート公開！"
     },
     {
-      "date": "2027.01.08",
+      "date": "2026.09.14",
       "badge": "EVENT",
       "title": "「ファンフェスティバル 2026 in 東京」ライブビューイング開催決定！ チケット販売は9月11日（金）から",
       "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/35d881d22728101355344b8a775e1560684e0bab",
       "summary": "「ファンフェスティバル 2026 in 東京」ライブビューイング開催決定！ チケット販売は9月11日（金）から"
     },
     {
-      "date": "2027.01.08",
+      "date": "2026.09.14",
       "badge": "TOPIC",
       "title": "「黄金秘話」第6話公開！",
       "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/a4ae60b835f3334555703c6b0fd3eae3b2fb4e1d",
       "summary": "「黄金秘話」第6話公開！"
     },
     {
-      "date": "2027.01.08",
+      "date": "2026.09.14",
       "badge": "TOPIC",
       "title": "定額制聴き放題サービスで「黄金のレガシー」サントラ第1弾 配信中！",
       "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/4bdf607ce27e18cf51f06c3421062a028e2da30c",
       "summary": "定額制聴き放題サービスで「黄金のレガシー」サントラ第1弾 配信中！"
-    },
-    {
-      "date": "2027.01.08",
-      "badge": "TOPIC",
-      "title": "東京ゲームショウ2026 出展情報&会場グッズ販売情報！",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/ae0caabcfeb32c5f503100419189d7de93f70a78",
-      "summary": "東京ゲームショウ2026 出展情報&会場グッズ販売情報！"
     }
   ]
 }
