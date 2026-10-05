@@ -1,13 +1,20 @@
 {
-  "updated_at": "2026-10-05T03:38:26+09:00",
+  "updated_at": "2026-10-05T23:36:26+09:00",
   "source": "https://jp.finalfantasyxiv.com/lodestone/news/",
   "items": [
     {
-      "date": "2026.10.12",
+      "date": "2026.10.05",
       "badge": "TOPIC",
-      "title": "「リージョン内フリーマッチング」 日本データセンターに先行実装！",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/c071dcc63941aa6ff7e81eeee36dcb203044255c",
-      "summary": "「リージョン内フリーマッチング」 日本データセンターに先行実装！"
+      "title": "日本ファンフェス「吉田Pの一問一答タイムアタック！」 質問大募集！",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/97e3f71f76b32c341872d3090a29c04ad6f35e38",
+      "summary": "日本ファンフェス「吉田Pの一問一答タイムアタック！」 質問大募集！"
+    },
+    {
+      "date": "2026.10.05",
+      "badge": "TOPIC",
+      "title": "「ファンフェスティバル 2026 in 東京」最新情報公開 第1弾！",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/64dc9432bb16f88d7eb1edba5d926f9fc64cc319",
+      "summary": "「ファンフェスティバル 2026 in 東京」最新情報公開 第1弾！"
     },
     {
       "date": "2026.10.05",
@@ -50,13 +57,6 @@
       "title": "闘獣練ランキングの開始日について",
       "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/1aaeab96c1142dcc16256af92bb8a7149354b524",
       "summary": "闘獣練ランキングの開始日について"
-    },
-    {
-      "date": "2026.10.05",
-      "badge": "NOTICE",
-      "title": "エターナルセレモニーの予約／実施ができない時間について -",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/f5b6b0d6f2bd9efdeb4dbd6b2ba90383b136673f",
-      "summary": "エターナルセレモニーの予約／実施ができない時間について"
     }
   ]
 }
