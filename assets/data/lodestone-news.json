@@ -1,14 +1,7 @@
 {
-  "updated_at": "2026-10-08T05:37:07+09:00",
+  "updated_at": "2026-10-08T19:33:53+09:00",
   "source": "https://jp.finalfantasyxiv.com/lodestone/news/",
   "items": [
-    {
-      "date": "2026.10.08",
-      "badge": "NOTICE",
-      "title": "エターナルセレモニーの予約／実施ができない時間について -",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/f5b6b0d6f2bd9efdeb4dbd6b2ba90383b136673f",
-      "summary": "エターナルセレモニーの予約／実施ができない時間について"
-    },
     {
       "date": "2026.10.08",
       "badge": "NOTICE",
@@ -33,6 +26,27 @@
     {
       "date": "2026.10.08",
       "badge": "NOTICE",
+      "title": "ゲーム内でのRMTおよび不正行為への対応について(10/8) -",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/5ce5ec5a82a27ec1080ad4d18b247af6f5d82220",
+      "summary": "ゲーム内でのRMTおよび不正行為への対応について(10/8)"
+    },
+    {
+      "date": "2026.10.08",
+      "badge": "NOTICE",
+      "title": "Nintendo Switch™ 2 版「FFXIVコイン」のラインナップ追加について(10/8) -",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/1e3522647b521ccc3f9ce7eed51c42c968766de2",
+      "summary": "Nintendo Switch™ 2 版「FFXIVコイン」のラインナップ追加について(10/8)"
+    },
+    {
+      "date": "2026.10.08",
+      "badge": "NOTICE",
+      "title": "エターナルセレモニーの予約／実施ができない時間について -",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/f5b6b0d6f2bd9efdeb4dbd6b2ba90383b136673f",
+      "summary": "エターナルセレモニーの予約／実施ができない時間について"
+    },
+    {
+      "date": "2026.10.08",
+      "badge": "NOTICE",
       "title": "ゲーム内でのRMTおよび不正行為への対応について(10/1) -",
       "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/c28ff5d3d409106446c4c03801a2afd5579cf4d5",
       "summary": "ゲーム内でのRMTおよび不正行為への対応について(10/1)"
@@ -43,20 +57,6 @@
       "title": "ゲーム内でのRMTおよび不正行為への対応について(9/24) -",
       "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/ff62755f2d6093090997d7fb563c86c9c7f9f0ff",
       "summary": "ゲーム内でのRMTおよび不正行為への対応について(9/24)"
-    },
-    {
-      "date": "2026.10.08",
-      "badge": "NOTICE",
-      "title": "ゲーム内でのRMTおよび不正行為への対応について(9/17) -",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/a0b2bf68142b9748b05cae3a5b042881ee1277d9",
-      "summary": "ゲーム内でのRMTおよび不正行為への対応について(9/17)"
-    },
-    {
-      "date": "2026.10.08",
-      "badge": "NOTICE",
-      "title": "ファイナルファンタジーXIV 著作物利用条件 改訂のお知らせ -",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/55615b25550bad9c3f5078104c7d0f47fba1826d",
-      "summary": "ファイナルファンタジーXIV 著作物利用条件 改訂のお知らせ"
     }
   ]
 }
