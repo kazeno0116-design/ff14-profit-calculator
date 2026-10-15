@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-15T04:23:01+09:00",
+  "updated_at": "2026-10-15T13:37:35+09:00",
   "source": "https://jp.finalfantasyxiv.com/lodestone/news/",
   "items": [
     {
@@ -15,6 +15,13 @@
       "title": "闘獣練ランキング シーズン1の開始日が決定しました",
       "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/4bc6e1a950c9465bbcb3abbf93781c80735f55fb",
       "summary": "闘獣練ランキング シーズン1の開始日が決定しました"
+    },
+    {
+      "date": "2026.10.15",
+      "badge": "NOTICE",
+      "title": "エターナルセレモニーの予約／実施ができない時間について -",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/f5b6b0d6f2bd9efdeb4dbd6b2ba90383b136673f",
+      "summary": "エターナルセレモニーの予約／実施ができない時間について"
     },
     {
       "date": "2026.10.15",
@@ -50,13 +57,6 @@
       "title": "ファイナルファンタジーXIV 著作物利用条件 改訂のお知らせ -",
       "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/648eef98b3eeaae93983f6bb68f540299c412392",
       "summary": "ファイナルファンタジーXIV 著作物利用条件 改訂のお知らせ"
-    },
-    {
-      "date": "2026.10.15",
-      "badge": "NOTICE",
-      "title": "エターナルセレモニーの予約／実施ができない時間について -",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/f5b6b0d6f2bd9efdeb4dbd6b2ba90383b136673f",
-      "summary": "エターナルセレモニーの予約／実施ができない時間について"
     }
   ]
 }
