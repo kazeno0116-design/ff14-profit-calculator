@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-15T13:37:35+09:00",
+  "updated_at": "2026-10-15T20:27:49+09:00",
   "source": "https://jp.finalfantasyxiv.com/lodestone/news/",
   "items": [
     {
@@ -46,17 +46,17 @@
     },
     {
       "date": "2026.10.15",
+      "badge": "NOTICE",
+      "title": "ゲーム内でのRMTおよび不正行為への対応について(10/15) -",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/fb5bd7d332a55662ac9980b31bca7d7294df97ff",
+      "summary": "ゲーム内でのRMTおよび不正行為への対応について(10/15)"
+    },
+    {
+      "date": "2026.10.15",
       "badge": "ISSUE",
       "title": "日本データセンターにおけるリージョン内フリーマッチング先行実装以降の一部クロスワールド機能に関する不具合について(10/14) -",
       "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/40e494c096d6cbf49f776fa3b0582e7ba67092ab",
       "summary": "日本データセンターにおけるリージョン内フリーマッチング先行実装以降の一部クロスワールド機能に関する不具合について(10/14)"
-    },
-    {
-      "date": "2026.10.15",
-      "badge": "NOTICE",
-      "title": "ファイナルファンタジーXIV 著作物利用条件 改訂のお知らせ -",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/648eef98b3eeaae93983f6bb68f540299c412392",
-      "summary": "ファイナルファンタジーXIV 著作物利用条件 改訂のお知らせ"
     }
   ]
 }
