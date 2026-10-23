@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-21T20:47:32+09:00",
+  "updated_at": "2026-10-23T20:37:37+09:00",
   "source": "https://jp.finalfantasyxiv.com/lodestone/news/",
   "items": [
     {
@@ -17,13 +17,6 @@
       "summary": "「キーバウンド・ブロウラー」10月28日（水）より開催！"
     },
     {
-      "date": "2026.10.27",
-      "badge": "EVENT",
-      "title": "エオルゼアカフェで「守護天節」イベント開催！ スタンプカードもリニューアル！",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/9aa135968177d29528fff28a58604e3a0ddfdb6a",
-      "summary": "エオルゼアカフェで「守護天節」イベント開催！ スタンプカードもリニューアル！"
-    },
-    {
       "date": "2026.10.26",
       "badge": "EVENT",
       "title": "闘獣練ランキング シーズン1の開始日が決定しました",
@@ -33,30 +26,37 @@
     {
       "date": "2026.10.25",
       "badge": "TOPIC",
+      "title": "「ファンフェスティバル 2026 in 東京」はチケットをお持ちでない方もお楽しみいただけます！",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/ebbdb29bb90dea3a39c4d3f70c0f8a2b07d352ab",
+      "summary": "「ファンフェスティバル 2026 in 東京」はチケットをお持ちでない方もお楽しみいただけます！"
+    },
+    {
+      "date": "2026.10.25",
+      "badge": "TOPIC",
+      "title": "「ファンフェスティバル 2026 in 東京」ご来場の皆さまへ",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/9c258561582cbcff7d4b47dd40ec22054f5caad5",
+      "summary": "「ファンフェスティバル 2026 in 東京」ご来場の皆さまへ"
+    },
+    {
+      "date": "2026.10.25",
+      "badge": "TOPIC",
+      "title": "EXBAR TOKYO plus AKIHABARAにFFXIVイメージのクラフトビール第２弾が登場！",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/5169173cf34bd804670ffe8a5a74bfd654dcbe98",
+      "summary": "EXBAR TOKYO plus AKIHABARAにFFXIVイメージのクラフトビール第２弾が登場！"
+    },
+    {
+      "date": "2026.10.25",
+      "badge": "TOPIC",
+      "title": "「ファンフェスティバル 2026」記念アイテム 第3弾 発売＆セール開始！",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/f4ee84a657f6298b50a5d9622091a64584fe7802",
+      "summary": "「ファンフェスティバル 2026」記念アイテム 第3弾 発売＆セール開始！"
+    },
+    {
+      "date": "2026.10.25",
+      "badge": "TOPIC",
       "title": "「ファンフェスティバル 2026 in 東京」コンテンツ事前予約 抽選応募受付開始！ 10月25日（日）まで",
       "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/857cdf80b686a7999ab2e9b03fe613fb1f86ab69",
       "summary": "「ファンフェスティバル 2026 in 東京」コンテンツ事前予約 抽選応募受付開始！ 10月25日（日）まで"
-    },
-    {
-      "date": "2026.10.25",
-      "badge": "TOPIC",
-      "title": "「ファンフェスティバル 2026 in 東京」ライブビューイング 上映スクリーン追加＆グッズ情報！",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/6670913fa02f90c4b51697c8a7f86f4ef81654e2",
-      "summary": "「ファンフェスティバル 2026 in 東京」ライブビューイング 上映スクリーン追加＆グッズ情報！"
-    },
-    {
-      "date": "2026.10.25",
-      "badge": "TOPIC",
-      "title": "「ファンフェスティバル 2026 in 東京」最新情報公開 第2弾！",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/20b0ea43233bb0895227cdfd001098461d611348",
-      "summary": "「ファンフェスティバル 2026 in 東京」最新情報公開 第2弾！"
-    },
-    {
-      "date": "2026.10.25",
-      "badge": "TOPIC",
-      "title": "オプションアイテムが追加されます！",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/7152faacc19bdfd119cc8e08ed9e5368a8fc4c50",
-      "summary": "オプションアイテムが追加されます！"
     }
   ]
 }
