@@ -1,7 +1,14 @@
 {
-  "updated_at": "2026-10-26T22:00:51+09:00",
+  "updated_at": "2026-10-27T17:58:35+09:00",
   "source": "https://jp.finalfantasyxiv.com/lodestone/news/",
   "items": [
+    {
+      "date": "2027.01.30",
+      "badge": "EVENT",
+      "title": "クリスタルコンフリクト シーズン21 閉幕迫る！",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/4f18fc0716e7ba6e84c532f4be6ed70d38a5d185",
+      "summary": "クリスタルコンフリクト シーズン21 閉幕迫る！"
+    },
     {
       "date": "2027.01.30",
       "badge": "EVENT",
@@ -50,13 +57,6 @@
       "title": "「ファンフェスティバル 2026 in 東京」ライブビューイング 上映スクリーン追加＆グッズ情報！",
       "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/6670913fa02f90c4b51697c8a7f86f4ef81654e2",
       "summary": "「ファンフェスティバル 2026 in 東京」ライブビューイング 上映スクリーン追加＆グッズ情報！"
-    },
-    {
-      "date": "2027.01.30",
-      "badge": "TOPIC",
-      "title": "「ファンフェスティバル 2026 in 東京」最新情報公開 第2弾！",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/20b0ea43233bb0895227cdfd001098461d611348",
-      "summary": "「ファンフェスティバル 2026 in 東京」最新情報公開 第2弾！"
     }
   ]
 }
