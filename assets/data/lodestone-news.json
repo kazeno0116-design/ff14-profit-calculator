@@ -1,7 +1,14 @@
 {
-  "updated_at": "2026-10-27T17:58:35+09:00",
+  "updated_at": "2026-10-28T21:52:59+09:00",
   "source": "https://jp.finalfantasyxiv.com/lodestone/news/",
   "items": [
+    {
+      "date": "2027.01.30",
+      "badge": "TOPIC",
+      "title": "いよいよ10月31日開幕！「ファンフェスティバル 2026 in 東京」 ストリーミング情報おさらい",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/ce72e6daf7597640e1e4ff52cb8e64c4e464c4ed",
+      "summary": "いよいよ10月31日開幕！「ファンフェスティバル 2026 in 東京」 ストリーミング情報おさらい"
+    },
     {
       "date": "2027.01.30",
       "badge": "EVENT",
@@ -50,13 +57,6 @@
       "title": "「ファンフェスティバル 2026」記念アイテム 第3弾 発売＆セール開始！",
       "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/f4ee84a657f6298b50a5d9622091a64584fe7802",
       "summary": "「ファンフェスティバル 2026」記念アイテム 第3弾 発売＆セール開始！"
-    },
-    {
-      "date": "2027.01.30",
-      "badge": "TOPIC",
-      "title": "「ファンフェスティバル 2026 in 東京」ライブビューイング 上映スクリーン追加＆グッズ情報！",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/6670913fa02f90c4b51697c8a7f86f4ef81654e2",
-      "summary": "「ファンフェスティバル 2026 in 東京」ライブビューイング 上映スクリーン追加＆グッズ情報！"
     }
   ]
 }
