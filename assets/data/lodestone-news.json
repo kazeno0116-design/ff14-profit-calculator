@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-30T03:28:02+09:00",
+  "updated_at": "2026-10-30T09:58:24+09:00",
   "source": "https://jp.finalfantasyxiv.com/lodestone/news/",
   "items": [
     {
@@ -8,6 +8,13 @@
       "title": "「ファイナルファンタジーXIV複製原画」ラインナップに5種追加！ 予約受付中！",
       "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/0a56323f05b57a39020edc8760d9d7597e171ec4",
       "summary": "「ファイナルファンタジーXIV複製原画」ラインナップに5種追加！ 予約受付中！"
+    },
+    {
+      "date": "2026.10.30",
+      "badge": "TOPIC",
+      "title": "いよいよ10月31日開幕！「ファンフェスティバル 2026 in 東京」 ストリーミング情報おさらい",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/ce72e6daf7597640e1e4ff52cb8e64c4e464c4ed",
+      "summary": "いよいよ10月31日開幕！「ファンフェスティバル 2026 in 東京」 ストリーミング情報おさらい"
     },
     {
       "date": "2026.10.30",
@@ -50,13 +57,6 @@
       "title": "突発的な新規ログイン停止に対するプレイ権利の補填について(10/23) -",
       "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/a3b2f2cb20d4e99cc8332c1e69aecb35952b7d55",
       "summary": "突発的な新規ログイン停止に対するプレイ権利の補填について(10/23)"
-    },
-    {
-      "date": "2026.10.30",
-      "badge": "NOTICE",
-      "title": "[続報] セーブデータのサーバーバックアップ機能再開のお知らせ(10/23) -",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/230c59ef8f6086f4cdfad97e830ea7a645fc994f",
-      "summary": "セーブデータのサーバーバックアップ機能再開のお知らせ(10/23)"
     }
   ]
 }
