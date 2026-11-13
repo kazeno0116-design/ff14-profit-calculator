@@ -1,7 +1,14 @@
 {
-  "updated_at": "2026-11-13T02:35:17+09:00",
+  "updated_at": "2026-11-14T02:11:50+09:00",
   "source": "https://jp.finalfantasyxiv.com/lodestone/news/",
   "items": [
+    {
+      "date": "2026.11.18",
+      "badge": "TOPIC",
+      "title": "チョコボレースVRが「ティフォニウム お台場」に登場！",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/b28e3ac0a7648cdac2f7790f1ba4ded08cdd3b72",
+      "summary": "チョコボレースVRが「ティフォニウム お台場」に登場！"
+    },
     {
       "date": "2026.11.18",
       "badge": "TOPIC",
@@ -50,13 +57,6 @@
       "title": "「リージョン内フリーマッチング」 北米／欧州データセンターに実装！",
       "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/4ec4498b511cae986002f873da50951c31d251cb",
       "summary": "「リージョン内フリーマッチング」 北米／欧州データセンターに実装！"
-    },
-    {
-      "date": "2026.11.18",
-      "badge": "TOPIC",
-      "title": "オプションアイテム期間限定セール スタート！",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/e69b69f86189928a6d2491c67890e350994d474c",
-      "summary": "オプションアイテム期間限定セール スタート！"
     }
   ]
 }
