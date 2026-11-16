@@ -1,7 +1,28 @@
 {
-  "updated_at": "2026-11-14T02:11:50+09:00",
+  "updated_at": "2026-11-17T04:35:30+09:00",
   "source": "https://jp.finalfantasyxiv.com/lodestone/news/",
   "items": [
+    {
+      "date": "2026.11.18",
+      "badge": "EVENT",
+      "title": "第65回FFXIVプロデューサーレター：「白銀のワンダラーへの冒険準備キャンペーン」について",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/a063e78ef6679960efafe09001200eebbb2173b7",
+      "summary": "第65回FFXIVプロデューサーレター：「白銀のワンダラーへの冒険準備キャンペーン」について"
+    },
+    {
+      "date": "2026.11.18",
+      "badge": "EVENT",
+      "title": "『白銀のワンダラー』への冒険準備キャンペーン開催！",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/7e1c4366a70f9070b2019984e78988a177a1853a",
+      "summary": "『白銀のワンダラー』への冒険準備キャンペーン開催！"
+    },
+    {
+      "date": "2026.11.18",
+      "badge": "TOPIC",
+      "title": "オプションアイテムが追加されます！",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/96473881ef22337b8ed49ab99b3131698159d590",
+      "summary": "オプションアイテムが追加されます！"
+    },
     {
       "date": "2026.11.18",
       "badge": "TOPIC",
@@ -36,27 +57,6 @@
       "title": "クリスタルコンフリクト「シーズン21」閉幕＆「シーズン22」開幕！",
       "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/bacfdc4ad48e7b4e2457605579c94d94fe47e8a5",
       "summary": "クリスタルコンフリクト「シーズン21」閉幕＆「シーズン22」開幕！"
-    },
-    {
-      "date": "2026.11.18",
-      "badge": "PATCH",
-      "title": "7.58パッチノート公開！",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/1e4c13f59390f7353a83501156557f7fbad1dfbc",
-      "summary": "7.58パッチノート公開！"
-    },
-    {
-      "date": "2026.11.18",
-      "badge": "TOPIC",
-      "title": "Chillアレンジ「Sanctuary's Heart」シリーズ第2弾 発売決定！",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/5cfbadb85f1a84b8cdda033e55b82528afe240c3",
-      "summary": "Chillアレンジ「Sanctuary's Heart」シリーズ第2弾 発売決定！"
-    },
-    {
-      "date": "2026.11.18",
-      "badge": "TOPIC",
-      "title": "「リージョン内フリーマッチング」 北米／欧州データセンターに実装！",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/4ec4498b511cae986002f873da50951c31d251cb",
-      "summary": "「リージョン内フリーマッチング」 北米／欧州データセンターに実装！"
     }
   ]
 }
