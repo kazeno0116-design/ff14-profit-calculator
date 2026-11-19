@@ -1,7 +1,21 @@
 {
-  "updated_at": "2026-11-19T15:43:53+09:00",
+  "updated_at": "2026-11-19T20:37:41+09:00",
   "source": "https://jp.finalfantasyxiv.com/lodestone/news/",
   "items": [
+    {
+      "date": "2026.11.19",
+      "badge": "TOPIC",
+      "title": "ファンフェスお土産セットなどのグッズが登場＆アルカディアくじ再販売決定！",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/4e00056d4ec4d881f2c2308743c693b9f0d82d84",
+      "summary": "ファンフェスお土産セットなどのグッズが登場＆アルカディアくじ再販売決定！"
+    },
+    {
+      "date": "2026.11.19",
+      "badge": "NOTICE",
+      "title": "ゲーム内でのRMTおよび不正行為への対応について(11/19) -",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/e3cdd04057c0926f8d356c062c07a400f463e7bc",
+      "summary": "ゲーム内でのRMTおよび不正行為への対応について(11/19)"
+    },
     {
       "date": "2026.11.19",
       "badge": "ISSUE",
@@ -43,20 +57,6 @@
       "title": "『白銀のワンダラー』への冒険準備キャンペーン開催！",
       "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/7e1c4366a70f9070b2019984e78988a177a1853a",
       "summary": "『白銀のワンダラー』への冒険準備キャンペーン開催！"
-    },
-    {
-      "date": "2026.11.16",
-      "badge": "TOPIC",
-      "title": "オプションアイテムが追加されます！",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/96473881ef22337b8ed49ab99b3131698159d590",
-      "summary": "オプションアイテムが追加されます！"
-    },
-    {
-      "date": "2026.11.15",
-      "badge": "MAINT",
-      "title": "[メンテナンス] アカウント管理システム メンテナンス作業のお知らせ(11/17) -",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/650c7b1ca69a8104ec137ef97501bfeb0b419294",
-      "summary": "アカウント管理システム メンテナンス作業のお知らせ(11/17)"
     }
   ]
 }
