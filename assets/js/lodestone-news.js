@@ -61,11 +61,14 @@
     dotsWrap.innerHTML = data.items.map((_, i) =>
       `<button class="news-dot ${i===0 ? "is-active" : ""}" type="button" data-slide="${i}" aria-label="${i+1}件目"></button>`
     ).join("");
-    if (updated && data.updated_at) {
-      try {
-        const dt = new Date(data.updated_at);
-        updated.textContent = `最終確認 ${dt.toLocaleString("ja-JP", {timeZone:"Asia/Tokyo"})}`;
-      } catch (_) {}
+    if (updated) {
+      updated.textContent = "";
+      // updated_at advances when the saved news data changes, not on every check.
+      const dt = typeof data.updated_at === "string" && data.updated_at.trim()
+        ? new Date(data.updated_at) : null;
+      if (dt && Number.isFinite(dt.getTime())) {
+        updated.textContent = `データ更新日時 ${dt.toLocaleString("ja-JP", {timeZone:"Asia/Tokyo"})}（日本時間）`;
+      }
     }
     current = 0;
     refreshRefs();

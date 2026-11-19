@@ -41,48 +41,41 @@ def classify(title: str, fallback: str) -> str:
     return fallback
 
 def date_from_context(anchor, now: datetime) -> str:
-    nodes = [anchor]
-    parent = anchor.parent
-    for _ in range(6):
-        if parent is None:
-            break
-        nodes.append(parent)
-        parent = parent.parent
+    # Only inspect this article's date element. Ancestor-wide searches can pick
+    # sidebar activity timestamps, while title/body text can contain deadlines.
+    scope = anchor.find_parent(
+        "li", class_=lambda value: value and value in ("news__list", "news__list--topics")
+    ) or anchor
+    time_el = scope.find("time", class_="news__list--time") or anchor.find("time")
+    if time_el is None:
+        return ""
 
-    for node in nodes:
-        finder = getattr(node, "find", None)
-        if not finder:
-            continue
-        epoch_el = finder(attrs={"data-epoch": True})
-        if epoch_el:
-            raw = str(epoch_el.get("data-epoch", "")).strip()
-            if raw.isdigit():
-                value = int(raw)
-                if value > 10_000_000_000:
-                    value //= 1000
-                try:
-                    jst = timezone(timedelta(hours=9))
-                    dt = datetime.fromtimestamp(value, tz=timezone.utc).astimezone(jst)
-                    return dt.strftime("%Y.%m.%d")
-                except (OverflowError, OSError, ValueError):
-                    pass
+    epoch_el = time_el if time_el.has_attr("data-epoch") else time_el.find(attrs={"data-epoch": True})
+    raw_epoch = str(epoch_el.get("data-epoch", "")).strip() if epoch_el else ""
+    if not raw_epoch.isdigit():
+        # Lodestone renders the publication date client-side with this call.
+        # Read its numeric argument as data; never execute upstream JavaScript.
+        script = " ".join(tag.get_text() for tag in time_el.find_all("script"))
+        match = re.search(r"\bldst_strftime\(\s*(\d+)\s*,", script)
+        raw_epoch = match.group(1) if match else ""
+    if raw_epoch.isdigit():
+        value = int(raw_epoch)
+        if value > 10_000_000_000:
+            value //= 1000
+        try:
+            return datetime.fromtimestamp(value, tz=timezone.utc).astimezone(
+                timezone(timedelta(hours=9))
+            ).strftime("%Y.%m.%d")
+        except (OverflowError, OSError, ValueError):
+            pass
 
-    for node in nodes:
-        time_el = getattr(node, "find", lambda *a, **k: None)("time")
-        if time_el:
-            raw = time_el.get("datetime") or clean(time_el.get_text(" ", strip=True))
-            m = re.search(r"(20\d{2})[-/.年](\d{1,2})[-/.月](\d{1,2})", raw)
-            if m:
-                return f"{int(m.group(1)):04d}.{int(m.group(2)):02d}.{int(m.group(3)):02d}"
-        txt = clean(getattr(node, "get_text", lambda *a, **k: "")(" ", strip=True))
-        m = re.search(r"(20\d{2})[-/.年](\d{1,2})[-/.月](\d{1,2})", txt)
-        if m:
-            return f"{int(m.group(1)):04d}.{int(m.group(2)):02d}.{int(m.group(3)):02d}"
-
-    txt = clean(anchor.get_text(" ", strip=True))
-    m = re.search(r"\((\d{1,2})/(\d{1,2})\)", txt)
-    if m:
-        return f"{now.year:04d}.{int(m.group(1)):02d}.{int(m.group(2)):02d}"
+    raw = time_el.get("datetime") or clean(time_el.get_text(" ", strip=True))
+    match = re.fullmatch(r"(20\d{2})[-/.年](\d{1,2})[-/.月](\d{1,2})日?(?:[T\s].*)?", raw)
+    if match:
+        try:
+            return datetime(*(int(part) for part in match.groups())).strftime("%Y.%m.%d")
+        except ValueError:
+            pass
     return ""
 
 def get_summary(session: requests.Session, url: str) -> str:

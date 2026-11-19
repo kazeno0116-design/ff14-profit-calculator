@@ -3391,7 +3391,9 @@ body.section-dark-ui .highend-actions a{
   border-color:#d0d0d0!important;
 }
 body.section-dark-ui .highend-actions a:hover,
-body.section-dark-ui .highend-actions a:focus-visible{
+body.section-dark-ui .highend-actions a:focus-visible,
+body.section-dark-ui .highend-actions .battle-reward-toggle:hover,
+body.section-dark-ui .highend-actions .battle-reward-toggle:focus-visible{
   background:#3b3b3b!important;
   color:#ffffff!important;
   border-color:#ffffff!important;
@@ -3670,3 +3672,23 @@ body.section-dark-ui .term-row:target{
     grid-column:2!important;
   }
 }
+
+/* Battle reward panels share the ID reward list and mobile breakpoint. */
+.battle-duty-reward-grid{margin-top:14px}
+.highend-entry[data-battle-reward-row]>strong{min-width:0;overflow-wrap:anywhere}
+.highend-entry[data-battle-reward-row] .highend-actions{flex-wrap:wrap}
+.battle-reward-toggle{
+  display:inline-flex;align-items:center;justify-content:center;min-width:54px;
+  padding:6px 9px;border:1px solid #d4d4d4;border-radius:8px;background:#fff;
+  color:#303030;font:inherit;font-size:.76rem;font-weight:800;cursor:pointer
+}
+.battle-reward-toggle[aria-expanded="true"]{
+  border-color:#333;background:#f7f7f7;color:#111
+}
+.battle-reward-panel{grid-column:1/-1;min-width:0;margin-top:0;scroll-margin-block:16px}
+.battle-reward-head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.battle-reward-head>div{min-width:0}
+.battle-reward-duty-name{overflow-wrap:anywhere}
+.battle-reward-body{margin-top:10px;font-size:.84rem}
+.battle-reward-source{display:inline-block;margin-top:6px}
+@media(max-width:760px){.highend-actions .battle-reward-toggle{flex:1}}

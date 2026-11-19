@@ -8,7 +8,10 @@ const ULTIMATE_URLS={
   '絶もうひとつの未来':'https://jp.finalfantasyxiv.com/lodestone/playguide/db/duty/d7ca52c7e6c/',
   '絶妖星乱舞':'https://jp.finalfantasyxiv.com/lodestone/playguide/db/duty/71401e7e274/'
 };
-function rewardUrl(name){return ULTIMATE_URLS[name]||FF14DutyLinks.url(name)}
+const REWARD_DUTY_OVERRIDES={
+  '極グラシャラボラス討滅戦':'https://jp.finalfantasyxiv.com/lodestone/playguide/db/duty/f6df7a9a911/'
+};
+function rewardUrl(name){return ULTIMATE_URLS[name]||REWARD_DUTY_OVERRIDES[name]||FF14DutyLinks.url(name)}
 
 // Game8 individual guide URLs verified against Game8's current FF14 pages.
 // Every currently listed duty must resolve to its own individual guide page.
@@ -150,8 +153,9 @@ function guideUrl(name){return GAME8_GUIDES[name] || ALT_GUIDES[name] || ''}
 function renderHighEnd(target,data,type){
  target.innerHTML=Object.entries(data).map(([exp,items])=>`<details class="highend-expansion">
    <summary><div><strong>${FF14Tools.esc(exp)}</strong><small>${items.length}件</small></div><span class="highend-expansion-open">一覧を見る <b>＋</b></span></summary>
-   <div class="highend-expansion-body"><div class="highend-grid">${items.map(name=>{const reward=rewardUrl(name);return `<article class="highend-entry"><strong>${FF14Tools.esc(name)}</strong><div class="highend-actions">${reward?`<a href="${reward}" target="_blank" rel="noopener">報酬</a>`:''}${guideUrl(name)?`<a href="${guideUrl(name)}" target="_blank" rel="noopener">攻略</a>`:''}</div></article>`}).join('')}</div></div>
+   <div class="highend-expansion-body"><div class="highend-grid">${items.map(name=>{const reward=rewardUrl(name);return `<article class="highend-entry" data-battle-reward-row><strong>${FF14Tools.esc(name)}</strong><div class="highend-actions">${FF14BattleRewards.button(name,reward)}${guideUrl(name)?`<a href="${guideUrl(name)}" target="_blank" rel="noopener">攻略</a>`:''}</div></article>`}).join('')}</div></div>
  </details>`).join('');
+ FF14BattleRewards.bind(target);
 }
 renderHighEnd(document.getElementById('highEndExtreme'),HIGH_END.extreme,'extreme');
 renderHighEnd(document.getElementById('highEndSavage'),HIGH_END.savage,'savage');
