@@ -1,7 +1,21 @@
 {
-  "updated_at": "2026-11-19T20:37:41+09:00",
+  "updated_at": "2026-11-20T20:37:37+09:00",
   "source": "https://jp.finalfantasyxiv.com/lodestone/news/",
   "items": [
+    {
+      "date": "2026.11.20",
+      "badge": "TOPIC",
+      "title": "「第94回 FFXIV PLL」12月4日（金）放送決定！",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/24840cb713392c9615cf58fde06dbd8f940a16e8",
+      "summary": "「第94回 FFXIV PLL」12月4日（金）放送決定！"
+    },
+    {
+      "date": "2026.11.20",
+      "badge": "TOPIC",
+      "title": "チョコボレースVRが「ティフォニウム 新宿」にも登場決定！",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/85f352555049bfbbd093660ade93c01fc572d1f8",
+      "summary": "チョコボレースVRが「ティフォニウム 新宿」にも登場決定！"
+    },
     {
       "date": "2026.11.19",
       "badge": "TOPIC",
@@ -43,20 +57,6 @@
       "title": "エターナルセレモニーの予約／実施ができない時間について -",
       "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/f5b6b0d6f2bd9efdeb4dbd6b2ba90383b136673f",
       "summary": "エターナルセレモニーの予約／実施ができない時間について"
-    },
-    {
-      "date": "2026.11.16",
-      "badge": "EVENT",
-      "title": "第65回FFXIVプロデューサーレター：「白銀のワンダラーへの冒険準備キャンペーン」について",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/a063e78ef6679960efafe09001200eebbb2173b7",
-      "summary": "第65回FFXIVプロデューサーレター：「白銀のワンダラーへの冒険準備キャンペーン」について"
-    },
-    {
-      "date": "2026.11.16",
-      "badge": "EVENT",
-      "title": "『白銀のワンダラー』への冒険準備キャンペーン開催！",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/7e1c4366a70f9070b2019984e78988a177a1853a",
-      "summary": "『白銀のワンダラー』への冒険準備キャンペーン開催！"
     }
   ]
 }
