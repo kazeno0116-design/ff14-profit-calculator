@@ -1000,8 +1000,100 @@ function optimalityStatusHtml(verification){
  return '<span class="optimality-badge is-unproven">最適性未証明</span><span class="optimality-detail">成立候補。より短い手数が存在しないことは未証明</span>';
 }
 
-async function run(){lastHybridVerificationReport=null;const b=$('run'),r=$('result'),sum=$('summary');r.classList.remove('is-empty');b.disabled=true;b.classList.remove('success');b.classList.add('loading');b.setAttribute('aria-label','マクロを生成しています');b.innerHTML='<span class="run-spinner" aria-hidden="true"></span><span>LOADING</span>';sum.innerHTML='';$('copies').innerHTML='';await paintGenerationStatus(r,'入力内容を確認しています','レベル・ステータス・レシピ条件を読み込んでいます。');const s=getStats(),err=validate(s);if(err){r.innerHTML=`<span class="error">入力内容を確認してください：${err}</span>`;b.removeAttribute('aria-label');resetRun(b);return}const onProgress=message=>setGenerationStatus(r,message);await paintGenerationStatus(r,'最大品質で完成できる組み合わせを探しています');let x=await searchOptimizedExact(s,onProgress);const primaryReport=lastSearchReport;if(!x){await paintGenerationStatus(r,'最大品質が難しいため、完成できる中で最も品質の高いマクロを探しています');const best=await findBestCompletedRoute(s);if(best&&!best.exact&&best.x?.done&&best.x.q<s.target){renderBestEffort(s,best);b.disabled=false;b.removeAttribute('aria-label');b.classList.remove('loading');b.classList.add('success');b.textContent='候補生成完了';return}if(best?.exact){x=await optimalityVerifier(s,best.x,onProgress)}else{if(primaryReport?.timedOut&&primaryReport?.incompleteDepth){r.innerHTML='<span class="error">探索時間の上限に達しました。完成できる代替マクロも確認できなかったため出力を中止しました。</span>';b.removeAttribute('aria-label');resetRun(b);return}await paintGenerationStatus(r,'条件を満たせない原因を確認しています','作業精度・加工精度・CP・耐久などを順番に確認しています。');r.innerHTML=await diagnoseFailure(s,primaryReport);b.removeAttribute('aria-label');resetRun(b);return}}await paintGenerationStatus(r,'見つかったマクロを最終確認しています','工数・品質・CP・耐久をもう一度計算して、安全に完成できるか確認しています。');const optimized=normalizeBuffOrder(prune(x.log,s),s);x=simulate(optimized,s);if(!isGoal(x,s)||x.p<s.diff){r.innerHTML='<span class="error">最終再検証で未完成または耐久不足を検出したため、マクロ出力を中止しました。</span>';b.removeAttribute('aria-label');resetRun(b);return}parts=format(x.log);const seconds=x.log.reduce((n,id)=>n+A[id].w,0),base=bases(s),verification=lastHybridVerificationReport,optimality=optimalityStatusHtml(verification),actionLabel=s.cosmicAction==='steady'?`専用ステディハンド（最大${s.cosmicSteadyUses||1}回）`:s.cosmicAction==='miracle'?'ミラクルマテリアル':'なし',miracle=s.cosmicAction==='miracle'?'<br><span class="error">ミラクルマテリアルのランダムな有利状態は保証値へ加算していません。</span>':'',warning=s.expert?'<br><span class="error">高難度レシピは状態変化を再現しない通常状態での参考計算です。</span>':'';sum.innerHTML=`<div class="summary">${s.label}<br>専用アクション: ${actionLabel}<br>${x.log.length}アクション / ${parts.length}マクロ / 約${seconds}秒　到達: 工数 ${x.p}/${s.diff}・品質 ${x.q}/${s.target}・残CP ${x.cp}・残耐久 ${x.d}<br><span class="optimality-line">最適性: ${optimality}</span><br>検算値: 基礎工数 ${base.p}・基礎品質 ${base.q}${miracle}${warning}</div>`;r.textContent=parts.map((p,i)=>`--- MACRO ${i+1} ---\n${p}`).join('\n\n');$('copies').innerHTML=parts.map((_,i)=>`<button class="copy" data-i="${i}">マクロ${i+1}をコピー</button>`).join('');b.disabled=false;b.removeAttribute('aria-label');b.classList.remove('loading');b.classList.add('success');b.textContent='生成完了'}
-async function copy(text,btn){try{await navigator.clipboard.writeText(text)}catch(_){const t=document.createElement('textarea');t.value=text;t.style.position='fixed';t.style.opacity='0';document.body.appendChild(t);t.select();document.execCommand('copy');t.remove()}const old=btn.textContent;btn.textContent='COMPLETED';btn.classList.add('ok');setTimeout(()=>{btn.textContent=old;btn.classList.remove('ok')},1500)}
+// Compare the same normalized settings the solver receives, regardless of input spelling
+// or the order in which skills were selected.
+function settingsKey(s){
+ return JSON.stringify({...s,enabledSkills:[...s.enabledSkills].sort()});
+}
+let displayedSettings=null;
+function clearMacroOutput(){
+ displayedSettings=null;parts=[];
+ $('summary').innerHTML='';$('result').textContent='';$('copies').innerHTML='';
+}
+function showSettingsChanged(){
+ clearMacroOutput();
+ $('result').textContent='設定が変更されました。マクロを再生成してください。';
+ const b=$('run');b.removeAttribute('aria-label');resetRun(b);
+}
+function checkSettings(key){
+ if(key===settingsKey(getStats()))return true;
+ showSettingsChanged();return false;
+}
+function invalidateChangedResult(){
+ if(displayedSettings)checkSettings(displayedSettings.key);
+}
+function finishRun(b,label){
+ b.disabled=false;b.removeAttribute('aria-label');b.classList.remove('loading');b.classList.add('success');b.textContent=label;
+}
+function failRun(b){
+ b.removeAttribute('aria-label');resetRun(b);
+}
+async function run(){
+ const b=$('run'),r=$('result'),sum=$('summary');
+ if(b.disabled)return;
+ lastHybridVerificationReport=null;
+ const s=getStats(),key=settingsKey(s),err=validate(s);
+ clearMacroOutput();
+ r.classList.remove('is-empty');b.disabled=true;b.classList.remove('success');b.classList.add('loading');
+ b.setAttribute('aria-label','マクロを生成しています');
+ b.innerHTML='<span class="run-spinner" aria-hidden="true"></span><span>LOADING</span>';
+ await paintGenerationStatus(r,'入力内容を確認しています','レベル・ステータス・レシピ条件を読み込んでいます。');
+ if(!checkSettings(key))return;
+ if(err){r.innerHTML=`<span class="error">入力内容を確認してください：${err}</span>`;failRun(b);return}
+ const onProgress=message=>setGenerationStatus(r,message);
+ await paintGenerationStatus(r,'最大品質で完成できる組み合わせを探しています');
+ if(!checkSettings(key))return;
+ let x=await searchOptimizedExact(s,onProgress);
+ if(!checkSettings(key))return;
+ const primaryReport=lastSearchReport;
+ if(!x){
+   await paintGenerationStatus(r,'最大品質が難しいため、完成できる中で最も品質の高いマクロを探しています');
+   if(!checkSettings(key))return;
+   const best=await findBestCompletedRoute(s);
+   if(!checkSettings(key))return;
+   if(best&&!best.exact&&best.x?.done&&best.x.q<s.target){
+     renderBestEffort(s,best);displayedSettings={key};finishRun(b,'候補生成完了');return;
+   }
+   if(best?.exact){
+     x=await optimalityVerifier(s,best.x,onProgress);
+     if(!checkSettings(key))return;
+   }else{
+     if(primaryReport?.timedOut&&primaryReport?.incompleteDepth){
+       r.innerHTML='<span class="error">探索時間の上限に達しました。完成できる代替マクロも確認できなかったため出力を中止しました。</span>';
+       displayedSettings={key};failRun(b);return;
+     }
+     await paintGenerationStatus(r,'条件を満たせない原因を確認しています','作業精度・加工精度・CP・耐久などを順番に確認しています。');
+     if(!checkSettings(key))return;
+     const diagnosis=await diagnoseFailure(s,primaryReport);
+     if(!checkSettings(key))return;
+     r.innerHTML=diagnosis;displayedSettings={key};failRun(b);return;
+   }
+ }
+ await paintGenerationStatus(r,'見つかったマクロを最終確認しています','工数・品質・CP・耐久をもう一度計算して、安全に完成できるか確認しています。');
+ if(!checkSettings(key))return;
+ const optimized=normalizeBuffOrder(prune(x.log,s),s);x=simulate(optimized,s);
+ if(!isGoal(x,s)||x.p<s.diff){
+   r.innerHTML='<span class="error">最終再検証で未完成または耐久不足を検出したため、マクロ出力を中止しました。</span>';
+   displayedSettings={key};failRun(b);return;
+ }
+ parts=format(x.log);
+ const seconds=x.log.reduce((n,id)=>n+A[id].w,0),base=bases(s),verification=lastHybridVerificationReport,optimality=optimalityStatusHtml(verification),actionLabel=s.cosmicAction==='steady'?`専用ステディハンド（最大${s.cosmicSteadyUses||1}回）`:s.cosmicAction==='miracle'?'ミラクルマテリアル':'なし',miracle=s.cosmicAction==='miracle'?'<br><span class="error">ミラクルマテリアルのランダムな有利状態は保証値へ加算していません。</span>':'',warning=s.expert?'<br><span class="error">高難度レシピは状態変化を再現しない通常状態での参考計算です。</span>':'';
+ sum.innerHTML=`<div class="summary">${s.label}<br>専用アクション: ${actionLabel}<br>${x.log.length}アクション / ${parts.length}マクロ / 約${seconds}秒　到達: 工数 ${x.p}/${s.diff}・品質 ${x.q}/${s.target}・残CP ${x.cp}・残耐久 ${x.d}<br><span class="optimality-line">最適性: ${optimality}</span><br>検算値: 基礎工数 ${base.p}・基礎品質 ${base.q}${miracle}${warning}</div>`;
+ r.textContent=parts.map((p,i)=>`--- MACRO ${i+1} ---\n${p}`).join('\n\n');
+ $('copies').innerHTML=parts.map((_,i)=>`<button class="copy" data-i="${i}">マクロ${i+1}をコピー</button>`).join('');
+ displayedSettings={key};finishRun(b,'生成完了');
+}
+async function copy(text,btn,display){
+ try{await navigator.clipboard.writeText(text)}catch(_){
+   // Clipboard permission can resolve after another edit or generation. Never copy
+   // a previous result through the fallback in that case.
+   if(display!==displayedSettings||!checkSettings(display.key))return;
+   const t=document.createElement('textarea');t.value=text;t.style.position='fixed';t.style.opacity='0';
+   document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();
+ }
+ const old=btn.textContent;btn.textContent='COMPLETED';btn.classList.add('ok');
+ setTimeout(()=>{btn.textContent=old;btn.classList.remove('ok')},1500);
+}
 function ripple(e){const b=e.target.closest('.run,.copy');if(!b)return;const rect=b.getBoundingClientRect(),dot=document.createElement('span');dot.className='ripple';dot.style.left=`${e.clientX-rect.left}px`;dot.style.top=`${e.clientY-rect.top}px`;b.appendChild(dot);setTimeout(()=>dot.remove(),650)}
 function syncInitialQuality(){if(!$('initialQuality').dataset.edited)$('initialQuality').value=Math.floor(num('maxQuality')*.5)}
 function setInitialToggle(on){
@@ -1056,7 +1148,32 @@ const STATUS_STORAGE_KEY='ff14CrafterMacroGenerator.playerStatus.v2',STATUS_FIEL
 function savePlayerStatus(){try{const data={};for(const id of STATUS_FIELDS)data[id]=$(id).value;localStorage.setItem(STATUS_STORAGE_KEY,JSON.stringify(data))}catch(_){}}
 function restorePlayerStatus(){try{const raw=localStorage.getItem(STATUS_STORAGE_KEY);if(!raw)return;const data=JSON.parse(raw);for(const id of STATUS_FIELDS){if(data&&Object.prototype.hasOwnProperty.call(data,id)&&data[id]!==null&&data[id]!==undefined)$(id).value=String(data[id])}}catch(_){}}
 function enableReplaceOnFocus(){for(const input of document.querySelectorAll('input[type=\"number\"]')){input.addEventListener('focus',()=>input.select());input.addEventListener('pointerup',e=>{e.preventDefault();input.select()})}}
-$('run').addEventListener('click',run);$('run').addEventListener('pointerleave',()=>{const b=$('run');if(b.classList.contains('success'))resetRun(b)});document.addEventListener('pointerdown',ripple);$('copies').addEventListener('click',e=>{const b=e.target.closest('[data-i]');if(b)copy(parts[+b.dataset.i],b)});$('initialQualityToggle').addEventListener('click',toggleInitial);$('maxQuality').addEventListener('input',()=>{delete $('initialQuality').dataset.edited;syncInitialQuality()});$('initialQuality').addEventListener('input',()=>{$('initialQuality').dataset.edited='1'});$('selectAllSkills').addEventListener('click',()=>{enabledSkills=new Set(Object.keys(A).filter(id=>id!=='contentAction2'));renderSkills();saveSkillSettings()});$('clearAllSkills').addEventListener('click',()=>{enabledSkills.clear();renderSkills();saveSkillSettings()});$('selectByLevel').addEventListener('click',()=>setSkillsByLevel(Math.max(1,Math.min(100,num('skillLevelLimit')))));$('selectCurrentLevel').addEventListener('click',()=>setSkillsByLevel(Math.max(1,Math.min(100,num('crafterLevel')))));$('normalSkillList').addEventListener('change',e=>{const c=e.target.closest('[data-skill]');if(!c)return;c.checked?enabledSkills.add(c.dataset.skill):enabledSkills.delete(c.dataset.skill);saveSkillSettings()});for(const id of ['cosmicSteadyToggle','cosmicMiracleToggle','cosmicSteadyUses'])$(id)?.addEventListener('change',saveSkillSettings);$('recipeLevel').addEventListener('change',syncCosmicActionVisibility);restorePlayerStatus();restoreSkillSettings();renderSkills();syncCosmicActionVisibility();enableReplaceOnFocus();for(const id of STATUS_FIELDS)$(id).addEventListener('input',savePlayerStatus);syncInitialQuality()
+$('run').addEventListener('click',run);
+$('run').addEventListener('pointerleave',()=>{const b=$('run');if(b.classList.contains('success'))resetRun(b)});
+document.addEventListener('pointerdown',ripple);
+$('copies').addEventListener('click',e=>{
+ const b=e.target.closest('[data-i]'),display=displayedSettings;
+ if(b&&display&&checkSettings(display.key)&&parts[+b.dataset.i])copy(parts[+b.dataset.i],b,display);
+});
+$('initialQualityToggle').addEventListener('click',()=>{toggleInitial();invalidateChangedResult()});
+$('maxQuality').addEventListener('input',()=>{delete $('initialQuality').dataset.edited;syncInitialQuality()});
+$('initialQuality').addEventListener('input',()=>{$('initialQuality').dataset.edited='1'});
+function onSkillSettingChange(){saveSkillSettings();invalidateChangedResult()}
+$('selectAllSkills').addEventListener('click',()=>{enabledSkills=new Set(Object.keys(A).filter(id=>id!=='contentAction2'));renderSkills();onSkillSettingChange()});
+$('clearAllSkills').addEventListener('click',()=>{enabledSkills.clear();renderSkills();onSkillSettingChange()});
+$('selectByLevel').addEventListener('click',()=>{setSkillsByLevel(Math.max(1,Math.min(100,num('skillLevelLimit'))));invalidateChangedResult()});
+$('selectCurrentLevel').addEventListener('click',()=>{setSkillsByLevel(Math.max(1,Math.min(100,num('crafterLevel'))));invalidateChangedResult()});
+$('normalSkillList').addEventListener('change',e=>{const c=e.target.closest('[data-skill]');if(!c)return;c.checked?enabledSkills.add(c.dataset.skill):enabledSkills.delete(c.dataset.skill);onSkillSettingChange()});
+for(const id of ['cosmicSteadyToggle','cosmicMiracleToggle','cosmicSteadyUses'])$(id)?.addEventListener('change',onSkillSettingChange);
+$('recipeLevel').addEventListener('change',syncCosmicActionVisibility);
+restorePlayerStatus();restoreSkillSettings();renderSkills();syncCosmicActionVisibility();enableReplaceOnFocus();
+for(const id of STATUS_FIELDS)$(id).addEventListener('input',savePlayerStatus);
+for(const id of ['crafterLevel',...STATUS_FIELDS,'durability','difficulty','maxQuality','initialQuality','recipeLevel','useTrainedEye','safeOnly']){
+ $(id).addEventListener('input',invalidateChangedResult);
+ $(id).addEventListener('change',invalidateChangedResult);
+}
+syncInitialQuality()
+
 })();
 
 })();
