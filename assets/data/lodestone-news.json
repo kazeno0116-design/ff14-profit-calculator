@@ -1,7 +1,35 @@
 {
-  "updated_at": "2026-11-20T20:37:37+09:00",
+  "updated_at": "2026-11-24T22:41:04+09:00",
   "source": "https://jp.finalfantasyxiv.com/lodestone/news/",
   "items": [
+    {
+      "date": "2026.11.24",
+      "badge": "TOPIC",
+      "title": "北米／欧州データセンター間のデータセンタートラベル開放について",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/86555b365a518238debcd3814c3eb0f81da40f3f",
+      "summary": "北米／欧州データセンター間のデータセンタートラベル開放について"
+    },
+    {
+      "date": "2026.11.24",
+      "badge": "TOPIC",
+      "title": "「モグモグ★コレクション ～天文に至る路 Part2～」12月1日（火）スタート！",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/479290132698ed3804031f11a016a46d516db018",
+      "summary": "「モグモグ★コレクション ～天文に至る路 Part2～」12月1日（火）スタート！"
+    },
+    {
+      "date": "2026.11.24",
+      "badge": "NOTICE",
+      "title": "エターナルセレモニーの予約／実施ができない時間について -",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/f5b6b0d6f2bd9efdeb4dbd6b2ba90383b136673f",
+      "summary": "エターナルセレモニーの予約／実施ができない時間について"
+    },
+    {
+      "date": "2026.11.24",
+      "badge": "UPDATE",
+      "title": "モグステーション／オンラインストア 更新のお知らせ(11/24) -",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/deef17d4fcec1f59a806f9ff603dd617770811c6",
+      "summary": "モグステーション／オンラインストア 更新のお知らせ(11/24)"
+    },
     {
       "date": "2026.11.20",
       "badge": "TOPIC",
@@ -29,34 +57,6 @@
       "title": "ゲーム内でのRMTおよび不正行為への対応について(11/19) -",
       "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/e3cdd04057c0926f8d356c062c07a400f463e7bc",
       "summary": "ゲーム内でのRMTおよび不正行為への対応について(11/19)"
-    },
-    {
-      "date": "2026.11.19",
-      "badge": "ISSUE",
-      "title": "[復旧] Lodestone 障害復旧作業完了のお知らせ(11/19) -",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/89b7aed0f61628b95377acfb3363bb677e55ff2f",
-      "summary": "Lodestone 障害復旧作業完了のお知らせ(11/19)"
-    },
-    {
-      "date": "2026.11.17",
-      "badge": "EVENT",
-      "title": "マウント「初代でぶチョコボ」が当たる！Xフォロー＆RPキャンペーン 第1弾実施！",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/fe7427cabf032048c807a9376f34111b72efe8e8",
-      "summary": "マウント「初代でぶチョコボ」が当たる！Xフォロー＆RPキャンペーン 第1弾実施！"
-    },
-    {
-      "date": "2026.11.17",
-      "badge": "EVENT",
-      "title": "闘獣練ランキング「シーズン1」は12月1日（火）13:59頃まで＆「シーズン2」開始日決定！",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/59e4b306e8d668117aa078ae14768bb4b89ada9a",
-      "summary": "闘獣練ランキング「シーズン1」は12月1日（火）13:59頃まで＆「シーズン2」開始日決定！"
-    },
-    {
-      "date": "2026.11.17",
-      "badge": "NOTICE",
-      "title": "エターナルセレモニーの予約／実施ができない時間について -",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/f5b6b0d6f2bd9efdeb4dbd6b2ba90383b136673f",
-      "summary": "エターナルセレモニーの予約／実施ができない時間について"
     }
   ]
 }
