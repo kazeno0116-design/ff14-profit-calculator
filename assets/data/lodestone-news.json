@@ -1,7 +1,28 @@
 {
-  "updated_at": "2026-11-25T17:30:54+09:00",
+  "updated_at": "2026-11-27T01:53:12+09:00",
   "source": "https://jp.finalfantasyxiv.com/lodestone/news/",
   "items": [
+    {
+      "date": "2026.11.26",
+      "badge": "NOTICE",
+      "title": "エターナルセレモニーの予約／実施ができない時間について -",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/f5b6b0d6f2bd9efdeb4dbd6b2ba90383b136673f",
+      "summary": "エターナルセレモニーの予約／実施ができない時間について"
+    },
+    {
+      "date": "2026.11.26",
+      "badge": "NOTICE",
+      "title": "ゲーム内でのRMTおよび不正行為への対応について(11/26) -",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/6d3b7ae8af6f113bfd2ee428666bbbd3ed1e4b8d",
+      "summary": "ゲーム内でのRMTおよび不正行為への対応について(11/26)"
+    },
+    {
+      "date": "2026.11.26",
+      "badge": "MAINT",
+      "title": "[メンテナンス] 全ワールド メンテナンス作業のお知らせ(12/1) -",
+      "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/f8176837f964270480a0491fefc6be47842ed8a8",
+      "summary": "全ワールド メンテナンス作業のお知らせ(12/1)"
+    },
     {
       "date": "2026.11.25",
       "badge": "TOPIC",
@@ -25,13 +46,6 @@
     },
     {
       "date": "2026.11.24",
-      "badge": "NOTICE",
-      "title": "エターナルセレモニーの予約／実施ができない時間について -",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/f5b6b0d6f2bd9efdeb4dbd6b2ba90383b136673f",
-      "summary": "エターナルセレモニーの予約／実施ができない時間について"
-    },
-    {
-      "date": "2026.11.24",
       "badge": "UPDATE",
       "title": "モグステーション／オンラインストア 更新のお知らせ(11/24) -",
       "url": "https://jp.finalfantasyxiv.com/lodestone/news/detail/deef17d4fcec1f59a806f9ff603dd617770811c6",
@@ -43,20 +57,6 @@
       "title": "「第94回 FFXIV PLL」12月4日（金）放送決定！",
       "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/24840cb713392c9615cf58fde06dbd8f940a16e8",
       "summary": "「第94回 FFXIV PLL」12月4日（金）放送決定！"
-    },
-    {
-      "date": "2026.11.20",
-      "badge": "TOPIC",
-      "title": "チョコボレースVRが「ティフォニウム 新宿」にも登場決定！",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/85f352555049bfbbd093660ade93c01fc572d1f8",
-      "summary": "チョコボレースVRが「ティフォニウム 新宿」にも登場決定！"
-    },
-    {
-      "date": "2026.11.19",
-      "badge": "TOPIC",
-      "title": "ファンフェスお土産セットなどのグッズが登場＆アルカディアくじ再販売決定！",
-      "url": "https://jp.finalfantasyxiv.com/lodestone/topics/detail/4e00056d4ec4d881f2c2308743c693b9f0d82d84",
-      "summary": "ファンフェスお土産セットなどのグッズが登場＆アルカディアくじ再販売決定！"
     }
   ]
 }
